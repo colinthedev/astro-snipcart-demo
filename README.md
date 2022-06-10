@@ -2,7 +2,7 @@
 
 #### The reason for hosting this on GH pages is to be able to test/interact with Snipcarts product backend and import products from the frontend by using its fetching functionality.
 
-#### *Also note: Snipcart is not functional threw GH pages due to the API key not being exposed om the frontend for security reasons.
+#### *Also note: Snipcarts API key used for this is the "test" key - When switching to "live" mode you would not want to expose your key on the frontend for security reasons, instead import your "live" key in from an env varible.
 
 <hr>
 
@@ -10,6 +10,7 @@ Resources:
 - [Get Started](https://app.snipcart.com/dashboard)
 - [Create a GH Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site)
 - [Deploy Guide](https://docs.astro.build/en/guides/deploy/)
+- [When You're Ready To Go Live](https://docs.snipcart.com/v3/testing/going-live)
 
 
 
