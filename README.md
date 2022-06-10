@@ -3,6 +3,7 @@
 #### The reason for hosting this on GH pages is to be able to test/interact with Snipcarts product backend and import products from the frontend by using its fetching functionality.
 
 #### *Also note: Snipcarts API key used for this is the "test" key - When switching to "live" mode you would not want to expose your key on the frontend for security reasons, instead import your "live" key in from an env varible.
+-  publicApiKey: import.meta.env.PUBLIC_SNIPCART_API_KEY,
 -  [Resource On This](https://docs.snipcart.com/v3/testing/environment)
 
 <hr>
