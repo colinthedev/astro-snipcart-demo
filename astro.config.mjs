@@ -5,7 +5,7 @@ import { defineConfig } from 'astro/config';
 }
 
 {
-	base: 'astro-snipcart-demo'
+	base: '/root'
 	// '/root'
 }
 
