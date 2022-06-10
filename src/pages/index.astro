@@ -1,39 +1,41 @@
 ---
 import { Debug } from 'astro/components';
 
-import Layout from "../layouts/layout.astro";
 import test from "../data/items/test.json";
 
 ---
-<Layout>
-<!-- <button class="snipcart-add-item"
-  data-item-id="starry-night"
-  data-item-price="79.99"
-  data-item-url="/paintings/starry-night"
-  data-item-description="Description"
-  data-item-image="/assets/images/starry-night.jpg"
-  data-item-name="The Starry Night"
-  data-item-custom2-name="Frame color"
-  data-item-custom2-options="Black|Brown[+100.00]|Gold[+300.00]"
-	data-item-custom1-name="Gift note">
-  Add to cart
-</button> -->
+<div>
+	
+	<!-- <button class="snipcart-add-item"
+		data-item-id="starry-night"
+		data-item-price="79.99"
+		data-item-url="/paintings/starry-night"
+		data-item-description="Description"
+		data-item-image="/assets/images/starry-night.jpg"
+		data-item-name="The Starry Night"
+		data-item-custom2-name="Frame color"
+		data-item-custom2-options="Black|Brown[+100.00]|Gold[+300.00]"
+		data-item-custom1-name="Gift note">
+		Add to cart
+	</button> -->
+	
+	<Debug answer={test} />
+	
+	
+	<button class="snipcart-add-item"
+		data-item-id={test.id}
+		data-item-price={test.price}
+		data-item-description={test.description}
+		data-item-name={test.name}
+		data-item-custom1-name={test.nameOne}
+		data-item-custom2-name={test.nameTwo}
+		data-item-custom2-options={test.nameTwoOpt}>
+		Add to cart
+	</button>
+	
+</div>
 
-<Debug answer={test} />
 
-
-<button class="snipcart-add-item"
-  data-item-id={test.id}
-  data-item-price={test.price}
-  data-item-description={test.description}
-  data-item-name={test.name}
-	data-item-custom1-name={test.nameOne}
-  data-item-custom2-name={test.nameTwo}
-  data-item-custom2-options={test.nameTwoOpt}>
-  Add to cart
-</button>
-
-</Layout>
 
 <script>
 
