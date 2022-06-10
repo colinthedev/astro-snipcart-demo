@@ -1,42 +1,56 @@
-# Welcome to [Astro](https://astro.build)
+# Hosting an Astro + Snipcart site on github pages
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/starter)
+#### The reason for hosting this on GH pages is to be able to test/interact with Snipcarts product backend and import products from the frontend by using its fetching functionality.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+#### *Also note: Snipcart is not functional threw GH pages due to the API key not being exposed om the frontend for security reasons.
 
-## 🚀 Project Structure
+<hr>
 
-Inside of your Astro project, you'll see the following folders and files:
+Resources:
+- [Create a GH Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site)
+- [Deploy Guide](https://docs.astro.build/en/guides/deploy/)
 
-```
-/
-├── public/
-│   └── favicon.ico
-├── src/
-│   ├── components/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components or layouts.
+In order to compile i also had to create a .ts file and include this bit of code in the tsconfig.json file:
 
-Any static assets, like images, can be placed in the `public/` directory.
+    {
+      "compilerOptions": {
+        // Enable top-level await, and other modern ESM features.
+        "target": "ESNext",
+        "module": "ESNext",
+        // Enable node-style module resolution, for things like npm package imports.
+        "moduleResolution": "node",
+        // Enable JSON imports.
+        "resolveJsonModule": true,
+        // Enable stricter transpilation for better output.
+        "isolatedModules": true,
+        // Add type definitions for our Vite runtime.
+        "types": ["vite/client"]
+      },
+      "compileOnSave": false,
+      "exclude": [
+        "src",
+        "wwwroot"
+      ],
+      "include": [
+        "required.ts"
+      ]
+    }
 
-## 🧞 Commands
+More specifically the part that was added was the arrays after the first object.
 
-All commands are run from the root of the project, from a terminal:
+<hr>
 
-| Command           | Action                                       |
-| :---------------- | :------------------------------------------- |
-| `npm install`     | Installs dependencies                        |
-| `npm run dev`     | Starts local dev server at `localhost:3000`  |
-| `npm run build`   | Build your production site to `./dist/`      |
-| `npm run preview` | Preview your build locally, before deploying |
+### Notes
+- When making the GH pages the GH pages branch has to be set to 'gh-pages' not main
+- In snipcart backend there are two thins you need to do besides getting your API key:
+  - You need to set your domain and sub-domain
+  - - ![This is an image](/src/images/snipcart-domain.png)
+  - You need to fetch products from gh pages url
+  - - ![This is an image](/src/images/snipcart-fetch.png)
 
-## 👀 Want to learn more?
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+
+
+
