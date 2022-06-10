@@ -46,9 +46,9 @@ More specifically the part that was added was the arrays after the first object.
 - When making the GH pages the GH pages branch has to be set to 'gh-pages' not main
 - In snipcart backend there are two thins you need to do besides getting your API key:
   - You need to set your domain and sub-domain
-  - - ![This is an image](/src/images/snipcart-domain.png)
+  - - ![This is an image](assets/readme/snipcart-domain.png)
   - You need to fetch products from gh pages url
-  - - ![This is an image](/src/images/snipcart-fetch.png)
+  - - ![This is an image](assets/readme/snipcart-fetch.png)
 
 
 
