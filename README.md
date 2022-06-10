@@ -7,6 +7,7 @@
 <hr>
 
 Resources:
+- [Get Started](https://app.snipcart.com/dashboard)
 - [Create a GH Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site)
 - [Deploy Guide](https://docs.astro.build/en/guides/deploy/)
 
