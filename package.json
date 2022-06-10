@@ -13,5 +13,8 @@
     "astro": "^1.0.0-beta.43",
     "react": "^18.1.0",
     "react-dom": "^18.1.0"
+  },
+  "dependencies": {
+    "@lloydjatkinson/astro-snipcart": "^0.1.2"
   }
 }

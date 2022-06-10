@@ -11,5 +11,13 @@
     "isolatedModules": true,
     // Add type definitions for our Vite runtime.
     "types": ["vite/client"]
-  }
+  },
+	"compileOnSave": false,
+	"exclude": [
+		"src",
+		"wwwroot"
+	],
+	"include": [
+		"required.ts"
+	]
 }
