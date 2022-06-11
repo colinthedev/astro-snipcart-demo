@@ -2,6 +2,7 @@
 <link rel="stylesheet" href="/assets/asset.877ec0b6.css" /><script type="module" src="/entry.e5b22e72.js"></script>
 <div>
 	
+	<!-- Debugging -->
 	<div class="debug astro-7HSJXGCA">
 	<div class="debug-header astro-7HSJXGCA">
 		<h2 class="debug-title astro-7HSJXGCA"><span class="debug-label astro-7HSJXGCA">Debug</span> <span class="debug-name astro-7HSJXGCA">"answer"</span></h2>
@@ -22,11 +23,50 @@
 </div>
 
 
+	<div class="debug astro-7HSJXGCA">
+	<div class="debug-header astro-7HSJXGCA">
+		<h2 class="debug-title astro-7HSJXGCA"><span class="debug-label astro-7HSJXGCA">Debug</span> <span class="debug-name astro-7HSJXGCA">"answer"</span></h2>
+	</div>
+
+	<pre is:raw class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #c9d1d9">{</span></span>
+<span class="line"><span style="color: #c9d1d9">  &quot;image&quot;: &quot;&quot;,</span></span>
+<span class="line"><span style="color: #c9d1d9">  &quot;id&quot;: &quot;2&quot;,</span></span>
+<span class="line"><span style="color: #c9d1d9">  &quot;price&quot;: 13.99,</span></span>
+<span class="line"><span style="color: #c9d1d9">  &quot;description&quot;: &quot;item 2&quot;,</span></span>
+<span class="line"><span style="color: #c9d1d9">  &quot;name&quot;: &quot;Name for item 2&quot;,</span></span>
+<span class="line"><span style="color: #c9d1d9">  &quot;URL&quot;: &quot;https://3bcd-67-177-196-118.ngrok.io/&quot;,</span></span>
+<span class="line"><span style="color: #c9d1d9">  &quot;nameOne&quot;: &quot;Gift note&quot;,</span></span>
+<span class="line"><span style="color: #c9d1d9">  &quot;nameTwo&quot;: &quot;Frame color&quot;,</span></span>
+<span class="line"><span style="color: #c9d1d9">  &quot;nameTwoOpt&quot;: &quot;Black|Brown[+100.00]|Gold[+300.00]&quot;</span></span>
+<span class="line"><span style="color: #c9d1d9">}</span></span></code></pre>
+
+</div>
+
+
+	<!-- <Debug answer={json} /> -->
+
+
+	<!-- Display all the values from the json products -->
+	[object Object][object Object][object Object]
 	
-	
+
+	<!-- Make seperate buttons for each seperate json product file -->
+	<!-- test.json -->
 	<button class="snipcart-add-item" data-item-id="1" data-item-price="79.99" data-item-description="Description" data-item-name="The Starry Night" data-item-url="https://3bcd-67-177-196-118.ngrok.io/" data-item-custom1-name="Gift note" data-item-custom2-name="Frame color" data-item-custom2-options="Black|Brown[+100.00]|Gold[+300.00]">
-		Add to cart
+		Add to cart 79.99
 	</button>
+	<!-- item2.json -->
+	<button class="snipcart-add-item" data-item-id="2" data-item-price="13.99" data-item-description="item 2" data-item-name="Name for item 2" data-item-url="https://3bcd-67-177-196-118.ngrok.io/" data-item-custom1-name="Gift note" data-item-custom2-name="Frame color" data-item-custom2-options="Black|Brown[+100.00]|Gold[+300.00]">
+		Add to cart 13.99
+	</button>
+
+	<!-- Display all json products with a single component  -->
+	<!-- Index.astro -> ProductComponent.astro -> ButtonComponent.astro -> together.json -->
+	<!-- Todo: Make the product component mapping over the button -->
+	<!-- Todo: Make the button component to render a single product -->
+	<!-- Todo: Map over the together.json -->
+	<!-- Todo: Display the product component here -->
+
 	
 </div>
 
