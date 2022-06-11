@@ -4,6 +4,7 @@ import { Debug } from 'astro/components';
 import test from "../data/items/test.json";
 import item2 from "../data/items/item2.json";
 
+import Product from "../components/Product.astro";
 
 // Get all the values from the json products
 const allPosts = await Astro.glob('../data/items/*.json');
@@ -36,6 +37,7 @@ console.log(json)
 	<!-- Display all the values from the json products -->
 	{json}
 	
+	<Product />
 
 	<!-- Make seperate buttons for each seperate json product file -->
 	<!-- test.json -->

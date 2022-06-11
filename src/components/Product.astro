@@ -1,6 +1,24 @@
 ---
+import { Debug } from 'astro/components';
+
+interface Frontmatter {
+	productOne: any;
+	name: string;
+}
+// const allPosts = await Astro.glob<Frontmatter>('../data/items/*.json');
+const allPosts = await Astro.glob<Frontmatter>('../data/items/together.json');
+
 ---
 
+<Debug answer={allPosts} />
+
+<div>
+	<ul>
+		{allPosts.map(post => 
+			<li>{post.productOne.name}</li>
+		)}
+	</ul>
+</div>
 
 <script>
 
