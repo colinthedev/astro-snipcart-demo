@@ -4,6 +4,7 @@
 		"price": 79.99,
 		"description": "Description",
 		"name": "The Starry Night",
+		"URL": "/",
 		"nameOne": "Gift note",
 		"nameTwo": "Frame color",
 		"nameTwoOpt": "Black|Brown[+100.00]|Gold[+300.00]"
