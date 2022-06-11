@@ -48,11 +48,43 @@ More specifically the part that was added was the arrays after the first object.
 
 ### Notes
 - When making the GH pages the GH pages branch has to be set to 'gh-pages' not main
-- In snipcart backend there are two thins you need to do besides getting your API key:
+- In snipcart backend there are two things you need to do besides getting your API key:
   - You need to set your domain and sub-domain
-  - ![This is an image](assets/readme/snipcart-domain.png)
+  ![This is an image](assets/readme/snipcart-domain.png)
   - You need to fetch products from gh pages url
-  - ![This is an image](assets/readme/snipcart-fetch.png)
+  ![This is an image](assets/readme/snipcart-fetch.png)
+
+<hr>
+
+##### ** UPDATE: Ive found it difficult to get snipcart to interact with GH pages to be able to test checkout functionality 
+
+# Using ngrok to test checkout functionality
+
+Resources:
+-  [Installing ngrok](https://ngrok.com/download)
+-  [Configuring Snipcart With ngrok](https://snipcart.com/blog/develop-a-snipcart-powered-website-locally-using-ngrok)
+
+Some reasons using ngrok is the better option:
+-  I was able to get this working and interacting in only about a half hour
+-  Install process is simple
+-  Simple to 'expose' any local server you just need ngrok installed on your computer
+
+### Heres the steps i followed to get this working:
+
+Installing ngrok:
+-  [Install ngrok](https://ngrok.com/download)
+-  Add your authtoken
+-  Start a 'tunnel'
+     -  The 'tunnel' port you enter should be the same port your localhost is running on
+
+Configuring Astro to work with ngrok:
+-  You're going to need to change the product url to match the 'forwarding' url given by ngrok 
+
+Configuring Snipcart to work with everything:
+-  Set the domain to match the 'forwarding' url given by ngrok
+-  Set the subdomain of /#/checkout
+![This is an image](assets/readme/snipcart-ngrok-domain.png)
+
 
 
 
