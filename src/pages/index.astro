@@ -8,7 +8,7 @@ import item2 from "../data/items/item2.json";
 // Get all the values from the json products
 const allPosts = await Astro.glob('../data/items/*.json');
 
-const json = 
+const json = JSON.stringify(
   allPosts.map((p) => {
     return {
       image: p.image,
@@ -22,14 +22,15 @@ const json =
       nameTwoOpt: p.nameTwoOpt,
     };
   })
+)
 console.log(json)
 ---
 <div>
 	
 	<!-- Debugging -->
-	<Debug answer={test} />
-	<Debug answer={item2} />
-	<!-- <Debug answer={json} /> -->
+	<!-- <Debug answer={test} />
+	<Debug answer={item2} /> -->
+	<Debug answer={json} />
 
 
 	<!-- Display all the values from the json products -->
