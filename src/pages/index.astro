@@ -2,6 +2,7 @@
 import { Debug } from 'astro/components';
 
 import test from "../data/items/test.json";
+import item2 from "../data/items/item2.json";
 
 
 // Get all the values from the json products
@@ -34,6 +35,9 @@ console.log(json)
 	<!-- Display all the values from the json products -->
 	{json}
 	
+
+	<!-- Make seperate buttons for each seperate json product file -->
+	<!-- test.json -->
 	<button class="snipcart-add-item"
 		data-item-id={test.id}
 		data-item-price={test.price}
@@ -43,7 +47,19 @@ console.log(json)
 		data-item-custom1-name={test.nameOne}
 		data-item-custom2-name={test.nameTwo}
 		data-item-custom2-options={test.nameTwoOpt}>
-		Add to cart
+		Add to cart {test.price}
+	</button>
+	<!-- item2.json -->
+	<button class="snipcart-add-item"
+		data-item-id={item2.id}
+		data-item-price={item2.price}
+		data-item-description={item2.description}
+		data-item-name={item2.name}
+		data-item-url={item2.URL}
+		data-item-custom1-name={item2.nameOne}
+		data-item-custom2-name={item2.nameTwo}
+		data-item-custom2-options={item2.nameTwoOpt}>
+		Add to cart {item2.price}
 	</button>
 	
 </div>
