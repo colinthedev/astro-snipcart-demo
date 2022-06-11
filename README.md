@@ -76,6 +76,7 @@ Installing ngrok:
 -  Add your authtoken
 -  Start a 'tunnel'
      -  The 'tunnel' port you enter should be the same port your localhost is running on
+-  Navigate to the 'Web Interface' url to see requests and online/offline status
 
 Configuring Astro to work with ngrok:
 -  You're going to need to change the product url to match the 'forwarding' url given by ngrok 
