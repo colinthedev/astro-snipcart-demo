@@ -1,4 +1,14 @@
 ---
+
+	// Display all json products with a single component  
+	// Index.astro -> ProductComponent.astro -> ButtonComponent.astro -> together.json 
+	// Todo: Make the product component mapping over the button 
+	// Todo: Make the button component to render a single product 
+	// Todo: Map over the together.json 
+	// Todo: Display the product component here 
+
+	// Todo: Install sass + gulp in project 
+
 import { Debug } from 'astro/components';
 
 import test from "../data/items/test.json";
@@ -29,8 +39,8 @@ console.log(json)
 <div>
 	
 	<!-- Debugging -->
-	<!-- <Debug answer={test} />
-	<Debug answer={item2} /> -->
+	<Debug answer={test} />
+	<Debug answer={item2} /> 
 	<Debug answer={json} />
 
 
@@ -65,12 +75,7 @@ console.log(json)
 		Add to cart {item2.price}
 	</button>
 
-	<!-- Display all json products with a single component  -->
-	<!-- Index.astro -> ProductComponent.astro -> ButtonComponent.astro -> together.json -->
-	<!-- Todo: Make the product component mapping over the button -->
-	<!-- Todo: Make the button component to render a single product -->
-	<!-- Todo: Map over the together.json -->
-	<!-- Todo: Display the product component here -->
+
 
 	
 </div>

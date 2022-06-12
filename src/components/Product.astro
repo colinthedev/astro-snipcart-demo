@@ -2,11 +2,12 @@
 import { Debug } from 'astro/components';
 
 interface Frontmatter {
-	productOne: any;
-	name: string;
+	// productOne: any; // Access individual properties
+	// productTwo: any; // Access individual properties
+	name: string; // Set whatever values you want like this
 }
-// const allPosts = await Astro.glob<Frontmatter>('../data/items/*.json');
-const allPosts = await Astro.glob<Frontmatter>('../data/items/together.json');
+const allPosts = await Astro.glob<Frontmatter>('../data/items/*.json'); // To create a component
+// const allPosts = await Astro.glob<Frontmatter>('../data/items/together.json'); // Access individual properties
 
 ---
 
@@ -15,7 +16,9 @@ const allPosts = await Astro.glob<Frontmatter>('../data/items/together.json');
 <div>
 	<ul>
 		{allPosts.map(post => 
-			<li>{post.productOne.name}</li>
+			<li>{post.name}</li>
+			// <li>{post.productOne.name}</li> // Access individual properties
+			// <li>{post.productTwo.name}</li> // Access individual properties
 		)}
 	</ul>
 </div>
