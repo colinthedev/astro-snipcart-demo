@@ -16,7 +16,7 @@
 			"./src/types"
 		]
   },
-	"compileOnSave": false,
+	"compileOnSave": true,
 	"exclude": [
 		"src",
 		"wwwroot"
