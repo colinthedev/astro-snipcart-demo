@@ -7,14 +7,15 @@
 	// Todo: Map over the together.json 
 	// Todo: Display the product component here 
 
-	// Todo: Install sass + gulp in project 
+
+import MainLayout from '../layouts/Layout.astro';
 
 import { Debug } from 'astro/components';
 
 import test from "../data/items/test.json";
 import item2 from "../data/items/item2.json";
 
-import Product from "../components/Product.astro";
+import ProductCard from "../components/ProductCard.astro";
 
 // Get all the values from the json products
 const allPosts = await Astro.glob('../data/items/*.json');
@@ -36,18 +37,23 @@ const json = JSON.stringify(
 )
 console.log(json)
 ---
-<div>
+
+<style lang="sass">
+
+</style>
+
+<MainLayout>
 	
 	<!-- Debugging -->
-	<Debug answer={test} />
+	<!-- <Debug answer={test} />
 	<Debug answer={item2} /> 
-	<Debug answer={json} />
+	<Debug answer={json} /> -->
 
 
 	<!-- Display all the values from the json products -->
 	{json}
 	
-	<Product />
+	<ProductCard />
 
 	<!-- Make seperate buttons for each seperate json product file -->
 	<!-- test.json -->
@@ -78,4 +84,4 @@ console.log(json)
 
 
 	
-</div>
+</MainLayout>
