@@ -5,7 +5,7 @@ const del = require('del');
 
 // Create new .task called 'styles'
 gulp.task('styles', () => {
-	return gulp.src('sass/**/*.sass') // .src creates a stream for reading all SCSS filess
+	return gulp.src('src/sass/**/*.scss') // .src creates a stream for reading all SCSS filess
 		.pipe(sass().on('error', sass.logError)) // pipe passes the streamed data to the sass compiler and catches errors
 		.pipe(gulp.dest('./css/')); //gulp.dest takes in compiled data, tells gulp where to put compiled sass (into './css')
 });
@@ -19,7 +19,7 @@ gulp.task('clean', () => {
 
 // Tasks that automatically watches for changes (Watch uses alot of resources to run)
 gulp.task('watch', () => {
-	gulp.watch('sass/**/*.sass', (done) => {
+	gulp.watch('src/sass/**/*.scss', (done) => {
 		gulp.series(['clean', 'styles'])(done);
 	});
 });
