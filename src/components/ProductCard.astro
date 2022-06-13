@@ -14,13 +14,11 @@ const allPosts = await Astro.glob<Frontmatter>('../data/items/*.json'); // To cr
 <Debug answer={allPosts} />
 
 <div>
-	<ul>
 		{allPosts.map(post => 
-			<li>{post.name}</li>
+			<h3>{post.name}</h3>
 			// <li>{post.productOne.name}</li> // Access individual properties
 			// <li>{post.productTwo.name}</li> // Access individual properties
 		)}
-	</ul>
 </div>
 
 <script>
