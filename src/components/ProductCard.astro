@@ -1,24 +1,147 @@
 ---
-import { Debug } from 'astro/components';
 
-interface Frontmatter {
-	// productOne: any; // Access individual properties
-	// productTwo: any; // Access individual properties
-	name: string; // Set whatever values you want like this
+import ProductButton from '../components/ProductButton.astro';
+
+const { image, imageSliderOne, imageSliderTwo, imageSliderThree, imageSliderFour, name, id, description, price, URL, nameOne, nameTwo, nameTwoOpt } = Astro.props;
+
+if (typeof window !== 'undefined') {
+	(function () {
+		console.log('You are on the browser')
+			function scrollHorizontally(e) {
+					e = window.event || e;
+					let delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
+					document.getElementById('horizontalScroll').scrollLeft -= (delta * 40);
+					e.preventDefault();
+			}
+			if (document.getElementById('horizontalScroll').addEventListener) {
+					// IE9, Chrome, Safari, Opera
+					document.getElementById('horizontalScroll').addEventListener('mousewheel', scrollHorizontally, true);
+					// Firefox
+					document.getElementById('horizontalScroll').addEventListener('DOMMouseScroll', scrollHorizontally, true);
+			} 
+	})();
+} else {
+	console.log('You are on the server')
 }
-const allPosts = await Astro.glob<Frontmatter>('../data/items/*.json'); // To create a component
-// const allPosts = await Astro.glob<Frontmatter>('../data/items/together.json'); // Access individual properties
 
 ---
 
-<Debug answer={allPosts} />
+<style is:global>
 
-<div>
-		{allPosts.map(post => 
-			<h3>{post.name}</h3>
-			// <li>{post.productOne.name}</li> // Access individual properties
-			// <li>{post.productTwo.name}</li> // Access individual properties
-		)}
+	.product-slider {
+		overflow-x: scroll;
+	}
+	.product-slider--image {
+		flex: 0 0 25%;
+    width: 25%;
+    min-width: 25%;
+    height: 140px;
+    background-position: center center;
+    background-size: cover;
+    border: 2px solid transparent;
+    cursor: pointer;
+		margin-right: 15px;
+	}
+	.product-slider--image:nth-last-child() {
+		margin-right: 0;
+	}
+	.price-wrapper--bar {
+		width: 100%;
+		max-width: 80px;
+		background-color: #fbb710;
+		padding: 1.5px;
+	}
+	.price-wrapper--price {
+		font-size: 24px;
+    font-weight: 400;
+    color: #fbb710;
+    line-height: 1;
+    margin-bottom: 10px;
+	}
+	.product-name {
+		color: #242424;
+    line-height: 1.3;
+    font-weight: 400;
+		font-size: 20px;
+	}
+	.product-info__reviews--stars {
+		font-size: 10px;
+    color: #fbb710;
+	}
+	.product-info__availability--icon {
+		color: #20d34a;
+    font-size: 12px;
+	}
+	.product-info--description {
+		line-height: 2.1;
+    color: #6b6b6b;
+		font-size: 16px;
+	}
+	.AddCartBtn {
+		width: 100%;
+		max-width: 250px;
+		display: inline-block;
+    min-width: 160px;
+    height: 55px;
+    color: #ffffff;
+    border: none;
+    border-radius: 0;
+    padding: 0 7px;
+    font-size: 18px;
+    line-height: 56px;
+    background-color: #fbb710;
+    font-weight: 400;
+	}
+
+</style>
+
+<div class="container">
+	<div class="row">
+		<div class="col-4 pb-5">
+			<img class="d-block w-100" src={image} alt="">
+			<div class="product-slider pt-4">
+				<ol id="horizontalScroll" class="list-unstyled d-flex">
+					<li data-slide-to="0" class="product-slider--image" style="background-image: url(../../assets/images/product-img/product2.jpg);"></li>
+					<li data-slide-to="1" class="product-slider--image" style="background-image: url(../../assets/images/product-img/product3.jpg);"></li>
+					<li data-slide-to="2" class="product-slider--image" style="background-image: url(../../assets/images/product-img/product4.jpg);"></li>
+					<li data-slide-to="3" class="product-slider--image" style="background-image: url(../../assets/images/product-img/product5.jpg);"></li>
+				</ol>	
+			</div>
+		</div>
+		<div class="col-4">
+			<div class="price-wrapper">
+				<div class="price-wrapper--bar"></div>
+				<p class="price-wrapper--price py-3 m-0">{price}</p>
+			</div>
+			<a class="text-decoration-none" href={URL}>
+				<h6 class="product-name m-0">{name}</h6>
+			</a>
+			<div class="product-info">
+				<div class="d-flex justify-content-between py-3">
+					<div class="product-info__reviews">
+						<i class="product-info__reviews--stars fa fa-star"></i>
+						<i class="product-info__reviews--stars fa fa-star"></i>
+						<i class="product-info__reviews--stars fa fa-star"></i>
+						<i class="product-info__reviews--stars fa fa-star"></i>
+						<i class="product-info__reviews--stars fa fa-star"></i>
+					</div>
+					<div class="product-info__reviews">
+						<a class="product-info__reviews--review" href=""><p>Write a review</p></a>
+					</div>
+				</div>
+				<div class="product-info__availability d-flex">
+					<i class="product-info__availability--icon fa fa-circle pe-2"></i>
+					<p class="">In stock</p>	
+				</div>
+				<p class="product-info--description">{description}</p>
+			</div>
+			<ProductButton 
+				type="button"
+				class="AddCartBtn mt-5"
+				children="Add To Cart"
+			/>
+		</div>
+	</div>
 </div>
 
 <script>
@@ -33,3 +156,9 @@ const allPosts = await Astro.glob<Frontmatter>('../data/items/*.json'); // To cr
 
   (function(){var c,d;(d=(c=window.SnipcartSettings).version)!=null||(c.version="3.0");var s,S;(S=(s=window.SnipcartSettings).currency)!=null||(s.currency="usd");var l,p;(p=(l=window.SnipcartSettings).timeoutDuration)!=null||(l.timeoutDuration=2750);var w,u;(u=(w=window.SnipcartSettings).domain)!=null||(w.domain="cdn.snipcart.com");var m,g;(g=(m=window.SnipcartSettings).protocol)!=null||(m.protocol="https");var f,v;(v=(f=window.SnipcartSettings).loadCSS)!=null||(f.loadCSS=!0);var E=window.SnipcartSettings.version.includes("v3.0.0-ci")||window.SnipcartSettings.version!="3.0"&&window.SnipcartSettings.version.localeCompare("3.4.0",void 0,{numeric:!0,sensitivity:"base"})===-1,y=["focus","mouseover","touchmove","scroll","keydown"];window.LoadSnipcart=o;document.readyState==="loading"?document.addEventListener("DOMContentLoaded",r):r();function r(){window.SnipcartSettings.loadStrategy?window.SnipcartSettings.loadStrategy==="on-user-interaction"&&(y.forEach(function(t){return document.addEventListener(t,o)}),setTimeout(o,window.SnipcartSettings.timeoutDuration)):o()}var a=!1;function o(){if(a)return;a=!0;let t=document.getElementsByTagName("head")[0],n=document.querySelector("#snipcart"),i=document.querySelector('src[src^="'.concat(window.SnipcartSettings.protocol,"://").concat(window.SnipcartSettings.domain,'"][src$="snipcart.js"]')),e=document.querySelector('link[href^="'.concat(window.SnipcartSettings.protocol,"://").concat(window.SnipcartSettings.domain,'"][href$="snipcart.css"]'));n||(n=document.createElement("div"),n.id="snipcart",n.setAttribute("hidden","true"),document.body.appendChild(n)),$(n),i||(i=document.createElement("script"),i.src="".concat(window.SnipcartSettings.protocol,"://").concat(window.SnipcartSettings.domain,"/themes/v").concat(window.SnipcartSettings.version,"/default/snipcart.js"),i.async=!0,t.appendChild(i)),!e&&window.SnipcartSettings.loadCSS&&(e=document.createElement("link"),e.rel="stylesheet",e.type="text/css",e.href="".concat(window.SnipcartSettings.protocol,"://").concat(window.SnipcartSettings.domain,"/themes/v").concat(window.SnipcartSettings.version,"/default/snipcart.css"),t.prepend(e)),y.forEach(function(h){return document.removeEventListener(h,o)})}function $(t){!E||(t.dataset.apiKey=window.SnipcartSettings.publicApiKey,window.SnipcartSettings.addProductBehavior&&(t.dataset.configAddProductBehavior=window.SnipcartSettings.addProductBehavior),window.SnipcartSettings.modalStyle&&(t.dataset.configModalStyle=window.SnipcartSettings.modalStyle),window.SnipcartSettings.currency&&(t.dataset.currency=window.SnipcartSettings.currency),window.SnipcartSettings.templatesUrl&&(t.dataset.templatesUrl=window.SnipcartSettings.templatesUrl))}})();
 </script> 
+
+
+
+
+
+
