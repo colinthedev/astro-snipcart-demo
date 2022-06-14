@@ -10,78 +10,9 @@
 
 import MainLayout from '../layouts/Layout.astro';
 
-import { Debug } from 'astro/components';
-
-import test from "../data/items/test.json";
-import item2 from "../data/items/item2.json";
-
-import ProductCard from "../components/ProductCard.astro";
-
-// Get all the values from the json products
-const allPosts = await Astro.glob('../data/items/*.json');
-
-const json = JSON.stringify(
-  allPosts.map((p) => {
-    return {
-      image: p.image,
-      id: p.id,
-      price: p.price,
-      description: p.description,
-      name: p.name,
-      URL: p.URL,
-      nameOne: p.nameOne,
-      nameTwo: p.nameTwo,
-      nameTwoOpt: p.nameTwoOpt,
-    };
-  })
-)
-console.log(json)
 ---
-
-<style lang="sass">
-
-</style>
 
 <MainLayout>
 	
-	<!-- Debugging -->
-	<!-- <Debug answer={test} />
-	<Debug answer={item2} /> 
-	<Debug answer={json} /> -->
-
-
-	<!-- Display all the values from the json products -->
-	{json}
-	
-	<ProductCard />
-
-	<!-- Make seperate buttons for each seperate json product file -->
-	<!-- test.json -->
-	<button class="snipcart-add-item"
-		data-item-id={test.id}
-		data-item-price={test.price}
-		data-item-description={test.description}
-		data-item-name={test.name}
-		data-item-url={test.URL}
-		data-item-custom1-name={test.nameOne}
-		data-item-custom2-name={test.nameTwo}
-		data-item-custom2-options={test.nameTwoOpt}>
-		Add to cart {test.price}
-	</button>
-	<!-- item2.json -->
-	<button class="snipcart-add-item"
-		data-item-id={item2.id}
-		data-item-price={item2.price}
-		data-item-description={item2.description}
-		data-item-name={item2.name}
-		data-item-url={item2.URL}
-		data-item-custom1-name={item2.nameOne}
-		data-item-custom2-name={item2.nameTwo}
-		data-item-custom2-options={item2.nameTwoOpt}>
-		Add to cart {item2.price}
-	</button>
-
-
-
 	
 </MainLayout>
