@@ -1,9 +1,9 @@
 	{
 		"image": "../../assets/images/product-img/pro-big-1.jpg",
-		"imageSliderOne": "../../assets/images/product-img/pro-big-2.jpg",
-		"imageSliderTwo": "../../assets/images/product-img/pro-big-3.jpg",
-		"imageSliderThree": "../../assets/images/product-img/pro-big-4.jpg",
-		"imageSliderFour": "../../assets/images/product-img/pro-big-5.jpg",
+		"imageSliderOne": "../../assets/images/product-img/product1.jpg",
+		"imageSliderTwo": "../../assets/images/product-img/product2.jpg",
+		"imageSliderThree": "../../assets/images/product-img/product3.jpg",
+		"imageSliderFour": "../../assets/images/product-img/product4.jpg",
 		"id": "1",
 		"price": 79.99,
 		"description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid quae eveniet culpa officia quidem mollitia impedit iste asperiores nisi reprehenderit consequatur, autem, nostrum pariatur enim?",
