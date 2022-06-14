@@ -4,7 +4,7 @@
   "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid quae eveniet culpa officia quidem mollitia impedit iste asperiores nisi reprehenderit consequatur, autem, nostrum pariatur enim?",
   "price": 13.99,
   "image": "../../assets/images/product-img/pro-big-1.jpg",
-  "URL": "/products/secondproduct",
+  "URL": "/products/thirdproduct",
   "nameOne": "Gift note",
   "nameTwo": "Frame color",
   "nameTwoOpt": "Black|Brown[+100.00]|Gold[+300.00]"

@@ -1,10 +1,14 @@
 	{
-		"image": "",
+		"image": "../../assets/images/product-img/pro-big-1.jpg",
+		"imageSliderOne": "../../assets/images/product-img/pro-big-2.jpg",
+		"imageSliderTwo": "../../assets/images/product-img/pro-big-3.jpg",
+		"imageSliderThree": "../../assets/images/product-img/pro-big-4.jpg",
+		"imageSliderFour": "../../assets/images/product-img/pro-big-5.jpg",
 		"id": "1",
 		"price": 79.99,
-		"description": "Description",
+		"description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid quae eveniet culpa officia quidem mollitia impedit iste asperiores nisi reprehenderit consequatur, autem, nostrum pariatur enim?",
 		"name": "The Starry Night",
-		"URL": "https://3bcd-67-177-196-118.ngrok.io/",
+		"URL": "/products/firstproduct",
 		"nameOne": "Gift note",
 		"nameTwo": "Frame color",
 		"nameTwoOpt": "Black|Brown[+100.00]|Gold[+300.00]"
