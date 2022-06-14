@@ -1,8 +1,9 @@
 ---
 
+const { children, noBackground, classes, ...otherProps } = Astro.props;
 
 ---
 
-<div>
-
-</div>
+<button class={classes} {...otherProps}>
+	{children}
+</button>
