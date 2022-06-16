@@ -1,6 +1,6 @@
 {
 	"productOne": {
-  	"image": "../../public/assets/images/product-img/pro-big-1.jpg",
+  	"image": "../../assets/images/product-img/pro-big-1.jpg",
   	"id": "1",
   	"price": 79.99,
   	"description": "Description",
@@ -11,7 +11,7 @@
   	"nameTwoOpt": "Black|Brown[+100.00]|Gold[+300.00]"
 	},
 	"productTwo": {
-  	"image": "../../public/assets/images/product-img/pro-big-1.jpg",
+  	"image": "../../assets/images/product-img/pro-big-1.jpg",
   	"id": "1",
   	"price": 79.99,
   	"description": "Description",
