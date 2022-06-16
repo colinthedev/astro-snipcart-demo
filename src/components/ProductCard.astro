@@ -28,6 +28,10 @@ if (typeof window !== 'undefined') {
 
 <style is:global>
 
+	.product-card-wrapper {
+		margin-top: 15rem;
+	}
+
 	.product-slider {
 		overflow-x: scroll;
 	}
@@ -81,8 +85,7 @@ if (typeof window !== 'undefined') {
 		width: 100%;
 		max-width: 250px;
 		display: inline-block;
-    min-width: 160px;
-    height: 55px;
+    min-height: 55px;
     color: #ffffff;
     border: none;
     border-radius: 0;
@@ -95,9 +98,9 @@ if (typeof window !== 'undefined') {
 
 </style>
 
-<div class="container">
+<div class="col-12 col-md-9 flex-grow-0 flex-grow-md-1 product-card-wrapper">
 	<div class="row">
-		<div class="col-4 pb-5">
+		<div class="col-12 col-md-6 flex-grow-1 pb-5">
 			<img class="d-block w-100" src={image} alt="">
 			<div class="product-slider pt-4">
 				<ol id="horizontalScroll" class="list-unstyled d-flex">
@@ -116,7 +119,7 @@ if (typeof window !== 'undefined') {
 				</ol>	
 			</div>
 		</div>
-		<div class="col-4">
+		<div class="col-11 col-md-5">
 			<div class="price-wrapper">
 				<div class="price-wrapper--bar"></div>
 				<p class="price-wrapper--price py-3 m-0">{price}</p>
