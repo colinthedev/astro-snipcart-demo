@@ -50,9 +50,9 @@ More specifically the part that was added was the arrays after the first object.
 - When making the GH pages the GH pages branch has to be set to 'gh-pages' not main
 - In snipcart backend there are two things you need to do besides getting your API key:
   - You need to set your domain and sub-domain
-  ![This is an image](assets/readme/snipcart-domain.png)
+  ![This is an image](public/assets/readme/snipcart-domain.png)
   - You need to fetch products from gh pages url
-  ![This is an image](assets/readme/snipcart-fetch.png)
+  ![This is an image](public/assets/readme/snipcart-fetch.png)
 
 <hr>
 
@@ -84,7 +84,7 @@ Configuring Astro to work with ngrok:
 Configuring Snipcart to work with everything:
 -  Set the domain to match the 'forwarding' url given by ngrok
 -  Set the subdomain of /#/checkout
-![This is an image](assets/readme/snipcart-ngrok-domain.png)
+![This is an image](public/assets/readme/snipcart-ngrok-domain.png)
 
 
 
