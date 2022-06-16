@@ -36,10 +36,12 @@ const {title} = Astro.props;
 			}
 	</style>
 
-	<body class="p-0">
-		<Header />
+	<body class="container h-100 d-flex flex-column">
+		<div class="row mt-5">
+			<Header />
 				<slot />
-		<Footer />
+		</div>
+			<Footer />
 	</body>
 
 	<script src="https://kit.fontawesome.com/bf56a5d9ca.js" crossorigin="anonymous"></script>
