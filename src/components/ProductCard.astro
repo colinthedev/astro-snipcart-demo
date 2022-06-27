@@ -1,6 +1,7 @@
 ---
 
 import ProductButton from '../components/ProductButton.astro';
+import { Debug } from 'astro/components';
 
 const { image, imageSliderOne, imageSliderTwo, imageSliderThree, imageSliderFour, name, id, description, price, URL, nameOne, nameTwo, nameTwoOpt } = Astro.props;
 
@@ -25,6 +26,9 @@ if (typeof window !== 'undefined') {
 }
 
 ---
+
+<!-- <Debug answer={Astro.props} /> -->
+
 
 <style is:global>
 

@@ -30,6 +30,7 @@ const allPosts = await Astro.glob<Frontmatter>('../../data/items/productTwo.json
 				id={post.id}
 				name={post.name}
 				image={post.image}
+				price={post.price}
 				description={post.description}
 				imageSliderOne={post.imageSliderOne}
 				imageSliderTwo={post.imageSliderTwo}
