@@ -1,9 +1,9 @@
 ---
-
 import ProductButton from '../components/ProductButton.astro';
 import { Debug } from 'astro/components';
 
 const { image, imageSliderOne, imageSliderTwo, imageSliderThree, imageSliderFour, name, id, description, price, URL, nameOne, nameTwo, nameTwoOpt } = Astro.props;
+
 
 if (typeof window !== 'undefined') {
 	(function () {
@@ -29,7 +29,6 @@ if (typeof window !== 'undefined') {
 
 <!-- <Debug answer={Astro.props} /> -->
 
-
 <style is:global>
 
 	.product-card-wrapper {
@@ -41,17 +40,18 @@ if (typeof window !== 'undefined') {
 	}
 	.product-slider--image {
 		flex: 0 0 25%;
-    width: 25%;
     min-width: 25%;
     height: 140px;
     background-position: center center;
     background-size: cover;
-    border: 2px solid transparent;
     cursor: pointer;
-		margin-right: 15px;
 	}
 	.product-slider--image:nth-last-child() {
 		margin-right: 0;
+	}
+	.carousel-item--image {
+		max-height: 562px;
+		object-fit: cover;
 	}
 	.price-wrapper--bar {
 		width: 100%;
@@ -99,28 +99,32 @@ if (typeof window !== 'undefined') {
     background-color: #fbb710;
     font-weight: 400;
 	}
-
 </style>
 
 <div class="col-12 col-md-9 flex-grow-0 flex-grow-md-1 product-card-wrapper">
 	<div class="row">
-		<div class="col-12 col-md-6 flex-grow-1 pb-5">
-			<img class="d-block w-100" src={image} alt="">
+		<div id="carouselExampleIndicators" data-bs-ride="carousel" class="carousel slide col-12 col-md-6 flex-grow-1 pb-5">
+			<div class="carousel-inner">
+				<div class="carousel-item item active">
+					<img class="d-block w-100 carousel-item--image" src={image} alt="">
+				</div>
+				<div class="carousel-item item">
+					<img class="d-block w-100 carousel-item--image" src={imageSliderTwo} alt="">
+				</div>
+				<div class="carousel-item item">
+					<img class="d-block w-100 carousel-item--image" src={imageSliderThree} alt="">
+				</div>
+			</div>
 			<div class="product-slider pt-4">
-				<ol id="horizontalScroll" class="list-unstyled d-flex">
-					<li data-slide-to="0" class="product-slider--image">
-						<img style="object-fit: cover;" class="h-100 w-100" src={imageSliderOne} alt="">
-					</li>
-					<li data-slide-to="1" class="product-slider--image">
-						<img style="object-fit: cover;" class="h-100 w-100" src={imageSliderTwo} alt="">
-					</li>
-					<li data-slide-to="2" class="product-slider--image">
-						<img style="object-fit: cover;" class="h-100 w-100" src={imageSliderThree} alt="">
-					</li>
-					<li data-slide-to="3" class="product-slider--image">
-						<img style="object-fit: cover;" class="h-100 w-100" src={imageSliderFour} alt="">
-					</li>
-				</ol>	
+				<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="border-0 p-0" aria-current="true" aria-label="Slide 1">
+					<img style="object-fit: cover; left: 0; height: 120px" class="product-slider--image active" src={imageSliderOne} alt="">
+				</button>
+				<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2" class="border-0 p-0">
+					<img style="object-fit: cover; left: 115px; height: 120px" class="product-slider--image" src={imageSliderTwo} alt="">
+				</button>
+				<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3" class="border-0 p-0">
+					<img style="object-fit: cover; left: 230px; height: 120px" class="product-slider--image" src={imageSliderThree} alt="">
+				</button>
 			</div>
 		</div>
 		<div class="col-11 col-md-5">
@@ -139,9 +143,9 @@ if (typeof window !== 'undefined') {
 						<i class="product-info__reviews--stars fa fa-star"></i>
 						<i class="product-info__reviews--stars fa fa-star"></i>
 						<i class="product-info__reviews--stars fa fa-star"></i>
+						<a class="product-info__reviews--review" href=""><p>Write a review</p></a>
 					</div>
 					<div class="product-info__reviews">
-						<a class="product-info__reviews--review" href=""><p>Write a review</p></a>
 					</div>
 				</div>
 				<div class="product-info__availability d-flex">
@@ -160,7 +164,6 @@ if (typeof window !== 'undefined') {
 </div>
 
 <script>
-
 
   window.SnipcartSettings = {
     publicApiKey: "MjVjODY3YTEtY2Q4ZS00NGVmLTg3MjAtYmQ3YjY5MGQ2NzkxNjM3OTAyMjAyMTM2MzYyMjc2",
