@@ -34,16 +34,16 @@ const allPosts = await Astro.glob<Frontmatter>('../data/items/*.json'); // To cr
 <div class="col-12 col-md-6 flex-grow-1">
 	<div class="row">
 		{allPosts.map(post => 
-				<div class="col-12 col-md-4 d-flex flex-column align-items-center align-items-md-start flex-grow-1 mb-5">
-					<img class="main-product-image mb-4" src={post.image} alt="">	
-					<div class="price-wrapper">
-						<div class="price-wrapper--bar"></div>
-						<h6 class="price-wrapper--price py-3 m-0">${post.price}</h6>
-					</div>
-					<a class="text-decoration-none" href={post.URL}>
-						<h6 class="product-name m-0">{post.name}</h6>
-					</a>
+			<div class="col-12 col-md-4 d-flex flex-column align-items-center align-items-md-start flex-grow-1 mb-5 position-relative">
+				<img class="main-product-image mb-4" src={post.image} alt="">	
+				<div class="price-wrapper">
+					<div class="price-wrapper--bar"></div>
+					<h6 class="price-wrapper--price py-3 m-0">${post.price}</h6>
 				</div>
-		)}
+				<a class="text-decoration-none stretched-link" href={post.URL}>
+					<h6 class="product-name m-0">{post.name}</h6>
+				</a>
+			</div>
+			)}
 	</div>
 </div>
