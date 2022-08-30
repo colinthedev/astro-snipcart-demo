@@ -80,6 +80,7 @@ Installing ngrok:
 
 Configuring Astro to work with ngrok:
 -  You're going to need to change the product url to match the 'forwarding' url given by ngrok 
+-  You're also going to need to ensure that when you fetch products you fetch them from IE: 'Forwarding' ngrok url + /products/firstproduct 
 
 Configuring Snipcart to work with everything:
 -  Set the domain to match the 'forwarding' url given by ngrok
