@@ -5,21 +5,22 @@ import MainLayout from '../../layouts/Layout.astro';
 
 interface Frontmatter {
 	// productOne: any; // Access individual properties
+	id: string;
+	price: number; 
+	URL: string;
+	name: string;
+	description: string; 
 	image: string;
 	imageSliderOne: string;
 	imageSliderTwo: string;
 	imageSliderThree: string;
 	imageSliderFour: string;
-	name: string;
-	id: string;
-	description: string; 
-	price: number; 
-	URL: string;
-	nameOne: string;
-	nameTwo: string;
-	nameTwoOpt: string;
-}
+	imageSliderFive: string;
 
+	nameOne: string; //Not used
+	nameTwo: string; //Not used
+	nameTwoOpt: string; //Not used
+}
 const allPosts = await Astro.glob<Frontmatter>('../../data/items/productOne.json'); // Access individual properties
 
 ---
@@ -28,14 +29,16 @@ const allPosts = await Astro.glob<Frontmatter>('../../data/items/productOne.json
 		{allPosts.map(post => 
 			<ProductCard 
 				id={post.id}
+				price={post.price}
+				URL={post.URL}
 				name={post.name}
-				image={post.image}
 				description={post.description}
+				image={post.image}
 				imageSliderOne={post.imageSliderOne}
 				imageSliderTwo={post.imageSliderTwo}
 				imageSliderThree={post.imageSliderThree}
 				imageSliderFour={post.imageSliderFour}
+				imageSliderFive={post.imageSliderFive}
 			/>
 		)}
-
 </MainLayout>

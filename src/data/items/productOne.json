@@ -1,18 +1,16 @@
 	{
-		"image": "../../assets/images/product-img/pro-big-1.jpg",
-		"imageSliderOne": "../../assets/images/product-img/product1.jpg",
-		"imageSliderTwo": "../../assets/images/product-img/product2.jpg",
-		"imageSliderThree": "../../assets/images/product-img/product3.jpg",
-		"imageSliderFour": "../../assets/images/product-img/product4.jpg",
-		"id": "1",
-		"price": 79.99,
-		"description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid quae eveniet culpa officia quidem mollitia impedit iste asperiores nisi reprehenderit consequatur, autem, nostrum pariatur enim?",
-		"name": "The Starry Night",
-		"URL": "/products/firstproduct",
-		"nameOne": "Gift note",
-		"nameTwo": "Frame color",
-		"nameTwoOpt": "Black|Brown[+100.00]|Gold[+300.00]"
-	}
+    "id": 1,
+		"price": 790,
+    "URL": "/products/firstproduct",
+    "name": "The Starry Night",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid quae eveniet culpa officia quidem mollitia impedit iste asperiores nisi reprehenderit consequatur, autem, nostrum pariatur enim?",
+    "image": "/assets/images/product-img/product-one/modern-house-cover-img-1.jpg",
+    "imageSliderOne": "/assets/images/product-img/modern-house-slider-bedroom.jpg",
+    "imageSliderTwo": "/assets/images/product-img/modern-house-slider-livingroom.jpg",
+    "imageSliderThree": "/assets/images/product-img/modern-house-slider-bathroom-one.jpg",
+    "imageSliderFour": "/assets/images/product-img/modern-house-slider-kitchen.jpg",
+    "imageSliderFive": "/assets/images/product-img/modern-house-slider-bathroom-two.jpg"
+  }
 
 
 

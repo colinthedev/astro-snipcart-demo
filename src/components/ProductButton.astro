@@ -1,9 +1,15 @@
 ---
 
-const { children, noBackground, classes, ...otherProps } = Astro.props;
+// modifiersMap not used - its for product options
+const { classes, id, URL, name, title, price, image, ...modifiersMap } = Astro.props;
 
 ---
 
-<button class={classes} {...otherProps}>
-	{children}
-</button>
+<button class={classes}
+	data-item-id={id}
+	data-item-price={price}
+	data-item-url={URL}
+	data-item-name={name || title}
+	data-item-image={image}
+	{...modifiersMap}
+>Add to cart</button>
