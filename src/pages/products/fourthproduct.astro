@@ -1,0 +1,42 @@
+---
+
+import ProductCard from "../../components/ProductCard.astro";
+import MainLayout from '../../layouts/Layout.astro';
+
+interface Frontmatter {
+	// productOne: any; // Access individual properties
+	image: string;
+	imageSliderOne: string;
+	imageSliderTwo: string;
+	imageSliderThree: string;
+	imageSliderFour: string;
+	name: string;
+	id: string;
+	description: string; 
+	price: number; 
+	URL: string;
+	nameOne: string;
+	nameTwo: string;
+	nameTwoOpt: string;
+}
+
+const allPosts = await Astro.glob<Frontmatter>('../../data/items/productFour.json'); // Access individual properties
+
+---
+
+<MainLayout>
+		{allPosts.map(post => 
+			<ProductCard 
+				id={post.id}
+				name={post.name}
+				image={post.image}
+				price={post.price}
+				description={post.description}
+				imageSliderOne={post.imageSliderOne}
+				imageSliderTwo={post.imageSliderTwo}
+				imageSliderThree={post.imageSliderThree}
+				imageSliderFour={post.imageSliderFour}
+			/>
+		)}
+
+</MainLayout>
