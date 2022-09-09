@@ -6,7 +6,7 @@ interface Frontmatter {
 	image: string;
 	name: string;
 	id: string;
-	price: number; 
+	price: string; 
 	URL: string;
 }
 const allPosts = await Astro.glob<Frontmatter>('../data/items/*.json'); // To create a component
@@ -29,7 +29,7 @@ const allPosts = await Astro.glob<Frontmatter>('../data/items/*.json'); // To cr
 	}
 </style>
 
-<div class="col-12 col-md-6 flex-grow-1">
+<div class="col-12 col-md-7 flex-grow-1">
 	<div class="row">
 		{allPosts.map(post => 
 			<div class="col-12 col-md-4 d-flex flex-column align-items-center align-items-md-start flex-grow-1 mb-5 position-relative">
