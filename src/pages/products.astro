@@ -23,6 +23,14 @@ import Products from '../components/Products.astro'
 		text-decoration: underline;
 		text-underline-position: under;
 	}
+
+	.fa-angle-right {
+		transform: rotate(90deg);
+    transition: all 0.3s ease;
+ 	}
+	.chevron__arrows-btn.collapsed .fa-angle-right {
+		transform: rotate(0deg);
+	}
 </style>
 
 <MainLayout>
@@ -34,8 +42,9 @@ import Products from '../components/Products.astro'
     </a>
     <ul class="list-unstyled ps-0">
       <li class="mb-1">
-        <button class="shop_sidebar_headings-font btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
-          Categories
+        <button class="chevron__arrows-btn btn btn-toggle d-inline-flex align-items-center rounded border-0 px-0 collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
+          <span class="shop_sidebar_headings-font">Categories</span>
+					<i class="fa fa-angle-right ms-3 active" aria-hidden="true"></i>
         </button>
         <div class="collapse show" id="home-collapse">
           <ul class="shop_sidebar_items-font btn-toggle-nav list-unstyled fw-normal pb-1 small">
@@ -47,8 +56,9 @@ import Products from '../components/Products.astro'
         </div>
       </li>
       <li class="mb-1">
-        <button class="shop_sidebar_headings-font btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
-          Realtor
+        <button class="chevron__arrows-btn btn btn-toggle d-inline-flex align-items-center rounded border-0 px-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
+          <span class="shop_sidebar_headings-font">Realtor</span>
+					<i class="fa fa-angle-right ms-3 active" aria-hidden="true"></i>
         </button>
         <div class="collapse" id="dashboard-collapse">
           <ul class="shop_sidebar_items-font btn-toggle-nav list-unstyled fw-normal pb-1 small">
@@ -58,8 +68,9 @@ import Products from '../components/Products.astro'
         </div>
       </li>
       <li class="mb-1">
-        <button class="shop_sidebar_headings-font btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
-          Location
+        <button class="chevron__arrows-btn btn btn-toggle d-inline-flex align-items-center rounded border-0 px-0 collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
+          <span class="shop_sidebar_headings-font">Location</span>
+					<i class="fa fa-angle-right ms-3 active" aria-hidden="true"></i>
         </button>
         <div class="collapse" id="orders-collapse">
           <ul class="shop_sidebar_items-font btn-toggle-nav list-unstyled fw-normal pb-1 small">
