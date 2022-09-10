@@ -24,6 +24,8 @@ import Products from '../components/Products.astro'
 		text-underline-position: under;
 	}
 
+	.btn-check:focus+.btn, .btn:focus { box-shadow: none;  }
+
 	.fa-angle-right {
 		transform: rotate(90deg);
     transition: all 0.3s ease;
@@ -81,10 +83,7 @@ import Products from '../components/Products.astro'
         </div>
       </li>
       <li class="border-top my-3"></li>
-      <li class="mb-1">
-				Price
-      </li>
-			<label for="customRange3" class="form-label">Example range</label>
+			<label for="customRange3" class="form-label my-1">Price</label>
 			<input type="range" class="form-range" min="500000" max="2000000" step="25000" id="customRange3" onchange="rangePrimary.value=value">
 			<div class="input-group mb-3">
 				<span class="input-group-text">$</span>

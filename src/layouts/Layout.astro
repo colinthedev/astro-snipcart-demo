@@ -35,10 +35,12 @@ const {title} = Astro.props;
 			}
 	</style>
 
-	<body class="container d-flex flex-column">
-		<div class="row min-vh-100 mt-5">
-			<Header />
-				<slot />
+	<body class="d-flex flex-column">
+		<div class="container">
+			<div class="row min-vh-100 mt-5">
+				<Header />
+					<slot />
+			</div>
 		</div>
 		<Footer />
 	</body>
