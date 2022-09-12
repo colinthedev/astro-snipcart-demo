@@ -2,7 +2,7 @@
 
 // Individual product pages
 
-import ProductPost from '../../layouts/ProductPost.astro';
+import ProductPost from '@layouts/ProductPost.astro';
 
 export async function getStaticPaths() {
   let allProducts = await Astro.glob(`../../data/posts/products/*.md`);

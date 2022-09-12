@@ -4,10 +4,10 @@
 
 import { Debug } from 'astro/components';
 
-import ProductCard from '../../../components/ProductCard.astro';
+import ProductCard from '@components/ProductCard.astro';
 
 export async function getStaticPaths({ paginate }) {
-	let allProducts = await Astro.glob(`../../../data/posts/products/*.md`);
+	let allProducts = await Astro.glob(`@data/posts/products/*.md`);
 	let sortedPosts = allProducts.map(product => ({
     params: { slug: product.frontmatter.slug }, props: { product: product }
   }));
