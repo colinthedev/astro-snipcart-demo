@@ -1,0 +1,48 @@
+---
+import { Debug } from 'astro/components';
+
+import ProductCard from '@components/ProductCard.astro';
+
+interface Frontmatter {
+	name?: string;
+	slug?: string;
+	image?: string;
+	id?: string;
+	price?: string; 
+}
+const allProducts = await Astro.glob<Frontmatter>('../data/posts/products/*.md'); // To create a component
+---
+
+<style>
+	.main-product-image {
+		max-width: 400px;
+		width: 100%;
+	}
+
+	.product-name {
+		outline: 0 solid transparent;
+    color: #131212;
+    font-weight: 400;
+    font-size: 1.5rem;
+		font-weight: 500;
+	}
+</style>
+
+<!-- <Debug answer={allProducts} /> -->
+
+<div class="col-12 col-md-7 flex-grow-1">
+	<div class="row">
+		{allProducts.map(product => 
+			<div class="col-12 col-md-4 d-flex flex-column align-items-center align-items-md-start flex-grow-1 mb-5 position-relative">
+				<img class="main-product-image mb-4" src={product.frontmatter.image} alt="">	
+				<div class="price-wrapper">
+					<div class="price-wrapper--bar"></div>
+					<h6 class="price-wrapper--price py-3 m-0">${product.frontmatter.price}</h6>
+				</div>
+				<a class="text-decoration-none stretched-link" href={'/products/' + product.frontmatter.slug + '/'}>
+					<h6 class="product-name m-0">{product.frontmatter.name}</h6>
+				</a>
+			</div>
+			)}
+	</div>
+</div>

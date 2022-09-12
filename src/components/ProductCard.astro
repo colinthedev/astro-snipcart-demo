@@ -1,24 +1,24 @@
 ---
-import ProductButton from '../components/ProductButton.astro';
+import ProductButton from '@components/ProductButton.astro';
 // import { Debug } from 'astro/components';
 
-const { image, imageSliderOne, imageSliderTwo, imageSliderThree, imageSliderFour, imageSliderFive, name, id, description, price, URL, title, ...modifiersMap} = Astro.props;
+const { image, imageSliderOne, imageSliderTwo, imageSliderThree, imageSliderFour, imageSliderFive, name, id, description, price, slug, title, ...modifiersMap} = Astro.props;
 
 
 if (typeof window !== 'undefined') {
 	(function () {
 		console.log('You are on the browser')
 			function scrollHorizontally(e) {
-					e = window.event || e;
-					let delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
-					document.getElementById('horizontalScroll').scrollLeft -= (delta * 40);
-					e.preventDefault();
+				e = window.event || e;
+				let delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
+				document.getElementById('horizontalScroll').scrollLeft -= (delta * 40);
+				e.preventDefault();
 			}
 			if (document.getElementById('horizontalScroll').addEventListener) {
-					// IE9, Chrome, Safari, Opera
-					document.getElementById('horizontalScroll').addEventListener('mousewheel', scrollHorizontally, true);
-					// Firefox
-					document.getElementById('horizontalScroll').addEventListener('DOMMouseScroll', scrollHorizontally, true);
+				// IE9, Chrome, Safari, Opera
+				document.getElementById('horizontalScroll').addEventListener('mousewheel', scrollHorizontally, true);
+				// Firefox
+				document.getElementById('horizontalScroll').addEventListener('DOMMouseScroll', scrollHorizontally, true);
 			} 
 	})();
 } else {
@@ -32,8 +32,6 @@ console.log(title)
 		Get || title to work 
 	
 	-->
-
-<!-- <Debug answer={Astro.props} /> -->
 
 <style is:global>
 	.product-card-wrapper { margin-top: 15rem; }
@@ -176,7 +174,7 @@ console.log(title)
 				<div class="price-wrapper--bar"></div>
 				<p class="price-wrapper--price py-3 m-0">{price}</p>
 			</div>
-			<a class="text-decoration-none" href={URL}>
+			<a class="text-decoration-none" href={slug}>
 				<h6 class="product-name m-0">{name}</h6>
 			</a>
 			<div class="product-info">
@@ -203,7 +201,7 @@ console.log(title)
 				class="AddCartBtn snipcart-add-item mt-5"
 				data-item-id={id}
 				data-item-price={price}
-				data-item-url={URL}
+				data-item-url={slug}
 				data-item-name={name || title}
 				data-item-image={image}
 			/>
