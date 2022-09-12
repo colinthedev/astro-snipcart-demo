@@ -4,16 +4,14 @@ import { Debug } from 'astro/components';
 import ProductCard from '../components/ProductCard.astro';
 
 interface Frontmatter {
-	name: string;
-	slug: string;
-	image: string;
-	id: string;
-	price: string; 
-	URL: string;
+	name?: string;
+	slug?: string;
+	image?: string;
+	id?: string;
+	price?: string; 
 }
-const allPosts = await Astro.glob<Frontmatter>('../data/posts/*.md'); // To create a component
-// const allPosts = await Astro.glob<Frontmatter>('../data/items/together.json'); // Access individual properties
-
+const allProducts = await Astro.glob<Frontmatter>('../data/posts/products/*.md'); // To create a component
+// const allProducts = await Astro.glob<Frontmatter>('../data/items/together.json'); // Access individual properties
 ---
 
 <style>
@@ -31,19 +29,19 @@ const allPosts = await Astro.glob<Frontmatter>('../data/posts/*.md'); // To crea
 	}
 </style>
 
- <!-- <Debug answer={allPosts} /> -->
+<!-- <Debug answer={allProducts} /> -->
 
 <div class="col-12 col-md-7 flex-grow-1">
 	<div class="row">
-		{allPosts.map(post => 
+		{allProducts.map(product => 
 			<div class="col-12 col-md-4 d-flex flex-column align-items-center align-items-md-start flex-grow-1 mb-5 position-relative">
-				<img class="main-product-image mb-4" src={post.frontmatter.image} alt="">	
+				<img class="main-product-image mb-4" src={product.frontmatter.image} alt="">	
 				<div class="price-wrapper">
 					<div class="price-wrapper--bar"></div>
-					<h6 class="price-wrapper--price py-3 m-0">${post.frontmatter.price}</h6>
+					<h6 class="price-wrapper--price py-3 m-0">${product.frontmatter.price}</h6>
 				</div>
-				<a class="text-decoration-none stretched-link" href={'/products/' + post.frontmatter.slug + '/'}>
-					<h6 class="product-name m-0">{post.frontmatter.name}</h6>
+				<a class="text-decoration-none stretched-link" href={'/products/' + product.frontmatter.slug + '/'}>
+					<h6 class="product-name m-0">{product.frontmatter.name}</h6>
 				</a>
 			</div>
 			)}

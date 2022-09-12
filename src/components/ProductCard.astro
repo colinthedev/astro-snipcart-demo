@@ -9,16 +9,16 @@ if (typeof window !== 'undefined') {
 	(function () {
 		console.log('You are on the browser')
 			function scrollHorizontally(e) {
-					e = window.event || e;
-					let delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
-					document.getElementById('horizontalScroll').scrollLeft -= (delta * 40);
-					e.preventDefault();
+				e = window.event || e;
+				let delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
+				document.getElementById('horizontalScroll').scrollLeft -= (delta * 40);
+				e.preventDefault();
 			}
 			if (document.getElementById('horizontalScroll').addEventListener) {
-					// IE9, Chrome, Safari, Opera
-					document.getElementById('horizontalScroll').addEventListener('mousewheel', scrollHorizontally, true);
-					// Firefox
-					document.getElementById('horizontalScroll').addEventListener('DOMMouseScroll', scrollHorizontally, true);
+				// IE9, Chrome, Safari, Opera
+				document.getElementById('horizontalScroll').addEventListener('mousewheel', scrollHorizontally, true);
+				// Firefox
+				document.getElementById('horizontalScroll').addEventListener('DOMMouseScroll', scrollHorizontally, true);
 			} 
 	})();
 } else {

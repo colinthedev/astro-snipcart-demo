@@ -3,6 +3,7 @@ import ProductCard from "../components/ProductCard.astro";
 import MainLayout from './Layout.astro';
 
 export interface Props {
+	data?: any;
 	name?: string;
 	id?: number;
 	image?: string;
@@ -12,8 +13,10 @@ export interface Props {
 	imageSliderTwo?: string;
 	imageSliderThree?: string;
 	imageSliderFour?: string;
+	imageSliderFive?: string;
 }
-const { name, id, image, price, description, imageSliderOne, imageSliderTwo, imageSliderThree, imageSliderFour } = Astro.props;
+
+const { data: { name, id, image, price, description, imageSliderOne, imageSliderTwo, imageSliderThree, imageSliderFour, imageSliderFive } } = Astro.props;
 ---
 
 <MainLayout>
@@ -27,5 +30,6 @@ const { name, id, image, price, description, imageSliderOne, imageSliderTwo, ima
 		imageSliderTwo={imageSliderTwo}
 		imageSliderThree={imageSliderThree}
 		imageSliderFour={imageSliderFour}
+		imageSliderFive={imageSliderFive}
 	/>
 </MainLayout>

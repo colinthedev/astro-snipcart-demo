@@ -5,18 +5,18 @@
 import ProductPost from '../../layouts/ProductPost.astro';
 
 export async function getStaticPaths() {
-  let posts = await Astro.glob(`../../data/posts/*.md`);
-  return posts.map(post => ({
-    params: { slug: post.frontmatter.slug }, 
-		props: { post: post }
+  let allProducts = await Astro.glob(`../../data/posts/products/*.md`);
+  return allProducts.map(product => ({
+    params: { slug: product.frontmatter.slug }, 
+		props: { productData: product }
   }));
 }
 
-const { post } = Astro.props;
-const { Content, frontmatter: { name, id, description, price, image, imageSliderOne, imageSliderTwo, imageSliderThree, imageSliderFour, imageSliderFive } } = post;
+const { productData } = Astro.props;
+const { Content, frontmatter } = productData;
 ---
 
-<ProductPost name={name} id={id} description={description} price={price} image={image} imageSliderOne={imageSliderOne} imageSliderTwo={imageSliderTwo} imageSliderThree={imageSliderThree} imageSliderFour={imageSliderFour} imageSliderFive={imageSliderFive} >
+<ProductPost data={frontmatter} >
 	<article class="max-w-6xl mx-auto px-3">
 		<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 py-8" data-test="articles-section">
 				<div class="note-content">
