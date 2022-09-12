@@ -1,0 +1,35 @@
+---
+import ProductCard from "@components/ProductCard.astro";
+import MainLayout from '@layouts/MainLayout.astro';
+
+export interface Props {
+	data?: any;
+	name?: string;
+	id?: number;
+	image?: string;
+	price?: string;
+	description?: string;
+	imageSliderOne?: string;
+	imageSliderTwo?: string;
+	imageSliderThree?: string;
+	imageSliderFour?: string;
+	imageSliderFive?: string;
+}
+
+const { data: { name, id, image, price, description, imageSliderOne, imageSliderTwo, imageSliderThree, imageSliderFour, imageSliderFive } } = Astro.props;
+---
+
+<MainLayout>
+	<ProductCard 
+		name={name}
+		id={id}
+		image={image}
+		price={price}
+		description={description}
+		imageSliderOne={imageSliderOne}
+		imageSliderTwo={imageSliderTwo}
+		imageSliderThree={imageSliderThree}
+		imageSliderFour={imageSliderFour}
+		imageSliderFive={imageSliderFive}
+	/>
+</MainLayout>

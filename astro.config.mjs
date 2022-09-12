@@ -9,9 +9,7 @@ import { defineConfig } from 'astro/config';
 	// '/root'
 }
 
-import react from "@astrojs/react";
-
 // https://astro.build/config
 export default defineConfig({
-  integrations: [react()]
+	// trailingSlash: 'always'
 });

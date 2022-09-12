@@ -1,0 +1,31 @@
+---
+
+// For the pagination pages
+
+import { Debug } from 'astro/components';
+
+import ProductCard from '@components/ProductCard.astro';
+
+export async function getStaticPaths({ paginate }) {
+	let allProducts = await Astro.glob(`@data/posts/products/*.md`);
+	let sortedPosts = allProducts.map(product => ({
+    params: { slug: product.frontmatter.slug }, props: { product: product }
+  }));
+
+  return paginate(sortedPosts, { pageSize: 3});
+}
+
+// All paginated data is passed on the "page" prop
+const { page } = Astro.props;
+---
+
+	<div class="container my-5">
+		<div class="row">
+			<div class="col-12 mb-5">
+				<h1>Blog Posts</h1>
+			</div>
+		</div>
+		<div class="row">
+			{page.data.map(({ props }) => <ProductCard product={props.product} />)}
+		</div>
+	</div>
