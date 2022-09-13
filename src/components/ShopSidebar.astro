@@ -2,18 +2,29 @@
 
 ---
 
-<style>
-	.shop_sidebar_area {
+<style is:global>
+	.sidebar {
 		background-color: #f5f7fa;
+		transition: all 200ms linear;
 	}
 
+	.sidebar--isHidden {
+    visibility: hidden;
+    z-index: -1;
+    transform: translateX(-50%);
+    transition: all 200ms linear;
+		opacity: 0;
+    height: 0;
+    width: 0;
+  }
+
 	.shop_sidebar_items-font {
-		font-size: 14px;
+		font-size: 1.4rem;
     color: #131212;
 	}
 
 	.shop_sidebar_headings-font {
-		font-size: 16px;
+		font-size: 1.4rem;
     text-transform: capitalize;
     color: #242424;
 		padding: 0 0 0.5rem 0;
@@ -25,18 +36,13 @@
 		transform: rotate(90deg);
     transition: all 0.3s ease;
  	}
-	.chevron__arrows-btn.collapsed .fa-angle-right {
-		transform: rotate(0deg);
-	}
+	.chevron__arrows-btn.collapsed .fa-angle-right { transform: rotate(0deg); }
 </style>
 
-<div class="col-0 col-md-2 px-1 px-md-5 shop_sidebar_area" style="width: 280px;">
-	<a href="/" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
-		<svg class="bi pe-none me-2" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
-		<span class="fs-5 fw-semibold">Collapsible</span>
-	</a>
-	<ul class="list-unstyled ps-0">
-		<li class="mb-1">
+<div class="col-12 col-lg-2 px-2 px-lg-5 py-1 py-lg-5 shop_sidebar_area shop_sidebar_area--hidden sidebar sidebar--isHidden">
+	<h2 class="shop_sidebar_items-font fw-bold mb-3">Filter By</h2>
+	<ul class="list-unstyled ps-0 border-top">
+		<li class="mb-2">
 			<button class="chevron__arrows-btn btn btn-toggle d-inline-flex align-items-center rounded border-0 px-0 collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
 				<span class="shop_sidebar_headings-font">Categories</span>
 				<i class="fa fa-angle-right ms-3 active" aria-hidden="true"></i>
@@ -50,7 +56,7 @@
 				</ul>
 			</div>
 		</li>
-		<li class="mb-1">
+		<li class="mb-2">
 			<button class="chevron__arrows-btn btn btn-toggle d-inline-flex align-items-center rounded border-0 px-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
 				<span class="shop_sidebar_headings-font">Realtor</span>
 				<i class="fa fa-angle-right ms-3 active" aria-hidden="true"></i>
@@ -62,7 +68,7 @@
 				</ul>
 			</div>
 		</li>
-		<li class="mb-1">
+		<li class="mb-2">
 			<button class="chevron__arrows-btn btn btn-toggle d-inline-flex align-items-center rounded border-0 px-0 collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
 				<span class="shop_sidebar_headings-font">Location</span>
 				<i class="fa fa-angle-right ms-3 active" aria-hidden="true"></i>
