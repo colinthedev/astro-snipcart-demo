@@ -14,10 +14,7 @@ const allProducts = await Astro.glob<Frontmatter>('../data/posts/products/*.md')
 ---
 
 <style>
-	.main-product-image {
-		max-width: 400px;
-		width: 100%;
-	}
+	.main-product-image { width: 100%; }
 
 	.product-name {
 		outline: 0 solid transparent;
@@ -30,7 +27,7 @@ const allProducts = await Astro.glob<Frontmatter>('../data/posts/products/*.md')
 
 <!-- <Debug answer={allProducts} /> -->
 
-<div class="col-12 col-md-7 flex-grow-1">
+<div class="col-12 col-lg-7 col-xxl-8 flex-grow-1">
 	<div class="row">
 		{allProducts.map(product => 
 			<div class="col-12 col-md-4 d-flex flex-column align-items-center align-items-md-start flex-grow-1 mb-5 position-relative">
