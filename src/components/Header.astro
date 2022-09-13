@@ -9,12 +9,6 @@
 
 	@media only screen and (max-width: 768px) { .header-area { display: none; } }
 
-	#toggleSidebar {
-    cursor: pointer;
-    color: #131212;
-		font-size: 1.2rem;
-	}
-
 	.header-area .nav li a {
 		font-size: 1.4rem;
 		line-height: 0.9;
@@ -50,40 +44,21 @@
 		<div class="logo my-5">
 				<a><img class="logo" src="/assets/images/core-img/little-miss-sunshine-logo.png" alt="LMS - 'Grandpa's Dead In The Van'"></a>
 		</div>
-		<!-- <a id="toggleSidebar"><i class="fa fa-tasks" aria-hidden="true"></i> Filter</a> -->
 		<nav class="nav">
-				<ul class="list-unstyled ">
-						<li class="active"><a class="d-block text-decoration-none text-uppercase py-4" href="index.html">Home</a></li>
-						<div class="d-flex flex-column">
-							<li><a class="d-block text-decoration-none text-uppercase pt-4 pb-1" href="/products">Shop</a></li>
-							<a id="toggleSidebar" class="ps-3 pt-1 pb-3"><i class="fa fa-tasks" aria-hidden="true"></i> Filter</a>
-						</div>
-						<li><a class="d-block text-decoration-none text-uppercase py-4" href="/cart.html">Cart</a></li>
-						<li><a class="d-block text-decoration-none text-uppercase py-4" href="#">Checkout</a></li>
-				</ul>
+			<ul class="list-unstyled ">
+				<li class="active"><a class="d-block text-decoration-none text-uppercase py-4" href="index.html">Home</a></li>
+				<li><a class="d-block text-decoration-none text-uppercase py-4" href="/products">Shop</a></li>
+				<li><a class="d-block text-decoration-none text-uppercase py-4" href="/cart.html">Cart</a></li>
+				<li><a class="d-block text-decoration-none text-uppercase py-4" href="#">Checkout</a></li>
+			</ul>
 		</nav>
 		<div class="nav-btn-group b-0 d-flex flex-column">
-				<a style="background-color: #fbb710;" href="#" class="btn nav-btn mb-3">Discount</a>
-				<a style="background-color: #131212;" href="#" class="btn nav-btn active mb-5">New this week</a>
+			<a style="background-color: #fbb710;" href="#" class="btn nav-btn mb-3">Discount</a>
+			<a style="background-color: #131212;" href="#" class="btn nav-btn active mb-5">New this week</a>
 		</div>
 		<div class="cart-fav-search mb-100">
-				<a href="cart.html" class="cart-nav nav-icon-btns text-decoration-none text-uppercase py-2"><img src="/assets/images/core-img/cart.png" alt=""> Cart <span class="snipcart-items-count">(0)</span></a>
-				<a href="#" class="fav-nav nav-icon-btns text-decoration-none text-uppercase py-2"><img src="/assets/images/core-img/favorites.png" alt=""> Favorites</a>
-				<a href="#" class="search-nav nav-icon-btns text-decoration-none text-uppercase py-2"><img src="/assets/images/core-img/search.png" alt=""> Search</a>
+			<a href="cart.html" class="cart-nav nav-icon-btns text-decoration-none text-uppercase py-2"><img src="/assets/images/core-img/cart.png" alt=""> Cart <span class="snipcart-items-count">(0)</span></a>
+			<a href="#" class="fav-nav nav-icon-btns text-decoration-none text-uppercase py-2"><img src="/assets/images/core-img/favorites.png" alt=""> Favorites</a>
+			<a href="#" class="search-nav nav-icon-btns text-decoration-none text-uppercase py-2"><img src="/assets/images/core-img/search.png" alt=""> Search</a>
 		</div>
 </header>
-
-<script>
-	window.addEventListener("DOMContentLoaded", () => {
-		const sideBarToggle = document.getElementById("toggleSidebar");
-		const sidebarEl = document.querySelector('.shop_sidebar_area--hidden');
-
-		sideBarToggle.addEventListener("click", () => {
-			sidebarEl.classList.toggle("sidebar--isHidden");
-
-			sideBarToggle.innerHTML = sidebarEl.classList.contains( "sidebar--isHidden")
-				? `<i class="fa fa-tasks" aria-hidden="true"></i> Filter`
-				: `<i class="fa fa-tasks" aria-hidden="true"></i> Hide Filter`;
-		});
-	});
-</script>
