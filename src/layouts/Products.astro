@@ -1,5 +1,4 @@
 ---
-import { Debug } from 'astro/components';
 import { Image } from '@astrojs/image/components';
 import ProductCard from '@components/ProductCard.astro'; // Importing for styles
 
@@ -25,8 +24,6 @@ const sortedProducts = allProducts.sort((a, b) => new Date(a.frontmatter.id).val
 	}
 </style>
 
-<!-- <Debug answer={allProducts[0].frontmatter} /> -->
-
 <div class="col-12 col-lg-7 col-xxl-8 flex-grow-1">
 	<div class="row border-bottom pb-3">
 		<div class="col-12">
@@ -36,7 +33,7 @@ const sortedProducts = allProducts.sort((a, b) => new Date(a.frontmatter.id).val
 	<div class="row pt-3">
 		{sortedProducts.map(product => 
 			<div id={product.frontmatter.id} class="col-12 col-md-4 d-flex flex-column align-items-center align-items-md-start flex-grow-1 mb-5 position-relative">
-				<Image class="main-product-image mb-4" src={product.frontmatter.image} width={product.frontmatter.imageSize[0]} height={product.frontmatter.imageSize[1]} fit="cover" position="center" formats="webp" alt="" />
+				<Image class="main-product-image mb-4" src={product.frontmatter.image} width={product.frontmatter.shopImageSize[0]} height={product.frontmatter.shopImageSize[1]} fit="fill" position="center" formats="webp" alt="" />
 				<div class="price-wrapper">
 					<div class="price-wrapper--bar"></div>
 					<h6 class="price-wrapper--price py-3 m-0">${product.frontmatter.price}</h6>

@@ -1,8 +1,9 @@
 ---
+import { Image } from '@astrojs/image/components';
 import ProductButton from '@components/ProductButton.astro';
 // import { Debug } from 'astro/components';
 
-const { image, imageSliderOne, imageSliderTwo, imageSliderThree, imageSliderFour, imageSliderFive, name, id, description, price, slug, title, ...modifiersMap} = Astro.props;
+const { image, postImageSize, imageSliderOne, imageSliderTwo, imageSliderThree, imageSliderFour, imageSliderFive, name, id, description, price, slug, title, ...modifiersMap} = Astro.props;
 
 
 if (typeof window !== 'undefined') {
@@ -27,11 +28,6 @@ if (typeof window !== 'undefined') {
 
 console.log(title)
 ---
-<!-- 
-	Todo
-		Get || title to work 
-	
-	-->
 
 <style is:global>
 	.product-slider { overflow-x: scroll; padding: 5px 0;}
@@ -63,11 +59,6 @@ console.log(title)
     cursor: pointer;
 	}
 	.product-slider--image:nth-last-child() { margin-right: 0; }
-
-	.carousel-item--image {
-		max-height: 562px;
-		object-fit: cover;
-	}
 
 	.price-wrapper--bar {
 		width: 100%;
@@ -128,22 +119,22 @@ console.log(title)
 		<div id="carouselExampleIndicators" data-bs-ride="carousel" data-bs-interval="false" class="carousel slide col-12 col-md-6 flex-grow-1 pb-5">
 			<div class="carousel-inner">
 				<div class="carousel-item item active">
-					<img class="d-block w-100 carousel-item--image" src={image} alt="">
+					<Image class="d-block w-100" src={image} width={postImageSize[0]} height={postImageSize[1]} fit="fill" position="center" formats="webp" alt="" />
 				</div>
 				<div class="carousel-item item">
-					<img class="d-block w-100 carousel-item--image" src={imageSliderOne} alt="">
+					<Image class="d-block w-100" src={imageSliderOne} width={postImageSize[0]} height={postImageSize[1]} fit="fill" position="center" formats="webp" alt="" />
 				</div>
 				<div class="carousel-item item">
-					<img class="d-block w-100 carousel-item--image" src={imageSliderTwo} alt="">
+					<Image class="d-block w-100" src={imageSliderTwo} width={postImageSize[0]} height={postImageSize[1]} fit="fill" position="center" formats="webp" alt="" />
 				</div>
 				<div class="carousel-item item">
-					<img class="d-block w-100 carousel-item--image" src={imageSliderThree} alt="">
+					<Image class="d-block w-100" src={imageSliderThree} width={postImageSize[0]} height={postImageSize[1]} fit="fill" position="center" formats="webp" alt="" />
 				</div>
 				<div class="carousel-item item">
-					<img class="d-block w-100 carousel-item--image" src={imageSliderFour} alt="">
+					<Image class="d-block w-100" src={imageSliderFour} width={postImageSize[0]} height={postImageSize[1]} fit="fill" position="center" formats="webp" alt="" />
 				</div>
 				<div class="carousel-item item">
-					<img class="d-block w-100 carousel-item--image" src={imageSliderFive} alt="">
+					<Image class="d-block w-100" src={imageSliderFive} width={postImageSize[0]} height={postImageSize[1]} fit="fill" position="center" formats="webp" alt="" />
 				</div>
 			</div>
 			<div class="product-slider pt-4 d-flex flex-nowrap justify-content-start">
@@ -208,7 +199,6 @@ console.log(title)
 </div>
 
 <script>
-
   window.SnipcartSettings = {
     publicApiKey: "MjVjODY3YTEtY2Q4ZS00NGVmLTg3MjAtYmQ3YjY5MGQ2NzkxNjM3OTAyMjAyMTM2MzYyMjc2",
     loadStrategy: "on-user-interaction",

@@ -6,7 +6,8 @@ price: 1.2Mil
 description: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid quae eveniet culpa officia quidem mollitia impedit iste asperiores nisi reprehenderit consequatur, autem, nostrum pariatur enim?
 nameOne: Gift note
 nameTwo: Frame color
-imageSize: [400, 700]
+postImageSize: [500, 500]
+shopImageSize: [400, 700]
 image: /assets/images/product-img/product-three/modern-house-cover-img-3.jpg
 imageSliderOne: /assets/images/product-img/modern-house-slider-bedroom.jpg
 imageSliderTwo: /assets/images/product-img/modern-house-slider-livingroom.jpg
