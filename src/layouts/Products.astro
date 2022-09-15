@@ -1,16 +1,10 @@
 ---
 import { Debug } from 'astro/components';
+import { Image } from '@astrojs/image/components';
+import ProductCard from '@components/ProductCard.astro'; // Importing for styles
 
-import ProductCard from '@components/ProductCard.astro';
-
-interface Frontmatter {
-	name?: string;
-	slug?: string;
-	image?: string;
-	id?: string;
-	price?: string; 
-}
-const allProducts = await Astro.glob<Frontmatter>('../data/posts/products/*.md'); // To create a component
+const allProducts = await Astro.glob('../data/posts/products/*.md'); // Unsorted products
+const sortedProducts = allProducts.sort((a, b) => new Date(a.frontmatter.id).valueOf() - new Date(b.frontmatter.id).valueOf());
 ---
 
 <style>
@@ -31,7 +25,7 @@ const allProducts = await Astro.glob<Frontmatter>('../data/posts/products/*.md')
 	}
 </style>
 
-<!-- <Debug answer={allProducts} /> -->
+<!-- <Debug answer={allProducts[0].frontmatter} /> -->
 
 <div class="col-12 col-lg-7 col-xxl-8 flex-grow-1">
 	<div class="row border-bottom pb-3">
@@ -40,9 +34,9 @@ const allProducts = await Astro.glob<Frontmatter>('../data/posts/products/*.md')
 		</div>
 	</div>
 	<div class="row pt-3">
-		{allProducts.map(product => 
-			<div class="col-12 col-md-4 d-flex flex-column align-items-center align-items-md-start flex-grow-1 mb-5 position-relative">
-				<img class="main-product-image mb-4" src={product.frontmatter.image} alt="">	
+		{sortedProducts.map(product => 
+			<div id={product.frontmatter.id} class="col-12 col-md-4 d-flex flex-column align-items-center align-items-md-start flex-grow-1 mb-5 position-relative">
+				<Image class="main-product-image mb-4" src={product.frontmatter.image} width={product.frontmatter.imageSize[0]} height={product.frontmatter.imageSize[1]} fit="cover" position="center" formats="webp" alt="" />
 				<div class="price-wrapper">
 					<div class="price-wrapper--bar"></div>
 					<h6 class="price-wrapper--price py-3 m-0">${product.frontmatter.price}</h6>
