@@ -16,16 +16,17 @@ export interface Props {
 	imageSliderFive?: string;
 }
 
-const { data: { name, id, image, price, description, imageSliderOne, imageSliderTwo, imageSliderThree, imageSliderFour, imageSliderFive } } = Astro.props;
+const { data: { name, id, image, postImageSize, price, description, imageSliderOne, imageSliderTwo, imageSliderThree, imageSliderFour, imageSliderFive } } = Astro.props;
 ---
 
 <MainLayout>
 	<ProductCard 
 		name={name}
 		id={id}
-		image={image}
 		price={price}
 		description={description}
+		postImageSize={postImageSize}
+		image={image}
 		imageSliderOne={imageSliderOne}
 		imageSliderTwo={imageSliderTwo}
 		imageSliderThree={imageSliderThree}
