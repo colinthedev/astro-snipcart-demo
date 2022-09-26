@@ -2,7 +2,7 @@
 import { Image } from '@astrojs/image/components';
 import ProductCard from '@components/ProductCard.astro'; // Importing for styles
 
-const allProducts = await Astro.glob('../data/posts/products/*.md'); // Unsorted products
+const allProducts = await Astro.glob('/src/data/posts/products/*.md'); // Unsorted products
 const sortedProducts = allProducts.sort((a, b) => new Date(a.frontmatter.id).valueOf() - new Date(b.frontmatter.id).valueOf());
 ---
 

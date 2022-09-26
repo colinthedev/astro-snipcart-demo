@@ -1,0 +1,64 @@
+---
+
+// For the pagination pages
+
+import { Debug } from 'astro/components';
+
+import Products from '@layouts/Products.astro';
+import ProductCard from '@components/ProductCard.astro';
+import Paginator from '@components/Paginator.astro';
+import { Image } from '@astrojs/image/components';
+import MainLayout from '@layouts/MainLayout.astro';
+
+
+export async function getStaticPaths({ paginate }) {
+	let allProducts = await Astro.glob(`/src/data/posts/products/*.md`);
+	let sortedPosts = allProducts.map(product => ({
+    params: { slug: product.frontmatter.slug }, props: { product: product }
+  }));
+
+  return paginate(sortedPosts, { pageSize: 3});
+}
+// All paginated data is passed on the "page" prop
+const { page } = Astro.props;
+
+// DONOTUSE const allProducts = await Astro.glob('/src/data/posts/products/*.md'); // Unsorted products
+// const sortedProducts = allProducts.sort((a, b) => new Date(a.frontmatter.id).valueOf() - new Date(b.frontmatter.id).valueOf());
+---
+<!-- <Debug answer={sortedPosts} /> -->
+
+<!-- TODO:
+			Redo page.data.map 
+			Need to make another ProductCard seperate from ProductPost & [slug] ??
+-->
+
+
+<MainLayout>
+			<div class="col-12 mb-5">
+				<h1>Blog Posts FROM ...PAGE.astro</h1>
+			</div>
+		<div class="row">
+			{page.data.map(({ props }) => <ProductCard product={props.product} />)}
+		</div>
+
+			<!-- DONOTUSE {sortedProducts.map(product =>
+				<div id={product.frontmatter.id} class="col-12 col-md-4 d-flex flex-column align-items-center align-items-md-start flex-grow-1 mb-5 position-relative">
+					<Image class="main-product-image mb-4" src={product.frontmatter.image} width={product.frontmatter.shopImageSize[0]} height={product.frontmatter.shopImageSize[1]} fit="fill" position="center" formats="webp" alt="" />
+					<div class="price-wrapper">
+						<div class="price-wrapper--bar"></div>
+						<h6 class="price-wrapper--price py-3 m-0">${product.frontmatter.price}</h6>
+					</div>
+					<a class="text-decoration-none stretched-link" href={'/products/' + product.frontmatter.slug + '/'}>
+						<h6 class="product-name m-0">{product.frontmatter.name}</h6>
+					</a>
+				</div>
+				)} -->
+
+		<!-- <Products /> -->
+		<div class="row">
+			<div class="col-12">
+				<Paginator page={page}/>
+			</div>
+		</div>
+
+</MainLayout>

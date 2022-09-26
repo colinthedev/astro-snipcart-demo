@@ -7,7 +7,7 @@ import { Debug } from 'astro/components';
 import ProductCard from '@components/ProductCard.astro';
 
 export async function getStaticPaths({ paginate }) {
-	let allProducts = await Astro.glob(`@data/posts/products/*.md`);
+	let allProducts = await Astro.glob(`/src/data/posts/products/*.md`);
 	let sortedPosts = allProducts.map(product => ({
     params: { slug: product.frontmatter.slug }, props: { product: product }
   }));
@@ -22,7 +22,7 @@ const { page } = Astro.props;
 	<div class="container my-5">
 		<div class="row">
 			<div class="col-12 mb-5">
-				<h1>Blog Posts</h1>
+				<h1>Blog Posts FROM PAGE.ASTRO</h1>
 			</div>
 		</div>
 		<div class="row">
