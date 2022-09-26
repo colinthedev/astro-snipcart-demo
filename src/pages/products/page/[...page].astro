@@ -4,61 +4,97 @@
 
 import { Debug } from 'astro/components';
 
-import Products from '@layouts/Products.astro';
-import ProductCard from '@components/ProductCard.astro';
+import ProductCard from '@components/ProductCard.astro'; // Imported for styling
 import Paginator from '@components/Paginator.astro';
-import { Image } from '@astrojs/image/components';
 import MainLayout from '@layouts/MainLayout.astro';
+import { Image } from '@astrojs/image/components';
+import ShopSidebar from '@components/ShopSidebar.astro';
 
 
 export async function getStaticPaths({ paginate }) {
 	let allProducts = await Astro.glob(`/src/data/posts/products/*.md`);
 	let sortedPosts = allProducts.map(product => ({
-    params: { slug: product.frontmatter.slug }, props: { product: product }
+    params: { slug: product.frontmatter.slug }, 
+		props: { product: product }
   }));
 
   return paginate(sortedPosts, { pageSize: 3});
 }
 // All paginated data is passed on the "page" prop
-const { page } = Astro.props;
-
-// DONOTUSE const allProducts = await Astro.glob('/src/data/posts/products/*.md'); // Unsorted products
-// const sortedProducts = allProducts.sort((a, b) => new Date(a.frontmatter.id).valueOf() - new Date(b.frontmatter.id).valueOf());
+const { page, name, id, slug, image, postImageSize, shopImageSize, price, description, imageSliderOne, imageSliderTwo, imageSliderThree, imageSliderFour, imageSliderFive } = Astro.props;
 ---
-<!-- <Debug answer={sortedPosts} /> -->
+<!-- <Debug answer={page.data[0].props.product.frontmatter} /> -->
+
+<!-- FROM ...PAGE.astro -->
 
 <!-- TODO:
-			Redo page.data.map 
 			Need to make another ProductCard seperate from ProductPost & [slug] ??
 -->
 
+<style>
+	#toggleSidebar {
+    cursor: pointer;
+    color: #131212;
+		font-size: 1.4rem;
+	}
+
+	.main-product-image { width: 100%; }
+
+	.product-name {
+		outline: 0 solid transparent;
+    color: #131212;
+    font-weight: 400;
+    font-size: 1.5rem;
+		font-weight: 500;
+	}
+</style>
 
 <MainLayout>
-			<div class="col-12 mb-5">
-				<h1>Blog Posts FROM ...PAGE.astro</h1>
+	<div class="col-12 col-lg-7 col-xxl-8 flex-grow-1">
+		<div class="row border-bottom pb-3">
+			<div class="col-12">
+				<a id="toggleSidebar" class="ps-3 pt-1 pb-3"><i class="fa fa-tasks" aria-hidden="true"></i> Filter</a>
 			</div>
-		<div class="row">
-			{page.data.map(({ props }) => <ProductCard product={props.product} />)}
 		</div>
+		<ShopSidebar />
+		<div class="row">
+			<h1>Blog Posts FROM ...PAGE.astro</h1>
+			<!-- {page.data.map(({ props }) => <Products product={props.product} />)} -->
 
-			<!-- DONOTUSE {sortedProducts.map(product =>
-				<div id={product.frontmatter.id} class="col-12 col-md-4 d-flex flex-column align-items-center align-items-md-start flex-grow-1 mb-5 position-relative">
-					<Image class="main-product-image mb-4" src={product.frontmatter.image} width={product.frontmatter.shopImageSize[0]} height={product.frontmatter.shopImageSize[1]} fit="fill" position="center" formats="webp" alt="" />
+			{page.data.map((item) => 
+				<div class="col-12 col-md-4 d-flex flex-column align-items-center align-items-md-start flex-grow-1 mb-5 position-relative">
+					<Image class="main-product-image mb-4" src={item.props.product.frontmatter.image} width={item.props.product.frontmatter.shopImageSize[0]} height={item.props.product.frontmatter.shopImageSize[1]} fit="fill" position="center" formats="webp" alt="" />
 					<div class="price-wrapper">
 						<div class="price-wrapper--bar"></div>
-						<h6 class="price-wrapper--price py-3 m-0">${product.frontmatter.price}</h6>
+						<h6 class="price-wrapper--price py-3 m-0">${item.props.product.frontmatter.price}</h6>
 					</div>
-					<a class="text-decoration-none stretched-link" href={'/products/' + product.frontmatter.slug + '/'}>
-						<h6 class="product-name m-0">{product.frontmatter.name}</h6>
+					<a class="text-decoration-none stretched-link" href={'/products/' + item.props.product.frontmatter.slug + '/'}>
+						<h6 class="product-name m-0">{item.props.product.frontmatter.name}</h6>
 					</a>
 				</div>
-				)} -->
-
-		<!-- <Products /> -->
-		<div class="row">
-			<div class="col-12">
-				<Paginator page={page}/>
-			</div>
+			)}
 		</div>
+	</div>
 
+	<!-- <Products /> -->
+	<div class="row">
+		<div class="col-12">
+			<Paginator page={page}/>
+		</div>
+	</div>
 </MainLayout>
+
+<script>
+	window.addEventListener("DOMContentLoaded", () => {
+		const sideBarToggle = document.getElementById("toggleSidebar");
+		const sidebarEl = document.querySelector('.shop_sidebar_area--hidden');
+
+		sideBarToggle.addEventListener("click", () => {
+			sidebarEl.classList.toggle("sidebar--isHidden");
+
+			sideBarToggle.innerHTML = sidebarEl.classList.contains("sidebar--isHidden")
+				? `<i class="fa fa-tasks" aria-hidden="true"></i> Filter`
+				: `<i class="fa fa-tasks" aria-hidden="true"></i> Hide Filter`;
+		});
+	});
+</script>
