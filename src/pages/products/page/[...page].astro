@@ -11,7 +11,7 @@ export async function getStaticPaths({ paginate }) {
 	let allProducts = await Astro.glob(`/src/data/posts/products/*.md`);
 	let sortedPosts = allProducts.map(product => ({
     params: { slug: product.frontmatter.slug }, 
-		props: { product: product }
+		props: { product: product.frontmatter }
   }));
 
   return paginate(sortedPosts, { pageSize: 3});
@@ -28,15 +28,15 @@ const { data } = page;
 	<div class="col-12 col-lg-7 col-xxl-8 flex-grow-1">
 		<div class="row">
 			<a id="toggleSidebar" class="ps-3 pt-1 pb-3"><i class="fa fa-tasks" aria-hidden="true"></i> Filter</a>
-				{data.map(({ props: {product: {frontmatter: { name, slug, image, shopImageSize, price, description }}}}) => 
+				{data.map(( {props: {product}} ) => 
 					<div class="col-12 col-md-4 d-flex flex-column align-items-center align-items-md-start flex-grow-1 mb-5 position-relative">
-						<Image class="main-product-image mb-4" src={image} width={shopImageSize[0]} height={shopImageSize[1]} fit="fill" position="center" formats="webp" alt="" />
+						<Image class="main-product-image mb-4" src={product.image} width={product.shopImageSize[0]} height={product.shopImageSize[1]} fit="fill" position="center" formats="webp" alt="" />
 						<div class="price-wrapper">
 							<div class="price-wrapper--bar"></div>
-							<h6 class="price-wrapper--price py-3 m-0">${price}</h6>
+							<h6 class="price-wrapper--price py-3 m-0">${product.price}</h6>
 					 	</div>
-					 	<a class="text-decoration-none stretched-link" href={'/products/' + slug + '/'}>
-					 		<h6 class="product-name m-0">{name}</h6>
+					 	<a class="text-decoration-none stretched-link" href={'/products/' + product.slug + '/'}>
+					 		<h6 class="product-name m-0">{product.name}</h6>
 					 	</a>
 					 </div>
 				)}
