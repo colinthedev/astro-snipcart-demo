@@ -1,0 +1,61 @@
+---
+import { Debug } from 'astro/components';
+
+import MainLayout from '@layouts/MainLayout.astro';
+import ShopSidebar from '@components/ShopSidebar.astro';
+import ProductCard from '@components/ProductCard.astro'; // Imported for styling
+import { Image } from '@astrojs/image/components';
+import Paginator from '@components/Paginator.astro';
+
+export async function getStaticPaths({ paginate }) {
+	let allProducts = await Astro.glob(`/src/data/posts/products/*.md`);
+	let sortedPosts = allProducts.map(product => ({
+    params: { slug: product.frontmatter.slug }, 
+		props: { product: product.frontmatter }
+  }));
+
+  return paginate(sortedPosts, { pageSize: 3});
+}
+// All paginated data is passed on the "page" prop
+const { page } = Astro.props;
+const { data } = page;
+
+---
+<!-- <Debug answer={page.data[0].props.product.frontmatter} /> -->
+
+<MainLayout>
+	<ShopSidebar />
+	<div class="col-12 col-lg-7 col-xxl-8 flex-grow-1">
+		<div class="row">
+			<a id="toggleSidebar" class="ps-3 pt-1 pb-3"><i class="fa fa-tasks" aria-hidden="true"></i> Filter</a>
+				{data.map(( {props: {product}} ) => 
+					<div class="col-12 col-md-4 d-flex flex-column align-items-center align-items-md-start flex-grow-1 mb-5 position-relative">
+						<Image class="main-product-image mb-4" src={product.image} width={product.shopImageSize[0]} height={product.shopImageSize[1]} fit="fill" position="center" formats="webp" alt="" />
+						<div class="price-wrapper">
+							<div class="price-wrapper--bar"></div>
+							<h6 class="price-wrapper--price py-3 m-0">${product.price}</h6>
+					 	</div>
+					 	<a class="text-decoration-none stretched-link" href={'/products/' + product.slug + '/'}>
+					 		<h6 class="product-name m-0">{product.name}</h6>
+					 	</a>
+					 </div>
+				)}
+		</div>
+		<Paginator page={page}/>
+	</div>
+</MainLayout>
+
+<script>
+	window.addEventListener("DOMContentLoaded", () => {
+		const sideBarToggle = document.getElementById("toggleSidebar");
+		const sidebarEl = document.querySelector('.shop_sidebar_area--hidden');
+
+		sideBarToggle.addEventListener("click", () => {
+			sidebarEl.classList.toggle("sidebar--isHidden");
+
+			sideBarToggle.innerHTML = sidebarEl.classList.contains("sidebar--isHidden")
+				? `<i class="fa fa-tasks" aria-hidden="true"></i> Filter`
+				: `<i class="fa fa-tasks" aria-hidden="true"></i> Hide Filter`;
+		});
+	});
+</script>

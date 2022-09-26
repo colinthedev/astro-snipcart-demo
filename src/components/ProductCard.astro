@@ -1,33 +1,98 @@
 ---
 import { Image } from '@astrojs/image/components';
 import ProductButton from '@components/ProductButton.astro';
-// import { Debug } from 'astro/components';
 
 const { image, postImageSize, imageSliderOne, imageSliderTwo, imageSliderThree, imageSliderFour, imageSliderFive, name, id, description, price, slug, title, ...modifiersMap} = Astro.props;
 
-
-if (typeof window !== 'undefined') {
-	(function () {
-		console.log('You are on the browser')
-			function scrollHorizontally(e) {
-				e = window.event || e;
-				let delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
-				document.getElementById('horizontalScroll').scrollLeft -= (delta * 40);
-				e.preventDefault();
-			}
-			if (document.getElementById('horizontalScroll').addEventListener) {
-				// IE9, Chrome, Safari, Opera
-				document.getElementById('horizontalScroll').addEventListener('mousewheel', scrollHorizontally, true);
-				// Firefox
-				document.getElementById('horizontalScroll').addEventListener('DOMMouseScroll', scrollHorizontally, true);
-			} 
-	})();
-} else {
-	console.log('You are on the server')
-}
-
 console.log(title)
 ---
+<!-- // Todo:
+	Check the atag and name to go to indv product page 
+	Astro.props.product.frontmatter.image -->
+
+<div class="col-12 col-md-10 flex-grow-0 flex-grow-md-1 mt-1 mt-md-5">
+	<div class="row">
+		<div id="carouselExampleIndicators" data-bs-ride="carousel" data-bs-interval="false" class="carousel slide col-12 col-md-6 flex-grow-1 pb-5">
+			<div class="carousel-inner">
+				<div class="carousel-item item active">
+					<Image class="d-block w-100" src={image} width={postImageSize[0]} height={postImageSize[1]} fit="fill" position="center" formats="webp" alt="" />
+				</div>
+				<div class="carousel-item item">
+					<Image class="d-block w-100" src={imageSliderOne} width={postImageSize[0]} height={postImageSize[1]} fit="fill" position="center" formats="webp" alt="" />
+				</div>
+				<div class="carousel-item item">
+					<Image class="d-block w-100" src={imageSliderTwo} width={postImageSize[0]} height={postImageSize[1]} fit="fill" position="center" formats="webp" alt="" />
+				</div>
+				<div class="carousel-item item">
+					<Image class="d-block w-100" src={imageSliderThree} width={postImageSize[0]} height={postImageSize[1]} fit="fill" position="center" formats="webp" alt="" />
+				</div>
+				<div class="carousel-item item">
+					<Image class="d-block w-100" src={imageSliderFour} width={postImageSize[0]} height={postImageSize[1]} fit="fill" position="center" formats="webp" alt="" />
+				</div>
+				<div class="carousel-item item">
+					<Image class="d-block w-100" src={imageSliderFive} width={postImageSize[0]} height={postImageSize[1]} fit="fill" position="center" formats="webp" alt="" />
+				</div>
+			</div>
+			<div class="product-slider pt-4 d-flex flex-nowrap justify-content-start">
+				<button data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="border-0 p-2" aria-current="true" aria-label="Slide 0">
+					<img style="object-fit: cover; left: 0; height: 120px" class="product-slider--image active" src={image} alt="">
+				</button>
+				<button data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" class="border-0 p-2" aria-current="true" aria-label="Slide 1">
+					<img style="object-fit: cover; left: 0; height: 120px" class="product-slider--image" src={imageSliderOne} alt="">
+				</button>
+				<button data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 2" class="border-0 p-2">
+					<img style="object-fit: cover; left: 115px; height: 120px" class="product-slider--image" src={imageSliderTwo} alt="">
+				</button>
+				<button data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 3" class="border-0 p-2">
+					<img style="object-fit: cover; left: 230px; height: 120px" class="product-slider--image" src={imageSliderThree} alt="">
+				</button>
+				<button data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 4" class="border-0 p-2">
+					<img style="object-fit: cover; left: 230px; height: 120px" class="product-slider--image" src={imageSliderFour} alt="">
+				</button>
+				<button data-bs-target="#carouselExampleIndicators" data-bs-slide-to="5" aria-label="Slide 5" class="border-0 p-2">
+					<img style="object-fit: cover; left: 230px; height: 120px" class="product-slider--image" src={imageSliderFive} alt="">
+				</button>
+			</div>
+		</div>
+		<div class="col-11 col-md-5">
+			<div class="price-wrapper">
+				<div class="price-wrapper--bar"></div>
+				<p class="price-wrapper--price py-3 m-0">{price}</p>
+			</div>
+			<a class="text-decoration-none" href={'/products/' + slug + '/'}>
+				<h6 class="product-name m-0">{name}</h6>
+			</a>
+			<div class="product-info">
+				<div class="d-flex justify-content-between py-3">
+					<div class="product-info__reviews">
+						<i class="product-info__reviews--stars fa fa-star"></i>
+						<i class="product-info__reviews--stars fa fa-star"></i>
+						<i class="product-info__reviews--stars fa fa-star"></i>
+						<i class="product-info__reviews--stars fa fa-star"></i>
+						<i class="product-info__reviews--stars fa fa-star"></i>
+						<a class="product-info__reviews--review" href=""><p>Write a review</p></a>
+					</div>
+					<div class="product-info__reviews">
+					</div>
+				</div>
+				<div class="product-info__availability d-flex">
+					<i class="product-info__availability--icon fa fa-circle pe-2"></i>
+					<p class="snipcart-items-count"></p><p> In stock</p>	
+				</div>
+				<p class="product-info--description">{description}</p>
+			</div>
+			<ProductButton 
+				type="button"
+				class="AddCartBtn snipcart-add-item mt-5"
+				data-item-id={id}
+				data-item-price={price}
+				data-item-url={slug}
+				data-item-name={name || title}
+				data-item-image={image}
+			/>
+		</div>
+	</div>
+</div>
 
 <style is:global>
 	.product-slider { overflow-x: scroll; padding: 5px 0;}
@@ -113,90 +178,6 @@ console.log(title)
     font-weight: 400;
 	}
 </style>
-
-<div class="col-12 col-md-10 flex-grow-0 flex-grow-md-1 mt-1 mt-md-5">
-	<div class="row">
-		<div id="carouselExampleIndicators" data-bs-ride="carousel" data-bs-interval="false" class="carousel slide col-12 col-md-6 flex-grow-1 pb-5">
-			<div class="carousel-inner">
-				<div class="carousel-item item active">
-					<Image class="d-block w-100" src={image} width={postImageSize[0]} height={postImageSize[1]} fit="fill" position="center" formats="webp" alt="" />
-				</div>
-				<div class="carousel-item item">
-					<Image class="d-block w-100" src={imageSliderOne} width={postImageSize[0]} height={postImageSize[1]} fit="fill" position="center" formats="webp" alt="" />
-				</div>
-				<div class="carousel-item item">
-					<Image class="d-block w-100" src={imageSliderTwo} width={postImageSize[0]} height={postImageSize[1]} fit="fill" position="center" formats="webp" alt="" />
-				</div>
-				<div class="carousel-item item">
-					<Image class="d-block w-100" src={imageSliderThree} width={postImageSize[0]} height={postImageSize[1]} fit="fill" position="center" formats="webp" alt="" />
-				</div>
-				<div class="carousel-item item">
-					<Image class="d-block w-100" src={imageSliderFour} width={postImageSize[0]} height={postImageSize[1]} fit="fill" position="center" formats="webp" alt="" />
-				</div>
-				<div class="carousel-item item">
-					<Image class="d-block w-100" src={imageSliderFive} width={postImageSize[0]} height={postImageSize[1]} fit="fill" position="center" formats="webp" alt="" />
-				</div>
-			</div>
-			<div class="product-slider pt-4 d-flex flex-nowrap justify-content-start">
-				<button data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="border-0 p-2" aria-current="true" aria-label="Slide 0">
-					<img style="object-fit: cover; left: 0; height: 120px" class="product-slider--image active" src={image} alt="">
-				</button>
-				<button data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" class="border-0 p-2" aria-current="true" aria-label="Slide 1">
-					<img style="object-fit: cover; left: 0; height: 120px" class="product-slider--image" src={imageSliderOne} alt="">
-				</button>
-				<button data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 2" class="border-0 p-2">
-					<img style="object-fit: cover; left: 115px; height: 120px" class="product-slider--image" src={imageSliderTwo} alt="">
-				</button>
-				<button data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 3" class="border-0 p-2">
-					<img style="object-fit: cover; left: 230px; height: 120px" class="product-slider--image" src={imageSliderThree} alt="">
-				</button>
-				<button data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 4" class="border-0 p-2">
-					<img style="object-fit: cover; left: 230px; height: 120px" class="product-slider--image" src={imageSliderFour} alt="">
-				</button>
-				<button data-bs-target="#carouselExampleIndicators" data-bs-slide-to="5" aria-label="Slide 5" class="border-0 p-2">
-					<img style="object-fit: cover; left: 230px; height: 120px" class="product-slider--image" src={imageSliderFive} alt="">
-				</button>
-			</div>
-		</div>
-		<div class="col-11 col-md-5">
-			<div class="price-wrapper">
-				<div class="price-wrapper--bar"></div>
-				<p class="price-wrapper--price py-3 m-0">{price}</p>
-			</div>
-			<a class="text-decoration-none" href={slug}>
-				<h6 class="product-name m-0">{name}</h6>
-			</a>
-			<div class="product-info">
-				<div class="d-flex justify-content-between py-3">
-					<div class="product-info__reviews">
-						<i class="product-info__reviews--stars fa fa-star"></i>
-						<i class="product-info__reviews--stars fa fa-star"></i>
-						<i class="product-info__reviews--stars fa fa-star"></i>
-						<i class="product-info__reviews--stars fa fa-star"></i>
-						<i class="product-info__reviews--stars fa fa-star"></i>
-						<a class="product-info__reviews--review" href=""><p>Write a review</p></a>
-					</div>
-					<div class="product-info__reviews">
-					</div>
-				</div>
-				<div class="product-info__availability d-flex">
-					<i class="product-info__availability--icon fa fa-circle pe-2"></i>
-					<p class="snipcart-items-count"></p><p> In stock</p>	
-				</div>
-				<p class="product-info--description">{description}</p>
-			</div>
-			<ProductButton 
-				type="button"
-				class="AddCartBtn snipcart-add-item mt-5"
-				data-item-id={id}
-				data-item-price={price}
-				data-item-url={slug}
-				data-item-name={name || title}
-				data-item-image={image}
-			/>
-		</div>
-	</div>
-</div>
 
 <script>
   window.SnipcartSettings = {

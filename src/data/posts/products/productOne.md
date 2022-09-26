@@ -2,13 +2,15 @@
 name: Modern Glass House
 slug: firstproduct
 id: 1
+class: all modern craig filterDiv mw-product-img col-12 col-md-4 d-flex flex-column align-items-center align-items-md-start flex-grow-1 mb-5 position-relative
 price: 2Mil
 description: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid quae eveniet culpa officia quidem mollitia impedit iste asperiores nisi reprehenderit consequatur, autem, nostrum pariatur enim?
 nameOne: Gift note
 nameTwo: Frame color
 postImageSize: [500, 500]
-shopImageSize: [400, 200]
+shopImageSize: [300, 225]
 image: /assets/images/product-img/product-one/modern-house-cover-img-1.jpg
+imageAlt: A modern house in the city 
 imageSliderOne: /assets/images/product-img/modern-house-slider-bedroom.jpg
 imageSliderTwo: /assets/images/product-img/modern-house-slider-livingroom.jpg
 imageSliderThree: /assets/images/product-img/modern-house-slider-bathroom-one.jpg
