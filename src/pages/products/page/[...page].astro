@@ -1,15 +1,11 @@
 ---
-
-// For the pagination pages
-
 import { Debug } from 'astro/components';
 
-import ProductCard from '@components/ProductCard.astro'; // Imported for styling
-import Paginator from '@components/Paginator.astro';
 import MainLayout from '@layouts/MainLayout.astro';
-import { Image } from '@astrojs/image/components';
 import ShopSidebar from '@components/ShopSidebar.astro';
-
+import ProductCard from '@components/ProductCard.astro'; // Imported for styling
+import { Image } from '@astrojs/image/components';
+import Paginator from '@components/Paginator.astro';
 
 export async function getStaticPaths({ paginate }) {
 	let allProducts = await Astro.glob(`/src/data/posts/products/*.md`);
@@ -21,66 +17,31 @@ export async function getStaticPaths({ paginate }) {
   return paginate(sortedPosts, { pageSize: 3});
 }
 // All paginated data is passed on the "page" prop
-const { page, name, id, slug, image, postImageSize, shopImageSize, price, description, imageSliderOne, imageSliderTwo, imageSliderThree, imageSliderFour, imageSliderFive } = Astro.props;
+const { page } = Astro.props;
+const { data } = page;
+
 ---
 <!-- <Debug answer={page.data[0].props.product.frontmatter} /> -->
 
-<!-- FROM ...PAGE.astro -->
-
-<!-- TODO:
-			Need to make another ProductCard seperate from ProductPost & [slug] ??
--->
-
-<style>
-	#toggleSidebar {
-    cursor: pointer;
-    color: #131212;
-		font-size: 1.4rem;
-	}
-
-	.main-product-image { width: 100%; }
-
-	.product-name {
-		outline: 0 solid transparent;
-    color: #131212;
-    font-weight: 400;
-    font-size: 1.5rem;
-		font-weight: 500;
-	}
-</style>
-
 <MainLayout>
+	<ShopSidebar />
 	<div class="col-12 col-lg-7 col-xxl-8 flex-grow-1">
-		<div class="row border-bottom pb-3">
-			<div class="col-12">
-				<a id="toggleSidebar" class="ps-3 pt-1 pb-3"><i class="fa fa-tasks" aria-hidden="true"></i> Filter</a>
-			</div>
-		</div>
-		<ShopSidebar />
 		<div class="row">
-			<h1>Blog Posts FROM ...PAGE.astro</h1>
-			<!-- {page.data.map(({ props }) => <Products product={props.product} />)} -->
-
-			{page.data.map((item) => 
-				<div class="col-12 col-md-4 d-flex flex-column align-items-center align-items-md-start flex-grow-1 mb-5 position-relative">
-					<Image class="main-product-image mb-4" src={item.props.product.frontmatter.image} width={item.props.product.frontmatter.shopImageSize[0]} height={item.props.product.frontmatter.shopImageSize[1]} fit="fill" position="center" formats="webp" alt="" />
-					<div class="price-wrapper">
-						<div class="price-wrapper--bar"></div>
-						<h6 class="price-wrapper--price py-3 m-0">${item.props.product.frontmatter.price}</h6>
-					</div>
-					<a class="text-decoration-none stretched-link" href={'/products/' + item.props.product.frontmatter.slug + '/'}>
-						<h6 class="product-name m-0">{item.props.product.frontmatter.name}</h6>
-					</a>
-				</div>
-			)}
+			<a id="toggleSidebar" class="ps-3 pt-1 pb-3"><i class="fa fa-tasks" aria-hidden="true"></i> Filter</a>
+				{data.map(({ props: {product: {frontmatter: { name, slug, image, shopImageSize, price, description }}}}) => 
+					<div class="col-12 col-md-4 d-flex flex-column align-items-center align-items-md-start flex-grow-1 mb-5 position-relative">
+						<Image class="main-product-image mb-4" src={image} width={shopImageSize[0]} height={shopImageSize[1]} fit="fill" position="center" formats="webp" alt="" />
+						<div class="price-wrapper">
+							<div class="price-wrapper--bar"></div>
+							<h6 class="price-wrapper--price py-3 m-0">${price}</h6>
+					 	</div>
+					 	<a class="text-decoration-none stretched-link" href={'/products/' + slug + '/'}>
+					 		<h6 class="product-name m-0">{name}</h6>
+					 	</a>
+					 </div>
+				)}
 		</div>
-	</div>
-
-	<!-- <Products /> -->
-	<div class="row">
-		<div class="col-12">
-			<Paginator page={page}/>
-		</div>
+		<Paginator page={page}/>
 	</div>
 </MainLayout>
 
