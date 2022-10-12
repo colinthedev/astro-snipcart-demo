@@ -1,0 +1,64 @@
+---
+// Corresponding tag page
+import { Debug } from 'astro/components';
+
+import MainLayout from "@layouts/MainLayout.astro";
+import TagCard from "@components/TagCard.astro";
+import ShopSidebar from '@components/ShopSidebar.astro';
+import SidebarButton from '@components/ToggleSidebarButton.astro';
+
+export async function getStaticPaths() {
+	const allProducts = await Astro.glob("../../../data/posts/products/*.md");
+
+	const sortedProducts = allProducts.sort((a, b) => new Date(a.frontmatter.id).valueOf() - new Date(b.frontmatter.id).valueOf());
+
+	const tagSet = new Set();
+	
+	sortedProducts.forEach((post) => {
+		post.frontmatter.category.map((category: String) => {
+			tagSet.add(category);
+		});
+			post.frontmatter.care.map((care: String) => {
+			tagSet.add(care);
+		});
+			post.frontmatter.color.map((color: String) => {
+			tagSet.add(color);
+		});
+	});
+
+	const tagArray = [...tagSet];
+
+	return tagArray.map((tag) => {
+		// const category = sortedProducts.map((product => product.frontmatter.color));
+		
+		const products = sortedProducts.filter((post) => {
+			const newTags = [...post.frontmatter.color, ...post.frontmatter.category, ...post.frontmatter.care];
+			return newTags.includes(tag);
+			// post.frontmatter.category.includes(tag) || post.frontmatter.color.includes(tag) || post.frontmatter.care.includes(tag)
+		});	
+		// console.log(tagArray)
+		return {
+			params: { slug: tag },
+			props: {
+				tag,
+				products,
+			},
+		};
+	});
+}
+
+const { tag, products } = Astro.props;
+---
+
+<MainLayout>
+	<ShopSidebar />
+		<section class="col-12 col-lg-10 col-xl-8 d-flex flex-column align-items-center">
+			<div class="d-flex flex-column align-items-center col-12 col-lg-10 col-xl-8 no-margin-last-element mb-6r">
+				<h1 class="mb-5 text-center">Tag: {tag}</h1>
+				<h2 class="fontsize-h3 text-center">A collection of {tag}-related products.</h2>
+				<SidebarButton />
+			</div>
+			{products.map((post: any) => <TagCard data={post} />)}
+		</section>
+</MainLayout>
+
