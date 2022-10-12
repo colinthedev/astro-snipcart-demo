@@ -1,18 +1,13 @@
 ---
 import { Image } from '@astrojs/image/components';
 import ProductCard from '@components/ProductCard.astro'; // Importing for styles
+import SidebarButton from '@components/ToggleSidebarButton.astro';
 
 const allProducts = await Astro.glob('/src/data/posts/products/*.md'); // Unsorted products
 const sortedProducts = allProducts.sort((a, b) => new Date(a.frontmatter.id).valueOf() - new Date(b.frontmatter.id).valueOf());
 ---
 
 <style>
-	#toggleSidebar {
-    cursor: pointer;
-    color: #131212;
-		font-size: 1.4rem;
-	}
-
 	.main-product-image { width: 100%; }
 
 	.product-name {
@@ -27,7 +22,7 @@ const sortedProducts = allProducts.sort((a, b) => new Date(a.frontmatter.id).val
 <div class="col-12 col-lg-7 col-xxl-8 flex-grow-1">
 	<div class="row border-bottom pb-3">
 		<div class="col-12">
-			<a id="toggleSidebar" class="ps-3 pt-1 pb-3"><i class="fa fa-tasks" aria-hidden="true"></i> Filter</a>
+			<SidebarButton />
 		</div>
 	</div>
 	<div class="row pt-3">
@@ -45,18 +40,3 @@ const sortedProducts = allProducts.sort((a, b) => new Date(a.frontmatter.id).val
 			)}
 	</div>
 </div>
-
-<script>
-	window.addEventListener("DOMContentLoaded", () => {
-		const sideBarToggle = document.getElementById("toggleSidebar");
-		const sidebarEl = document.querySelector('.shop_sidebar_area--hidden');
-
-		sideBarToggle.addEventListener("click", () => {
-			sidebarEl.classList.toggle("sidebar--isHidden");
-
-			sideBarToggle.innerHTML = sidebarEl.classList.contains( "sidebar--isHidden")
-				? `<i class="fa fa-tasks" aria-hidden="true"></i> Filter`
-				: `<i class="fa fa-tasks" aria-hidden="true"></i> Hide Filter`;
-		});
-	});
-</script>
