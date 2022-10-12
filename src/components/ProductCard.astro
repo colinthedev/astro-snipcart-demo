@@ -6,6 +6,23 @@ const { image, postImageSize, imageSliderOne, imageSliderTwo, imageSliderThree, 
 
 console.log(title)
 ---
+
+<style>
+	.product-image {
+		height: 100%;
+		max-height: 300px;
+		width: 100%;
+		max-width: 400px;
+		margin: auto;
+	}
+	@media only screen and (min-width: 768px) {
+		.product-image {
+			max-height: 600px;
+			max-width: 600px;
+		}
+	}
+</style>
+
 <!-- // Todo:
 	Check the atag and name to go to indv product page 
 	Astro.props.product.frontmatter.image -->
@@ -15,46 +32,46 @@ console.log(title)
 		<div id="carouselExampleIndicators" data-bs-ride="carousel" data-bs-interval="false" class="carousel slide col-12 col-md-6 flex-grow-1 pb-5">
 			<div class="carousel-inner">
 				<div class="carousel-item item active">
-					<Image class="d-block w-100" src={image} width={postImageSize[0]} height={postImageSize[1]} fit="fill" position="center" formats="webp" alt="" />
+					<Image class="product-image d-block mx-auto" src={image} width={postImageSize[0]} height={postImageSize[1]} fit="cover" position="center" formats="webp" alt="" />
 				</div>
 				<div class="carousel-item item">
-					<Image class="d-block w-100" src={imageSliderOne} width={postImageSize[0]} height={postImageSize[1]} fit="fill" position="center" formats="webp" alt="" />
+					<Image class="product-image d-block mx-auto" src={imageSliderOne} width={postImageSize[0]} height={postImageSize[1]} fit="fill" position="center" formats="webp" alt="" />
 				</div>
 				<div class="carousel-item item">
-					<Image class="d-block w-100" src={imageSliderTwo} width={postImageSize[0]} height={postImageSize[1]} fit="fill" position="center" formats="webp" alt="" />
+					<Image class="product-image d-block mx-auto" src={imageSliderTwo} width={postImageSize[0]} height={postImageSize[1]} fit="fill" position="center" formats="webp" alt="" />
 				</div>
 				<div class="carousel-item item">
-					<Image class="d-block w-100" src={imageSliderThree} width={postImageSize[0]} height={postImageSize[1]} fit="fill" position="center" formats="webp" alt="" />
+					<Image class="product-image d-block mx-auto" src={imageSliderThree} width={postImageSize[0]} height={postImageSize[1]} fit="fill" position="center" formats="webp" alt="" />
 				</div>
 				<div class="carousel-item item">
-					<Image class="d-block w-100" src={imageSliderFour} width={postImageSize[0]} height={postImageSize[1]} fit="fill" position="center" formats="webp" alt="" />
+					<Image class="product-image d-block mx-auto" src={imageSliderFour} width={postImageSize[0]} height={postImageSize[1]} fit="fill" position="center" formats="webp" alt="" />
 				</div>
 				<div class="carousel-item item">
-					<Image class="d-block w-100" src={imageSliderFive} width={postImageSize[0]} height={postImageSize[1]} fit="fill" position="center" formats="webp" alt="" />
+					<Image class="product-image d-block mx-auto" src={imageSliderFive} width={postImageSize[0]} height={postImageSize[1]} fit="fill" position="center" formats="webp" alt="" />
 				</div>
 			</div>
 			<div class="product-slider pt-4 d-flex flex-nowrap justify-content-start">
 				<button data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="border-0 p-2" aria-current="true" aria-label="Slide 0">
-					<img style="object-fit: cover; left: 0; height: 120px" class="product-slider--image active" src={image} alt="">
+					<img style="object-fit: cover; left: 0; height: 120px; width: 120px;" class="product-slider--image active" src={image} alt="">
 				</button>
 				<button data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" class="border-0 p-2" aria-current="true" aria-label="Slide 1">
-					<img style="object-fit: cover; left: 0; height: 120px" class="product-slider--image" src={imageSliderOne} alt="">
+					<img style="object-fit: cover; left: 0; height: 120px; width: 120px;" class="product-slider--image" src={imageSliderOne} alt="">
 				</button>
 				<button data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 2" class="border-0 p-2">
-					<img style="object-fit: cover; left: 115px; height: 120px" class="product-slider--image" src={imageSliderTwo} alt="">
+					<img style="object-fit: cover; left: 115px; height: 120px; width: 120px;" class="product-slider--image" src={imageSliderTwo} alt="">
 				</button>
 				<button data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 3" class="border-0 p-2">
-					<img style="object-fit: cover; left: 230px; height: 120px" class="product-slider--image" src={imageSliderThree} alt="">
+					<img style="object-fit: cover; left: 230px; height: 120px; width: 120px;" class="product-slider--image" src={imageSliderThree} alt="">
 				</button>
 				<button data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 4" class="border-0 p-2">
-					<img style="object-fit: cover; left: 230px; height: 120px" class="product-slider--image" src={imageSliderFour} alt="">
+					<img style="object-fit: cover; left: 230px; height: 120px; width: 120px;" class="product-slider--image" src={imageSliderFour} alt="">
 				</button>
 				<button data-bs-target="#carouselExampleIndicators" data-bs-slide-to="5" aria-label="Slide 5" class="border-0 p-2">
-					<img style="object-fit: cover; left: 230px; height: 120px" class="product-slider--image" src={imageSliderFive} alt="">
+					<img style="object-fit: cover; left: 230px; height: 120px; width: 120px;" class="product-slider--image" src={imageSliderFive} alt="">
 				</button>
 			</div>
 		</div>
-		<div class="col-11 col-md-5">
+		<div class="col-12 col-md-5">
 			<div class="price-wrapper">
 				<div class="price-wrapper--bar"></div>
 				<p class="price-wrapper--price py-3 m-0">{price}</p>
