@@ -1,0 +1,28 @@
+---
+
+---
+
+<style>
+	#toggleSidebar {
+		cursor: pointer;
+		color: #131212;
+		font-size: 1.4rem;
+	}
+</style>
+
+<a id="toggleSidebar" class="ps-3 pt-1 pb-3"><i class="fa fa-tasks" aria-hidden="true"></i> Filter</a>
+
+<script>
+	window.addEventListener("DOMContentLoaded", () => {
+		const sideBarToggle = document.getElementById("toggleSidebar");
+		const sidebarEl = document.querySelector('.shop_sidebar_area--hidden');
+
+		sideBarToggle.addEventListener("click", () => {
+			sidebarEl.classList.toggle("sidebar--isHidden");
+
+			sideBarToggle.innerHTML = sidebarEl.classList.contains( "sidebar--isHidden")
+				? `<i class="fa fa-tasks" aria-hidden="true"></i> Filter`
+				: `<i class="fa fa-tasks" aria-hidden="true"></i> Hide Filter`;
+		});
+	});
+</script>
