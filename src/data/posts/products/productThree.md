@@ -1,7 +1,7 @@
 ---
 category: [fig]
 color: [black]
-care: [hard]
+care: [difficult]
 name: Plant Three
 slug: productthree
 id: 3

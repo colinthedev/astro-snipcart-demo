@@ -1,7 +1,7 @@
 ---
 category: [cactus]
 color: [blue]
-care: [hard]
+care: [difficult]
 name: Plant Six
 slug: productsix
 id: 6
