@@ -6,7 +6,7 @@ import TagList from "@components/TagList.astro";
 import ProductCard from '@components/ProductCard.astro'; // Imported for styling
 
 const { data } = Astro.props;
-const { name, price, description, image, postImageSize, color, category, care, slug: url } = data.frontmatter;
+const { name, price, description, image, tagImageSize, color, category, care, slug: url } = data.frontmatter;
 const tags = [...color, ...category, ...care]
 ---
 <!-- <Debug answer={data} /> -->
@@ -22,6 +22,7 @@ const tags = [...color, ...category, ...care]
 			<a class="text-decoration-none stretched-link pb-3" href={'/products/' + url + '/'}>
 				<h6 class="product-name m-0">{name}</h6>
 			</a>
+		<div class="">{tags && <TagList {tags} />}</div>
 		</div>
 	</div>
 	<div class="row mb-5 pb-2 border-bottom">

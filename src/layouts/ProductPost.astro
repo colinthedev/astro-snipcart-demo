@@ -3,7 +3,6 @@ import { Debug } from 'astro/components';
 
 import ProductCard from "@components/ProductCard.astro";
 import MainLayout from '@layouts/MainLayout.astro';
-import TagList from '@components/TagList.astro';
 
 const { data: { name, id, slug, image, postImageSize, shopImageSize, price, description, imageSliderOne, imageSliderTwo, imageSliderThree, imageSliderFour, imageSliderFive, category, color, care } } = Astro.props;
 const tags = [...color, ...category, ...care];
