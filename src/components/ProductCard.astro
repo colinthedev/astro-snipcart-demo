@@ -1,27 +1,17 @@
 ---
+import { Debug } from 'astro/components';
+
 import { Image } from '@astrojs/image/components';
 import ProductButton from '@components/ProductButton.astro';
+import TagList from '@components/TagList.astro';
 
-const { image, postImageSize, imageSliderOne, imageSliderTwo, imageSliderThree, imageSliderFour, imageSliderFive, name, id, description, price, slug, title, ...modifiersMap} = Astro.props;
+const { image, postImageSize, imageSliderOne, imageSliderTwo, imageSliderThree, imageSliderFour, imageSliderFive, name, id, description, price, slug, title, tags, ...modifiersMap} = Astro.props;
 
 console.log(title)
 ---
 
-<style>
-	.product-image {
-		height: 100%;
-		max-height: 300px;
-		width: 100%;
-		max-width: 400px;
-		margin: auto;
-	}
-	@media only screen and (min-width: 768px) {
-		.product-image {
-			max-height: 600px;
-			max-width: 600px;
-		}
-	}
-</style>
+<!-- <Debug answer={Astro.props} />
+<Debug answer={tags} /> -->
 
 <!-- // Todo:
 	Check the atag and name to go to indv product page 
@@ -80,18 +70,18 @@ console.log(title)
 				<h6 class="product-name m-0">{name}</h6>
 			</a>
 			<div class="product-info">
-				<div class="d-flex justify-content-between py-3">
+				<div class="d-flex justify-content-between align-items-end py-3">
 					<div class="product-info__reviews">
 						<i class="product-info__reviews--stars fa fa-star"></i>
 						<i class="product-info__reviews--stars fa fa-star"></i>
 						<i class="product-info__reviews--stars fa fa-star"></i>
 						<i class="product-info__reviews--stars fa fa-star"></i>
 						<i class="product-info__reviews--stars fa fa-star"></i>
-						<a class="product-info__reviews--review" href=""><p>Write a review</p></a>
+						<a class="product-info__reviews--review" href=""><p class="mb-0">Write a review</p></a>
 					</div>
-					<div class="product-info__reviews">
-					</div>
+					<a class="product-info__reviews--review" href=""><p class="mb-0">Reviews</p></a>
 				</div>
+				<div class="pb-3">{tags && <TagList {tags} />}</div>
 				<div class="product-info__availability d-flex">
 					<i class="product-info__availability--icon fa fa-circle pe-2"></i>
 					<p class="snipcart-items-count"></p><p> In stock</p>	
@@ -110,6 +100,22 @@ console.log(title)
 		</div>
 	</div>
 </div>
+
+<style>
+	.product-image {
+		height: 100%;
+		max-height: 300px;
+		width: 100%;
+		max-width: 400px;
+		margin: auto;
+	}
+	@media only screen and (min-width: 768px) {
+		.product-image {
+			max-height: 600px;
+			max-width: 600px;
+		}
+	}
+</style>
 
 <style is:global>
 	.product-slider { overflow-x: scroll; padding: 5px 0;}
