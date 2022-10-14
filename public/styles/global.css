@@ -79,12 +79,12 @@ button:focus {
 	width: 0;
 }
 
-.shop_sidebar_items-font {
+.shop-sidebar-items-font {
 	font-size: 1.4rem;
 	color: #131212;
 }
 
-.shop_sidebar_headings-font {
+.shop-sidebar-headings-font {
 	font-size: 1.4rem;
 	text-transform: uppercase;
 	color: #242424;
@@ -109,7 +109,7 @@ a {
 }
 
 a:hover {
-	color: #fbb710;
+	color: #224229;
 }
 
 .paginate-btn:not(:last-child) {
@@ -125,7 +125,7 @@ a:hover {
 
 .product-slider::-webkit-scrollbar { height: 8px; }
 	
-.product-slider::-webkit-scrollbar-thumb { background-color: #fbb710; outline: 5px solid #fff; }
+.product-slider::-webkit-scrollbar-thumb { background-color: #224229; outline: 5px solid #fff; }
 
 .product-slider::-webkit-scrollbar-button:start:decrement,
 .product-slider::-webkit-scrollbar-button:end:increment {
@@ -154,14 +154,14 @@ a:hover {
 .price-wrapper--bar {
 	width: 100%;
 	max-width: 80px;
-	background-color: #fbb710;
+	background-color: #224229;
 	padding: 1.5px;
 }
 
 .price-wrapper--price {
 	font-size: 2.4rem;
 	font-weight: 400;
-	color: #fbb710;
+	color: #224229;
 	line-height: 1;
 	margin-bottom: 10px;
 }
@@ -175,7 +175,7 @@ a:hover {
 
 .product-info__reviews--stars {
 	font-size: 1rem;
-	color: #fbb710;
+	color: #224229;
 }
 
 .product-info__availability--icon {
@@ -200,7 +200,7 @@ a:hover {
 	padding: 0 7px;
 	font-size: 1.8rem;
 	line-height: 56px;
-	background-color: #fbb710;
+	background-color: #224229;
 	font-weight: 400;
 }
 
