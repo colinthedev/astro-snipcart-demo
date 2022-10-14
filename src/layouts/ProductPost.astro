@@ -1,9 +1,14 @@
 ---
+import { Debug } from 'astro/components';
+
 import ProductCard from "@components/ProductCard.astro";
 import MainLayout from '@layouts/MainLayout.astro';
 
-const { data: { name, id, slug, image, postImageSize, shopImageSize, price, description, imageSliderOne, imageSliderTwo, imageSliderThree, imageSliderFour, imageSliderFive } } = Astro.props;
+const { data: { name, id, slug, image, postImageSize, shopImageSize, price, description, imageSliderOne, imageSliderTwo, imageSliderThree, imageSliderFour, imageSliderFive, category, color, care } } = Astro.props;
+const tags = [...color, ...category, ...care];
 ---
+
+<!-- <Debug answer={Astro.props.data} /> -->
 
 <MainLayout>
 	<ProductCard 
@@ -20,5 +25,6 @@ const { data: { name, id, slug, image, postImageSize, shopImageSize, price, desc
 		imageSliderThree={imageSliderThree}
 		imageSliderFour={imageSliderFour}
 		imageSliderFive={imageSliderFive}
+		tags={tags}
 	/>
 </MainLayout>

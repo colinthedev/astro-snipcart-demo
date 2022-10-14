@@ -1,27 +1,17 @@
 ---
+import { Debug } from 'astro/components';
+
 import { Image } from '@astrojs/image/components';
 import ProductButton from '@components/ProductButton.astro';
+import TagList from '@components/TagList.astro';
 
-const { image, postImageSize, imageSliderOne, imageSliderTwo, imageSliderThree, imageSliderFour, imageSliderFive, name, id, description, price, slug, title, ...modifiersMap} = Astro.props;
+const { image, postImageSize, imageSliderOne, imageSliderTwo, imageSliderThree, imageSliderFour, imageSliderFive, name, id, description, price, slug, title, tags, ...modifiersMap} = Astro.props;
 
 console.log(title)
 ---
 
-<style>
-	.product-image {
-		height: 100%;
-		max-height: 300px;
-		width: 100%;
-		max-width: 400px;
-		margin: auto;
-	}
-	@media only screen and (min-width: 768px) {
-		.product-image {
-			max-height: 600px;
-			max-width: 600px;
-		}
-	}
-</style>
+<!-- <Debug answer={Astro.props} />
+<Debug answer={tags} /> -->
 
 <!-- // Todo:
 	Check the atag and name to go to indv product page 
@@ -32,25 +22,25 @@ console.log(title)
 		<div id="carouselExampleIndicators" data-bs-ride="carousel" data-bs-interval="false" class="carousel slide col-12 col-md-6 flex-grow-1 pb-5">
 			<div class="carousel-inner">
 				<div class="carousel-item item active">
-					<Image class="product-image d-block mx-auto" src={image} width={postImageSize[0]} height={postImageSize[1]} fit="cover" position="center" formats="webp" alt="" />
+					<Image class="product-image d-block" src={image} width={postImageSize[0]} height={postImageSize[1]} fit="cover" position="center" formats="webp" alt="" />
 				</div>
 				<div class="carousel-item item">
-					<Image class="product-image d-block mx-auto" src={imageSliderOne} width={postImageSize[0]} height={postImageSize[1]} fit="fill" position="center" formats="webp" alt="" />
+					<Image class="product-image d-block" src={imageSliderOne} width={postImageSize[0]} height={postImageSize[1]} fit="fill" position="center" formats="webp" alt="" />
 				</div>
 				<div class="carousel-item item">
-					<Image class="product-image d-block mx-auto" src={imageSliderTwo} width={postImageSize[0]} height={postImageSize[1]} fit="fill" position="center" formats="webp" alt="" />
+					<Image class="product-image d-block" src={imageSliderTwo} width={postImageSize[0]} height={postImageSize[1]} fit="fill" position="center" formats="webp" alt="" />
 				</div>
 				<div class="carousel-item item">
-					<Image class="product-image d-block mx-auto" src={imageSliderThree} width={postImageSize[0]} height={postImageSize[1]} fit="fill" position="center" formats="webp" alt="" />
+					<Image class="product-image d-block" src={imageSliderThree} width={postImageSize[0]} height={postImageSize[1]} fit="fill" position="center" formats="webp" alt="" />
 				</div>
 				<div class="carousel-item item">
-					<Image class="product-image d-block mx-auto" src={imageSliderFour} width={postImageSize[0]} height={postImageSize[1]} fit="fill" position="center" formats="webp" alt="" />
+					<Image class="product-image d-block" src={imageSliderFour} width={postImageSize[0]} height={postImageSize[1]} fit="fill" position="center" formats="webp" alt="" />
 				</div>
 				<div class="carousel-item item">
-					<Image class="product-image d-block mx-auto" src={imageSliderFive} width={postImageSize[0]} height={postImageSize[1]} fit="fill" position="center" formats="webp" alt="" />
+					<Image class="product-image d-block" src={imageSliderFive} width={postImageSize[0]} height={postImageSize[1]} fit="fill" position="center" formats="webp" alt="" />
 				</div>
 			</div>
-			<div class="product-slider pt-4 d-flex flex-nowrap justify-content-start">
+			<div class="product-slider pt-4 d-flex flex-nowrap justify-content-start flex-grow-1">
 				<button data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="border-0 p-2" aria-current="true" aria-label="Slide 0">
 					<img style="object-fit: cover; left: 0; height: 120px; width: 120px;" class="product-slider--image active" src={image} alt="">
 				</button>
@@ -71,7 +61,7 @@ console.log(title)
 				</button>
 			</div>
 		</div>
-		<div class="col-12 col-md-5">
+		<div class="col-12 col-md-5 flex-grow-2">
 			<div class="price-wrapper">
 				<div class="price-wrapper--bar"></div>
 				<p class="price-wrapper--price py-3 m-0">{price}</p>
@@ -80,21 +70,21 @@ console.log(title)
 				<h6 class="product-name m-0">{name}</h6>
 			</a>
 			<div class="product-info">
-				<div class="d-flex justify-content-between py-3">
+				<div class="d-flex flex-column pt-3">
 					<div class="product-info__reviews">
 						<i class="product-info__reviews--stars fa fa-star"></i>
 						<i class="product-info__reviews--stars fa fa-star"></i>
 						<i class="product-info__reviews--stars fa fa-star"></i>
 						<i class="product-info__reviews--stars fa fa-star"></i>
 						<i class="product-info__reviews--stars fa fa-star"></i>
-						<a class="product-info__reviews--review" href=""><p>Write a review</p></a>
+						<a class="product-info__reviews--review" href=""><p class="my-2">Write a review</p></a>
 					</div>
-					<div class="product-info__reviews">
-					</div>
+					<a class="product-info__reviews--review" href=""><p class="mb-0">Reviews</p></a>
 				</div>
+				<div class="pb-3">{tags && <TagList {tags} />}</div>
 				<div class="product-info__availability d-flex">
 					<i class="product-info__availability--icon fa fa-circle pe-2"></i>
-					<p class="snipcart-items-count"></p><p> In stock</p>	
+					<p class="snipcart-items-count"></p><p class="ms-1">In Stock<p>
 				</div>
 				<p class="product-info--description">{description}</p>
 			</div>
@@ -111,88 +101,20 @@ console.log(title)
 	</div>
 </div>
 
-<style is:global>
-	.product-slider { overflow-x: scroll; padding: 5px 0;}
-
-	.product-slider::-webkit-scrollbar { height: 8px; }
-		
-	.product-slider::-webkit-scrollbar-thumb { background-color: #fbb710; outline: 5px solid #fff; }
-
-	.product-slider::-webkit-scrollbar-button:start:decrement,
-	.product-slider::-webkit-scrollbar-button:end:increment {
-		position: absolute;
-		top: 0;
-		display: block;
-		height: 34px;
-		width: 34px;
-		background: #ccc;
-		background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/42863/arrow2.png);
-		background-size: 100%;
-	}
-
-	.product-slider::-webkit-scrollbar-button:end:increment { background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/42863/arrow.png); }
-
-	.product-slider--image {
-		flex: 0 0 25%;
-    min-width: 25%;
-    height: 140px;
-    background-position: center center;
-    background-size: cover;
-    cursor: pointer;
-	}
-	.product-slider--image:nth-last-child() { margin-right: 0; }
-
-	.price-wrapper--bar {
+<style>
+	.product-image {
+		height: 100%;
 		width: 100%;
-		max-width: 80px;
-		background-color: #fbb710;
-		padding: 1.5px;
+		/* max-height: 300px;
+		max-width: 400px; */
+		margin: auto
 	}
-
-	.price-wrapper--price {
-		font-size: 2.4rem;
-    font-weight: 400;
-    color: #fbb710;
-    line-height: 1;
-    margin-bottom: 10px;
-	}
-
-	.product-name {
-		color: #242424;
-    line-height: 1.3;
-    font-weight: 400;
-		font-size: 2rem;
-	}
-
-	.product-info__reviews--stars {
-		font-size: 1rem;
-    color: #fbb710;
-	}
-
-	.product-info__availability--icon {
-		color: #20d34a;
-    font-size: 1.2rem;
-	}
-
-	.product-info--description {
-		line-height: 2.1;
-    color: #6b6b6b;
-		font-size: 1.6rem;
-	}
-
-	.AddCartBtn {
-		width: 100%;
-		max-width: 250px;
-		display: inline-block;
-    min-height: 55px;
-    color: #ffffff;
-    border: none;
-    border-radius: 0;
-    padding: 0 7px;
-    font-size: 1.8rem;
-    line-height: 56px;
-    background-color: #fbb710;
-    font-weight: 400;
+	@media only screen and (min-width: 768px) {
+		.product-image {
+			/* max-height: 600px;
+			max-width: 600px; */
+			margin: unset;
+		}
 	}
 </style>
 

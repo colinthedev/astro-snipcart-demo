@@ -9,6 +9,8 @@ import ProductCard from '@components/ProductCard.astro'; // Imported for styling
 import SidebarButton from '@components/ToggleSidebarButton.astro';
 import { Image } from '@astrojs/image/components';
 import Paginator from '@components/Paginator.astro';
+import TagList from '@components/TagList.astro';
+
 
 export async function getStaticPaths({ paginate }) {
 	let allProducts = await Astro.glob(`/src/data/posts/products/*.md`);
@@ -25,17 +27,13 @@ const { page } = Astro.props;
 const { data } = page;
 
 ---
-<!-- <Debug answer={page.data[0].props.product.frontmatter} /> -->
-
-<style>
-	.product-image-mw { max-width: 250px }
-</style>
 
 <MainLayout>
 	<ShopSidebar />
 	<div class="col-12 col-lg-7 col-xxl-8 flex-grow-1">
 		<div class="row">
 			<SidebarButton />
+			<!-- <div>{tags && <TagList {tags} />}</div> -->
 				{data.map(( {props: {product}} ) => 
 					<div class="col-12 col-md-4 d-flex flex-column align-items-center align-items-md-start flex-grow-1 mb-5 position-relative">
 						<Image class="main-product-image product-image-mw mb-4" src={product.image} width={product.shopImageSize[0]} height={product.shopImageSize[1]} fit="" position="center" formats="webp" alt="" />
@@ -46,9 +44,17 @@ const { data } = page;
 						<a class="text-decoration-none stretched-link" href={'/products/' + product.slug + '/'}>
 							<h6 class="product-name m-0">{product.name}</h6>
 						</a>
+						<div>
+							{( product.category || product.color || product.care ) && 
+								<TagList tags={[...product.color,...product.care, ...product.category]} />}
+						</div>
 					</div>
 				)}
 		</div>
 		<Paginator page={page}/>
 	</div>
 </MainLayout>
+
+<style>
+	.product-image-mw { max-width: 250px }
+</style>

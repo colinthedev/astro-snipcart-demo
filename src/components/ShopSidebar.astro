@@ -11,16 +11,16 @@ const careTags = [...new Set([].concat.apply([],allPosts.map(post => post.frontm
 <!-- <Debug answer={tags} /> -->
 <!-- <Debug answer={tags} /> -->
 
-<aside class="col-12 col-lg-2 mt-5 mt-lg-0 px-2 px-lg-5 py-1 py-lg-5 shop_sidebar_area shop_sidebar_area--hidden sidebar ">
-	<h2 class="shop_sidebar_items-font fw-bold pb-3 pt-4 pt-lg-0">Filter By</h2>
+<aside class="col-12 col-lg-2 mt-5 mt-lg-0 px-2 px-lg-5 py-1 py-lg-5 shop-sidebar-area shop-sidebar-area--hidden">
+	<h2 class="shop-sidebar-items-font fw-bold pb-3 pt-4 pt-lg-0">Filter By</h2>
 	<ul class="list-unstyled ps-0 border-top">
 		<li class="border-bottom w-100 mb-2 py-2">
 			<button class="chevron__arrows-btn btn btn-toggle w-100 d-inline-flex align-items-center rounded border-0 px-0 collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
-				<span class="shop_sidebar_headings-font">Categories</span>
+				<span class="shop-sidebar-headings-font">Categories</span>
 				<i class="fa fa-angle-right active ms-auto" aria-hidden="true"></i>
 			</button>
 			<div class="collapse show" id="home-collapse">
-				<ul class="shop_sidebar_items-font btn-toggle-nav list-unstyled fw-normal pb-1 small">
+				<ul class="shop-sidebar-items-font btn-toggle-nav list-unstyled fw-normal pb-1 small">
 					{categoryTags.sort().map((categoryTag) => (
 						<li><a class="link-dark d-inline-flex text-decoration-none text-capitalize rounded" href={`/products/tag/${categoryTag}`}>{categoryTag}</a></li>
 					))}
@@ -29,11 +29,11 @@ const careTags = [...new Set([].concat.apply([],allPosts.map(post => post.frontm
 		</li>
 		<li class="border-bottom w-100 mb-2 py-2">
 			<button class="chevron__arrows-btn btn btn-toggle w-100 d-inline-flex align-items-center rounded border-0 px-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
-				<span class="shop_sidebar_headings-font">Color</span>
+				<span class="shop-sidebar-headings-font">Color</span>
 				<i class="fa fa-angle-right ms-auto active" aria-hidden="true"></i>
 			</button>
 			<div class="collapse" id="dashboard-collapse">
-				<ul class="shop_sidebar_items-font btn-toggle-nav list-unstyled fw-normal pb-1 small">
+				<ul class="shop-sidebar-items-font btn-toggle-nav list-unstyled fw-normal pb-1 small">
 					{colorTags.sort().map((colorTag) => (
 						<li><a class="link-dark d-inline-flex text-decoration-none text-capitalize rounded" href={`/products/tag/${colorTag}`}>{colorTag}</a></li>
 					))}
@@ -42,11 +42,11 @@ const careTags = [...new Set([].concat.apply([],allPosts.map(post => post.frontm
 		</li>
 		<li class="border-bottom w-100 mb-2 py-2">
 			<button class="chevron__arrows-btn btn btn-toggle w-100 d-inline-flex align-items-center rounded border-0 px-0 collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
-				<span class="shop_sidebar_headings-font">Care Level</span>
+				<span class="shop-sidebar-headings-font">Care Level</span>
 				<i class="fa fa-angle-right ms-auto active" aria-hidden="true"></i>
 			</button>
 			<div class="collapse" id="orders-collapse">
-				<ul class="shop_sidebar_items-font btn-toggle-nav list-unstyled fw-normal pb-1 small">
+				<ul class="shop-sidebar-items-font btn-toggle-nav list-unstyled fw-normal pb-1 small">
 				  {careTags.sort().map((careTag) => (
 						<li><a class="link-dark d-inline-flex text-decoration-none text-capitalize rounded" href={`/products/tag/${careTag}`}>{careTag}</a></li>
 					))}
@@ -56,58 +56,3 @@ const careTags = [...new Set([].concat.apply([],allPosts.map(post => post.frontm
 
 	</ul>
 </aside>
-
-<style is:global>
-	button:focus {
-		box-shadow: none!important;
-	}
-
-	#toggleSidebar {
-		cursor: pointer;
-		color: #131212;
-		font-size: 1.4rem;
-	}
-
-	.main-product-image { width: 100%; }
-
-	.product-name {
-		outline: 0 solid transparent;
-		color: #131212;
-		font-weight: 400;
-		font-size: 1.5rem;
-		font-weight: 500;
-	}
-
-	.sidebar {
-		background-color: #f5f7fa;
-		transition: all 200ms linear;
-	}
-
-	.sidebar--isHidden {
-    visibility: hidden;
-    z-index: -1;
-    transform: translateX(-50%);
-    transition: all 200ms linear;
-		opacity: 0;
-    height: 0;
-    width: 0;
-  }
-
-	.shop_sidebar_items-font {
-		font-size: 1.4rem;
-    color: #131212;
-	}
-
-	.shop_sidebar_headings-font {
-		font-size: 1.4rem;
-    text-transform: uppercase;
-    color: #242424;
-		padding: 0 0 0.5rem 0;
-	}
-
-	.fa-angle-right {
-		transform: rotate(90deg);
-    transition: all 0.3s ease;
- 	}
-	.chevron__arrows-btn.collapsed .fa-angle-right { transform: rotate(0deg); }
-</style>
