@@ -62,9 +62,11 @@ button:focus {
 	font-weight: 500;
 }
 
-.sidebar {
+.shop-sidebar-area {
 	background-color: #f5f7fa;
 	transition: all 200ms linear;
+	border-radius: 20px;
+	border-left: 3px solid #242424;
 }
 
 .sidebar--isHidden {
