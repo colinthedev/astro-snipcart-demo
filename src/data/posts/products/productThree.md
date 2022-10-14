@@ -9,6 +9,7 @@ price: 40
 description: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid quae eveniet culpa officia quidem mollitia impedit iste asperiores nisi reprehenderit consequatur, autem, nostrum pariatur enim?
 nameOne: Gift note
 nameTwo: Frame color
+tagImageSize: [550, 300]
 postImageSize: [600, 600]
 shopImageSize: [250, 250]
 homeImageSize: [400, 200]
