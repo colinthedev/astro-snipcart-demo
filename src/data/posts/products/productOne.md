@@ -2,12 +2,12 @@
 category: [fig]
 color: [black]
 care: [easy]
-name: Plant One
+name: Fiddle Leaf Fig
 slug: productone
 id: 1
 class: mw-product-img col-12 col-md-4 d-flex flex-column align-items-center align-items-md-start flex-grow-1 mb-5 position-relative
 price: 25
-description: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid quae eveniet culpa officia quidem mollitia impedit iste asperiores nisi reprehenderit consequatur, autem, nostrum pariatur enim?
+description: Also known as "Mother-in-law's Tongue," this hardy plant is great for beginners. With its tall, spiky leaves and low maintenance needs, it's perfect for adding a touch of green to any space.
 nameOne: Gift note
 nameTwo: Frame color
 tagImageSize: [550, 300]

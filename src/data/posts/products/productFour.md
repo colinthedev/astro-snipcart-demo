@@ -2,11 +2,11 @@
 category: [palm]
 color: [blue]
 care: [easy]
-name: Plant Four
+name: Monstera Deliciosa
 slug: productfour
 id: 4
 price: 40
-description: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid quae eveniet culpa officia quidem mollitia impedit iste asperiores nisi reprehenderit consequatur, autem, nostrum pariatur enim?
+description: This large-leafed plant is a statement piece that will add a touch of drama to any space. It's a popular choice for those who want to create a tropical oasis in their home.
 nameOne: Gift note
 nameTwo: Frame color
 tagImageSize: [550, 300]

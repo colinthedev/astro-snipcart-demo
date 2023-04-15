@@ -2,11 +2,11 @@
 category: [palm, fig]
 color: [black]
 care: [medium]
-name: Plant Two
+name: Rubber Plant
 slug: producttwo
 id: 2
 price: 20
-description: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid quae eveniet culpa officia quidem mollitia impedit iste asperiores nisi reprehenderit consequatur, autem, nostrum pariatur enim?
+description: This glossy-leafed plant is a classic choice for those looking to add a touch of tropical flair to their home. It's easy to care for and can grow quite large if given the space.
 nameOne: Gift note
 nameTwo: Frame color
 tagImageSize: [550, 300]

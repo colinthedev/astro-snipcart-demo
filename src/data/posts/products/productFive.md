@@ -2,11 +2,11 @@
 category: [fig]
 color: [black]
 care: [medium]
-name: Plant Five
+name: Calathea
 slug: productfive
 id: 5
 price: 50
-description: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid quae eveniet culpa officia quidem mollitia impedit iste asperiores nisi reprehenderit consequatur, autem, nostrum pariatur enim?
+description: This classic houseplant is loved for its large, glossy leaves and easy care. It's a great choice for those looking to add a touch of elegance to their home or office, and its air-purifying qualities make it a healthy addition to any space. With the right care, it can grow quite tall, making it a great choice for filling an empty corner.
 nameOne: Gift note
 nameTwo: Frame color
 tagImageSize: [550, 300]

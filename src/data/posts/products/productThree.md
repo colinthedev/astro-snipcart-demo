@@ -2,11 +2,11 @@
 category: [fig]
 color: [black]
 care: [difficult]
-name: Plant Three
+name: Snake Plant
 slug: productthree
 id: 3
 price: 40
-description: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid quae eveniet culpa officia quidem mollitia impedit iste asperiores nisi reprehenderit consequatur, autem, nostrum pariatur enim?
+description: Also known as "Mother-in-law's Tongue," this hardy plant is great for beginners. With its tall, spiky leaves and low maintenance needs, it's perfect for adding a touch of green to any space.
 nameOne: Gift note
 nameTwo: Frame color
 tagImageSize: [550, 300]
