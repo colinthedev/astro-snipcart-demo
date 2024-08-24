@@ -11,15 +11,16 @@ const careTags = [...new Set([].concat.apply([],allPosts.map(post => post.frontm
 <!-- <Debug answer={tags} /> -->
 <!-- <Debug answer={tags} /> -->
 
-<aside class="col-12 col-lg-2 mt-5 mt-lg-0 px-2 px-lg-5 py-1 py-lg-5 shop-sidebar-area shop-sidebar-area--hidden">
-	<h2 class="shop-sidebar-items-font fw-bold pb-3 pt-4 pt-lg-0">Filter By</h2>
-	<ul class="list-unstyled ps-0 border-top">
+<aside class="col-12 col-xl-2 mt-5 mt-lg-0 px-2 px-lg-5 py-1 py-lg-5 shop-sidebar-area shop-sidebar-area--hidden">
+	<a class="reset-filter-links" href="/products/page">Reset Filters</a>
+	<h2 class="shop-sidebar-items-font fw-bold ps-3 pb-3 pt-4 pt-lg-0">Filter By</h2>
+	<ul class="list-unstyled px-3">
 		<li class="border-bottom w-100 mb-2 py-2">
 			<button class="chevron__arrows-btn btn btn-toggle w-100 d-inline-flex align-items-center rounded border-0 px-0 collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
 				<span class="shop-sidebar-headings-font">Categories</span>
 				<i class="fa fa-angle-right active ms-auto" aria-hidden="true"></i>
 			</button>
-			<div class="collapse show" id="home-collapse">
+			<div class="show" id="home-collapse">
 				<ul class="shop-sidebar-items-font btn-toggle-nav list-unstyled fw-normal pb-1 small">
 					{categoryTags.sort().map((categoryTag) => (
 						<li><a class="link-dark d-inline-flex text-decoration-none text-capitalize rounded" href={`/products/tag/${categoryTag}`}>{categoryTag}</a></li>
@@ -28,11 +29,11 @@ const careTags = [...new Set([].concat.apply([],allPosts.map(post => post.frontm
 			</div>
 		</li>
 		<li class="border-bottom w-100 mb-2 py-2">
-			<button class="chevron__arrows-btn btn btn-toggle w-100 d-inline-flex align-items-center rounded border-0 px-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
+			<button class="chevron__arrows-btn btn btn-toggle w-100 d-inline-flex align-items-center rounded border-0 px-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="true">
 				<span class="shop-sidebar-headings-font">Color</span>
 				<i class="fa fa-angle-right ms-auto active" aria-hidden="true"></i>
 			</button>
-			<div class="collapse" id="dashboard-collapse">
+			<div class="show" id="dashboard-collapse">
 				<ul class="shop-sidebar-items-font btn-toggle-nav list-unstyled fw-normal pb-1 small">
 					{colorTags.sort().map((colorTag) => (
 						<li><a class="link-dark d-inline-flex text-decoration-none text-capitalize rounded" href={`/products/tag/${colorTag}`}>{colorTag}</a></li>
@@ -41,11 +42,11 @@ const careTags = [...new Set([].concat.apply([],allPosts.map(post => post.frontm
 			</div>
 		</li>
 		<li class="border-bottom w-100 mb-2 py-2">
-			<button class="chevron__arrows-btn btn btn-toggle w-100 d-inline-flex align-items-center rounded border-0 px-0 collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
+			<button class="chevron__arrows-btn btn btn-toggle w-100 d-inline-flex align-items-center rounded border-0 px-0 collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="true">
 				<span class="shop-sidebar-headings-font">Care Level</span>
 				<i class="fa fa-angle-right ms-auto active" aria-hidden="true"></i>
 			</button>
-			<div class="collapse" id="orders-collapse">
+			<div class="show" id="orders-collapse">
 				<ul class="shop-sidebar-items-font btn-toggle-nav list-unstyled fw-normal pb-1 small">
 				  {careTags.sort().map((careTag) => (
 						<li><a class="link-dark d-inline-flex text-decoration-none text-capitalize rounded" href={`/products/tag/${careTag}`}>{careTag}</a></li>

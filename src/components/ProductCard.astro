@@ -1,7 +1,7 @@
 ---
 import { Debug } from 'astro/components';
 
-import { Image } from '@astrojs/image/components';
+import { Image } from 'astro:assets'
 import ProductButton from '@components/ProductButton.astro';
 import TagList from '@components/TagList.astro';
 
@@ -41,28 +41,29 @@ console.log(title)
 				</div>
 			</div>
 			<div class="product-slider pt-4 d-flex flex-nowrap justify-content-start flex-grow-1">
-				<button data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="border-0 p-2" aria-current="true" aria-label="Slide 0">
+				<button data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="border-0 p-2 pb-3" aria-current="true" aria-label="Slide 0">
 					<img style="object-fit: cover; left: 0; height: 120px; width: 120px;" class="product-slider--image active" src={image} alt="">
 				</button>
-				<button data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" class="border-0 p-2" aria-current="true" aria-label="Slide 1">
+				<button data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" class="border-0 p-2 pb-3" aria-current="true" aria-label="Slide 1">
 					<img style="object-fit: cover; left: 0; height: 120px; width: 120px;" class="product-slider--image" src={imageSliderOne} alt="">
 				</button>
-				<button data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 2" class="border-0 p-2">
+				<button data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 2" class="border-0 p-2 pb-3">
 					<img style="object-fit: cover; left: 115px; height: 120px; width: 120px;" class="product-slider--image" src={imageSliderTwo} alt="">
 				</button>
-				<button data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 3" class="border-0 p-2">
+				<button data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 3" class="border-0 p-2 pb-3">
 					<img style="object-fit: cover; left: 230px; height: 120px; width: 120px;" class="product-slider--image" src={imageSliderThree} alt="">
 				</button>
-				<button data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 4" class="border-0 p-2">
+				<button data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 4" class="border-0 p-2 pb-3">
 					<img style="object-fit: cover; left: 230px; height: 120px; width: 120px;" class="product-slider--image" src={imageSliderFour} alt="">
 				</button>
-				<button data-bs-target="#carouselExampleIndicators" data-bs-slide-to="5" aria-label="Slide 5" class="border-0 p-2">
+				<button data-bs-target="#carouselExampleIndicators" data-bs-slide-to="5" aria-label="Slide 5" class="border-0 p-2 pb-3">
 					<img style="object-fit: cover; left: 230px; height: 120px; width: 120px;" class="product-slider--image" src={imageSliderFive} alt="">
 				</button>
 			</div>
 		</div>
 		<div class="col-12 col-md-5 flex-grow-2">
 			<div class="price-wrapper">
+				<a class="price-wrapper__back" href="/products/page">&#x2190;Continue Shopping</a>
 				<div class="price-wrapper--bar"></div>
 				<p class="price-wrapper--price py-3 m-0">{price}</p>
 			</div>
@@ -108,6 +109,11 @@ console.log(title)
 		/* max-height: 300px;
 		max-width: 400px; */
 		margin: auto
+	}
+	.price-wrapper__back {
+		text-decoration: none;
+		font-size: 16px;
+		color: #000;
 	}
 	@media only screen and (min-width: 768px) {
 		.product-image {

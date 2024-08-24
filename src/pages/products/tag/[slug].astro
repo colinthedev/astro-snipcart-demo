@@ -52,14 +52,20 @@ const { tag, products } = Astro.props;
 
 <MainLayout>
 	<ShopSidebar />
-		<section class="col-12 col-lg-10 col-xl-8 d-flex flex-column align-items-center flex-grow-1">
+		<section class="col-12 col-lg-10 col-xl-8 d-flex flex-column align-items-start flex-grow-1">
 			<div class="d-flex flex-column align-items-center mb-2 mb-md-4">
-				<h1 class="mb-5 text-center">Tag: {tag}</h1>
-				<h2 class="fontsize-h3 text-center">A collection of {tag}-related products.</h2>
+				<!-- <h1 class="mb-5 text-center">Tag: {tag}</h1>
+				<h2 class="fontsize-h3 text-center">A collection of {tag}-related products.</h2> -->
 				<SidebarButton />
 			</div>
-			<div class="tag-row row d-flex justify-content-evenly">
+			<div class="tag-row row d-flex justify-content-evenly w-100">
 				{products.map((post: any) => <TagCard data={post} />)}
 			</div>
 		</section>
 </MainLayout>
+
+<style>
+	.tag-row div img {
+		max-width: 250px;
+	}
+</style>

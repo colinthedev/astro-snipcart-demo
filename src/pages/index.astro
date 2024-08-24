@@ -1,25 +1,20 @@
 ---
-
 import MainLayout from '@layouts/MainLayout.astro';
-
+import CTACard from '@components/CTACard.astro';
 ---
 
 <style>
 	.hero-bg {
-		background-image: url("/assets/images/bg-img/homebg.jpeg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: grid;
-    grid-auto-columns: 100%;
-    height: auto;
-	}
-	.hero-bg-accent {
-		position: absolute;
-    bottom: -7%;
-    right: -5%;
-    height: 100%;
-    background-color: #224229;
-    z-index: -1;
+		display: grid;
+		background-image: linear-gradient(rgb(0 0 0 / 10%), rgb(0 0 0 / 40%)), url("/assets/images/bg-img/homebg.jpeg");
+		background-repeat: no-repeat;
+		background-size: cover;
+		grid-auto-columns: 100%;
+		height: auto;
+		border-right: 10px solid #224127;
+    border-bottom: 15px solid #224127;
+    margin-top: 25px;
+		color: #fff;
 	}
 	.hero-intro-wrapper {
 		padding: 15rem 0 0 7rem;
@@ -56,6 +51,24 @@ import MainLayout from '@layouts/MainLayout.astro';
 	.border-bottom {
 		border-bottom: 12px solid #dee2e699 !important;
 	}
+	@media only screen and (min-width: 1000px) {
+		.hero-bg {
+			border-radius: 25px 0 0 25px;
+			background-image: linear-gradient(rgb(0 0 0 / 5%), rgb(0 0 0 / 22%)), url("/assets/images/bg-img/homebg.jpeg");
+			color: #000;
+			border-right: none;
+			border-bottom: none;
+			margin-top: 0;
+		}
+		.hero-bg-accent {
+			position: absolute;
+			right: -5%;
+			bottom: 75px;
+			height: 100%;
+			background-color: #224229;
+			z-index: -1;
+		}
+	}
 	@media only screen and (min-width: 1200px) {
 		.border-bottom {
 			width: 110vw;
@@ -72,6 +85,54 @@ import MainLayout from '@layouts/MainLayout.astro';
 				<p class="hero-description">Welcome to Green Haven, a plant store that brings the refreshing beauty of nature to your home or office. Our carefully curated selection of indoor and outdoor plants, along with our expert advice and support, makes it easy for you to create your own green oasis. With a brand color palette of dark and forest green, and black, our mission is to help you add life and vitality to any space. Come explore our store and discover the perfect plants to elevate your environment.</p>
 			</div>
 		</div>
+	</div>	
+	<div style="padding-top: 150px;padding-bottom: 25px;" class="d-flex flex-column align-items-center justify-content-center">
+		<div>
+			<h2 class="py-5">What's New</h2>
+		</div>
+		<div class="d-flex flex-wrap">
+			<CTACard 
+				id="1"
+				cardLink="/products/tag/palm"
+				bgImage = '/assets/images/product-img/product-two/prod-2.jpg'
+				title = 'Pet Friendly Plants'
+				description = 'Pet-friendly plants are a delightful addition to any home, offering natural beauty without posing a threat to your furry friends. These plants, such as spider plants, Boston ferns, and pet-safe succulents, are non-toxic and safe for cats and dogs to explore. Enhance your space while keeping your pets happy and healthy.'
+			/>
+			<CTACard 
+				id="2"
+				cardLink="/products/tag/fig"
+				bgImage = '/assets/images/product-img/product-three/prod-3.jpg'
+				title = 'Fig'
+				description = 'Figs, with their lush, vibrant leaves and inviting aesthetic, are a wonderful choice for indoor plants. These versatile beauties, like the Ficus lyrata or Fiddle Leaf Fig, often fit well in various interior styles. While figs can be mildly toxic to pets when ingested, they typically deter pets due to their bitter taste, making them a generally pet-friendly foliage option for responsible pet owners.'
+			/>
+			<CTACard 
+				id="3"
+				cardLink="/products/tag/cactus"
+				bgImage = '/assets/images/product-img/product-six/prod-6.jpg'
+				title = 'Succulents & Cacti'
+				description = "Succulents are the ideal choice for both novice and experienced plant enthusiasts. Their captivating and diverse shapes, along with their minimal maintenance requirements, make them perfect for any space. What's more, most succulents are pet-friendly, ensuring that your furry companions can coexist safely with these charming desert beauties."
+			/>
+			<CTACard 
+				id="4"
+				cardLink="/products/tag/cactus"
+				bgImage = '/assets/images/product-img/product-six/prod-6.jpg'
+				title = 'Succulents & Cacti'
+				description = "Succulents are the ideal choice for both novice and experienced plant enthusiasts. Their captivating and diverse shapes, along with their minimal maintenance requirements, make them perfect for any space. What's more, most succulents are pet-friendly, ensuring that your furry companions can coexist safely with these charming desert beauties."
+			/>
+			<CTACard 
+				id="5"
+				cardLink="/products/tag/cactus"
+				bgImage = '/assets/images/product-img/product-six/prod-6.jpg'
+				title = 'Succulents & Cacti'
+				description = "Succulents are the ideal choice for both novice and experienced plant enthusiasts. Their captivating and diverse shapes, along with their minimal maintenance requirements, make them perfect for any space. What's more, most succulents are pet-friendly, ensuring that your furry companions can coexist safely with these charming desert beauties."
+			/>
+			<CTACard 
+				id="6"
+				cardLink="/products/tag/cactus"
+				bgImage = '/assets/images/product-img/product-six/prod-6.jpg'
+				title = 'Succulents & Cacti'
+				description = "Succulents are the ideal choice for both novice and experienced plant enthusiasts. Their captivating and diverse shapes, along with their minimal maintenance requirements, make them perfect for any space. What's more, most succulents are pet-friendly, ensuring that your furry companions can coexist safely with these charming desert beauties."
+			/>
+		</div>
 	</div>
-	
 </MainLayout>

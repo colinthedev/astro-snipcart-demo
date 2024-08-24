@@ -1,0 +1,60 @@
+---
+import { Debug } from 'astro/components';
+
+const { id, bgImage, title, description, cardLink } = Astro.props;
+
+const cardStyle = {
+  paddingTop: '100px',
+  backgroundImage: `linear-gradient(rgb(0 0 0 / 10%), rgb(0 0 0 / 60%)), url('${bgImage}')`, 
+  backgroundSize: 'cover',
+  backgroundPosition: 'center',
+	height: '100%',
+	color: '#fff',
+};
+
+---
+
+<style>
+	.card-bg {
+		border-radius: 5px;
+		padding: 15px;
+	}
+	.card-content {
+		display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+		min-height: 150px;
+	}
+	.card-content__top {
+		padding-bottom: 20px;
+	}
+	.card-content h2 {
+		color: #fff;
+		text-decoration: 1px solid #fff;
+		font-size: 25px;
+	}
+	.card-content p {
+		font-size: 13px;
+		letter-spacing: .10px;
+	}
+</style>
+
+<div class="col-12 col-lg-4 px-3 pb-5">
+	<a href={cardLink}>
+		<div data-item-id={id} style={cardStyle} class="card-bg">
+			<div class="card-content">
+				<div class="card-content__top">
+					<div class="flex">
+						<h2>{title}</h2>
+						<p><a href=""></a></p>
+					</div>
+					<p style="line-height: 18px;">{description}</p>
+				</div>
+				<div class="card-content__bottom border-top">
+					<p>{}</p>
+				</div>
+			</div>
+		</div>
+	</a>
+</div>

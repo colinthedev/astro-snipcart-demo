@@ -2,15 +2,7 @@
 
 ---
 
-<style>
-	#toggleSidebar {
-		cursor: pointer;
-		color: #131212;
-		font-size: 1.4rem;
-	}
-</style>
-
-<a id="toggleSidebar" class="ps-3 pt-1 pb-3"><i class="fa fa-tasks" aria-hidden="true"></i> Filter</a>
+<a id="toggleSidebar" class="ps-3 py-3 pb-4"><i class="fa fa-tasks" aria-hidden="true"></i> Filter</a>
 
 <script>
 	window.addEventListener("DOMContentLoaded", () => {
@@ -19,10 +11,18 @@
 
 		sideBarToggle.addEventListener("click", () => {
 			sidebarEl.classList.toggle("sidebar--isHidden");
-
+			
 			sideBarToggle.innerHTML = sidebarEl.classList.contains( "sidebar--isHidden")
 				? `<i class="fa fa-tasks" aria-hidden="true"></i> Filter`
 				: `<i class="fa fa-tasks" aria-hidden="true"></i> Hide Filter`;
 		});
 	});
 </script>
+
+<style>
+	#toggleSidebar {
+		cursor: pointer;
+		color: var(--main-font-color);
+		font-size: 1.4rem;
+	}
+</style>
