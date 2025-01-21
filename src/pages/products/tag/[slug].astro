@@ -2,10 +2,8 @@
 // Corresponding tag page
 import { Debug } from 'astro/components';
 
-import MainLayout from "@layouts/MainLayout.astro";
 import TagCard from "@components/TagCard.astro";
-import ShopSidebar from '@components/ShopSidebar.astro';
-import SidebarButton from '@components/ToggleSidebarButton.astro';
+import FilterLayout from "@layouts/FilterLayout.astro";
 
 export async function getStaticPaths() {
 	const allProducts = await Astro.glob("../../../data/posts/products/*.md");
@@ -24,15 +22,19 @@ export async function getStaticPaths() {
 			post.frontmatter.color.map((color: String) => {
 			tagSet.add(color);
 		});
+		post.frontmatter.size.map((size: String) => {
+			tagSet.add(size);
+		});
 	});
 
 	const tagArray = [...tagSet];
+	console.log(tagArray)
 
 	return tagArray.map((tag) => {
 		// const category = sortedProducts.map((product => product.frontmatter.color));
 		
 		const products = sortedProducts.filter((post) => {
-			const newTags = [...post.frontmatter.color, ...post.frontmatter.category, ...post.frontmatter.care];
+			const newTags = [...post.frontmatter.color, ...post.frontmatter.category, ...post.frontmatter.care, ...post.frontmatter.size];
 			return newTags.includes(tag);
 			// post.frontmatter.category.includes(tag) || post.frontmatter.color.includes(tag) || post.frontmatter.care.includes(tag)
 		});	
@@ -50,21 +52,59 @@ export async function getStaticPaths() {
 const { tag, products } = Astro.props;
 ---
 
-<MainLayout>
-	<ShopSidebar />
-		<section class="col-12 col-lg-10 col-xl-8 d-flex flex-column align-items-start flex-grow-1">
-			<div class="d-flex flex-column align-items-center mb-2 mb-md-4">
-				<!-- <h1 class="mb-5 text-center">Tag: {tag}</h1>
-				<h2 class="fontsize-h3 text-center">A collection of {tag}-related products.</h2> -->
-				<SidebarButton />
-			</div>
-			<div class="tag-row row d-flex justify-content-evenly w-100">
-				{products.map((post: any) => <TagCard data={post} />)}
-			</div>
-		</section>
-</MainLayout>
+<FilterLayout>	
+	<div id="test" class="tag-row row d-flex justify-content-start w-100">
+	{products.map((post: any) => <TagCard data={post} />)}</div>
+	<div id="loading" class="loading">Loading...</div>
+</FilterLayout>
+
+<script is:inline>
+let currentPage = 1;
+const productsPerPage = 6; // Number of products to load per request
+const container = document.getElementById('test');
+const loadingIndicator = document.getElementById('loading');
+
+function loadProducts(page) {
+    loadingIndicator.style.display = 'block'; // Show loading indicator
+
+    // Simulate an API call to fetch products
+    setTimeout(() => {
+        for (let i = 0; i < productsPerPage; i++) {
+            const productDiv = document.createElement('div');
+            productDiv.className = 'product';
+            productDiv.innerHTML = `Product ${((page - 1) * productsPerPage) + (i + 1)}`;
+            container.appendChild(productDiv);
+        }
+        
+        loadingIndicator.style.display = 'none'; // Hide loading indicator
+    }, 1000); // Simulate a delay
+}
+
+function checkScroll() {
+    const scrollTop = container.scrollTop;
+    const scrollHeight = container.scrollHeight;
+    const offsetHeight = container.offsetHeight;
+
+    if (scrollTop + offsetHeight >= scrollHeight - 10) {
+        currentPage++;
+        loadProducts(currentPage); // Load more products when near bottom
+    }
+}
+
+// Initial load
+loadProducts(currentPage);
+
+// Add scroll event listener
+container.addEventListener('scroll', checkScroll);
+</script>
 
 <style>
+	#test {
+		height: 500px; 
+    overflow-y: auto;
+    border: 1px solid #ccc; 
+		padding: 15px 0 100px 0;
+	}
 	.tag-row div img {
 		max-width: 250px;
 	}

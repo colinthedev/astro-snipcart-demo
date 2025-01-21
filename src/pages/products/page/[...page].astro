@@ -7,7 +7,7 @@ import MainLayout from '@layouts/MainLayout.astro';
 import ShopSidebar from '@components/ShopSidebar.astro';
 import ProductCard from '@components/ProductCard.astro'; // Imported for styling
 import SidebarButton from '@components/ToggleSidebarButton.astro';
-import { Image } from 'astro:assets'
+import ProductImage from '@components/ProductImage.astro';
 import Paginator from '@components/Paginator.astro';
 import TagList from '@components/TagList.astro';
 
@@ -29,40 +29,50 @@ const { data } = page;
 ---
 
 <MainLayout>
-	<ShopSidebar />
-	<div class="col-12 col-lg-7 col-xxl-8 flex-grow-1">
+	<section class="container">
 		<div class="row">
-			<SidebarButton />
-			<!-- 
-				<div>{tags && <TagList {tags} />}</div> 						
-			-->
-				{data.map(( {props: {product}} ) => 
-					<div class="col-12 col-md-4 d-flex flex-column align-items-center align-items-md-start flex-grow-1 mb-5 position-relative">
-						<Image class="main-product-image mb-4" loading="eager"src={product.image} width={product.shopImageSize[0]} height={product.shopImageSize[1]} quality="max" alt={'Potted ' + product.name} /> 
-						<div class="product-info-wrapper">
-							<a class="text-decoration-none stretched-link" href={'/products/' + product.slug + '/'}>
-								<h6 class="product-name m-0">{product.name}</h6>
-								<div class="price-wrapper--bar"></div>
-							</a>
-							<div class="price-wrapper">
-								<h6 class="price-wrapper--price py-3 m-0">${product.price}</h6>
+			<ShopSidebar />
+			<div class="col-12 col-lg-7 col-xxl-8 flex-grow-1">
+					<SidebarButton />
+					<!-- 
+						<div>{tags && <TagList {tags} />}</div> 				
+					-->
+					<div class="row">
+						{data.map(( {props: {product}} ) => 
+							<div class="product-wrapper position-relative col-12 col-sm-6 col-md-4 col-lg-3 d-flex flex-column align-items-start flex-grow-1 mb-5 px-2 px-lg-3">
+								<ProductImage 
+									image={product.image}
+									image_width={product.shopImageSize[0]}
+									image_height={product.shopImageSize[1]}
+									image_size={product.shopImageSize[0]}
+									alt={'Potted ' + product.name}
+								/>
+								<div class="d-flex justify-content-between w-100 mt-2">
+									<a class="text-decoration-none stretched-link" href={'/products/' + product.slug + '/'}>
+										<h6 class="product-name m-0">{product.name}</h6>
+										<div class="price-wrapper--bar"></div>
+									</a>
+									<div class="price-wrapper">
+										<h6 class="price-wrapper--price m-0">${product.price}</h6>
+									</div>
+								</div>
+								<div>
+									{( product.category || product.color || product.care || product.size ) && 
+										<TagList tags={[...product.color,...product.care, ...product.category,  ...product.size]} />}
+								</div>
 							</div>
-						</div>
-						<div>
-							{( product.category || product.color || product.care ) && 
-								<TagList tags={[...product.color,...product.care, ...product.category]} />}
-						</div>
+						)}
 					</div>
-				)}
+				<Paginator page={page}/>
+			</div>
 		</div>
-		<Paginator page={page}/>
-	</div>
+	</section>
 </MainLayout>
 
 <style>
-.product-info-wrapper {
-	display: flex;
-	justify-content: space-between;
-	width: 100%;
+@media only screen and (min-width: 1200px) {
+	.product-wrapper {
+		max-width: 280px;
+	}
 }
 </style>

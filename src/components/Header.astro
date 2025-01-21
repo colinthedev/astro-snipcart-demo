@@ -2,34 +2,34 @@
 
 ---
 
-<header class="col-12 col-lg-2 flex-grow-1 header-area">
-		<div id="alwaysShow" class="d-flex flex-row flex-nowrap justify-content-between align-items-center w-100">
-			<div class="logo my-5">
-					<a><img class="logo" src="/assets/images/core-img/green-haven-logo.png" alt="Green Haven Logo'"></a>
-			</div>
-			<div id="hamburger" class="hamburger">
-				<span></span>
-				<span></span>
-				<span></span>
-			</div>
-		</div>
-		<nav class="nav collapsed" id="menu">
-			<ul class="list-unstyled ">
-				<li class="active"><a class="d-block text-decoration-none text-uppercase py-4" href="/">Home</a></li>
-				<li><a class="d-block text-decoration-none text-uppercase py-4" href="/products/page">Shop</a></li>
-				<li><a class="d-block text-decoration-none text-uppercase py-4" href="/cart.html">Cart</a></li>
-				<li><a class="d-block text-decoration-none text-uppercase py-4" href="#">Checkout</a></li>
+<header class="container">
+	<nav class="navbar navbar-expand-lg navbar-light">
+		<a href="/"><img class="logo" src="/assets/images/core-img/green-haven-logo.png" alt="Green Haven Logo'"></a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+	
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto w-100">
+				<li class="nav-item active">
+					<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/products/page">Shop</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/cart.html">Cart</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">Checkout</a>
+				</li>
 			</ul>
-		</nav>
-		<div class="nav-btn-group b-0 d-flex flex-column">
-			<a style="background-color: #224229;" href="#" class="btn nav-btn mb-3">Discount</a>
-			<a style="background-color: #131212;" href="#" class="btn nav-btn active mb-5">New this week</a>
+			<form class="form-inline d-flex my-2 my-lg-0">
+				<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+			</form>
 		</div>
-		<div class="cart-fav-search d-flex justify-content-around d-lg-block mb-100">
-			<a href="cart.html" class="cart-nav nav-icon-btns text-decoration-none text-uppercase py-2"><img src="/assets/images/core-img/cart.png" alt=""> Cart <span class="snipcart-items-count">(0)</span></a>
-			<a href="#" class="fav-nav nav-icon-btns text-decoration-none text-uppercase py-2"><img src="/assets/images/core-img/favorites.png" alt=""> Favorites</a>
-			<a href="#" class="search-nav nav-icon-btns text-decoration-none text-uppercase py-2"><img src="/assets/images/core-img/search.png" alt=""> Search</a>
-		</div>
+	</nav>
 </header>
 
 <script >
@@ -82,18 +82,10 @@
 <style>
 	.logo { max-width: 200px; }
 	.header-area { background-color: #fff; }
-	.nav-btn-group {
-		/*max-width: 150px;*/
-	}
 	.header-area .nav li a {
 		font-size: 1.4rem;
 		line-height: 0.9;
 		color: var(--main-font-color);
-	}
-	.nav-btn-group {
-		font-size: 1.8rem;
-		line-height: 56px;
-		font-weight: 400;
 	}
 	.nav-btn {
 		color: #ffffff;

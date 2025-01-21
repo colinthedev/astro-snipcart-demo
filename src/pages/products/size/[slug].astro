@@ -1,0 +1,52 @@
+---
+// Corresponding tag page
+import { Debug } from 'astro/components';
+
+import FilterLayout from "@layouts/FilterLayout.astro";
+import TagCard from "@components/TagCard.astro";
+
+export async function getStaticPaths() {
+	const allProducts = await Astro.glob("../../../data/posts/products/*.md");
+
+	const sortedProducts = allProducts.sort((a, b) => new Date(a.frontmatter.id).valueOf() - new Date(b.frontmatter.id).valueOf());
+
+	const tagSet = new Set();
+	
+	sortedProducts.forEach((post) => {
+			post.frontmatter.size.map((size: String) => {
+			tagSet.add(size);
+		});
+	});
+
+	const tagArray = [...tagSet];
+
+	return tagArray.map((size) => {		
+		const products = sortedProducts.filter((post) => {
+			const newTags = [...post.frontmatter.size];
+			return newTags.includes(size);
+		});	
+		console.log(tagArray)
+		return {
+			params: { slug: size },
+			props: {
+				size,
+				products,
+			},
+		};
+	});
+}
+
+const { size, products } = Astro.props;
+---
+
+<FilterLayout>	
+	<div class="tag-row row d-flex justify-content-evenly w-100">
+		{products.map((post: any) => <TagCard data={post} />)}
+	</div>
+</FilterLayout>
+
+<style>
+	.tag-row div img {
+		max-width: 250px;
+	}
+</style>

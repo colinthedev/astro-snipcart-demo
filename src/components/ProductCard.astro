@@ -22,42 +22,39 @@ console.log(title)
 		<div id="carouselExampleIndicators" data-bs-ride="carousel" data-bs-interval="false" class="carousel slide col-12 col-md-6 flex-grow-1 pb-5">
 			<div class="carousel-inner">
 				<div class="carousel-item item active">
-					<Image class="product-image d-block" src={image} width={postImageSize[0]} height={postImageSize[1]} fit="cover" position="center" formats="webp" alt="" />
+					<Image class="product-image d-block" src={image} width={postImageSize[0]} height={postImageSize[1]} alt="" />
 				</div>
 				<div class="carousel-item item">
-					<Image class="product-image d-block" src={imageSliderOne} width={postImageSize[0]} height={postImageSize[1]} fit="fill" position="center" formats="webp" alt="" />
+					<Image class="product-image d-block" src={imageSliderOne} width={postImageSize[0]} height={postImageSize[1]} alt="" />
 				</div>
 				<div class="carousel-item item">
-					<Image class="product-image d-block" src={imageSliderTwo} width={postImageSize[0]} height={postImageSize[1]} fit="fill" position="center" formats="webp" alt="" />
+					<Image class="product-image d-block" src={imageSliderTwo} width={postImageSize[0]} height={postImageSize[1]} alt="" />
 				</div>
 				<div class="carousel-item item">
-					<Image class="product-image d-block" src={imageSliderThree} width={postImageSize[0]} height={postImageSize[1]} fit="fill" position="center" formats="webp" alt="" />
+					<Image class="product-image d-block" src={imageSliderThree} width={postImageSize[0]} height={postImageSize[1]} alt="" />
 				</div>
 				<div class="carousel-item item">
-					<Image class="product-image d-block" src={imageSliderFour} width={postImageSize[0]} height={postImageSize[1]} fit="fill" position="center" formats="webp" alt="" />
+					<Image class="product-image d-block" src={imageSliderFour} width={postImageSize[0]} height={postImageSize[1]} alt="" />
 				</div>
 				<div class="carousel-item item">
-					<Image class="product-image d-block" src={imageSliderFive} width={postImageSize[0]} height={postImageSize[1]} fit="fill" position="center" formats="webp" alt="" />
+					<Image class="product-image d-block" src={imageSliderFive} width={postImageSize[0]} height={postImageSize[1]} alt="" />
 				</div>
 			</div>
 			<div class="product-slider pt-4 d-flex flex-nowrap justify-content-start flex-grow-1">
-				<button data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="border-0 p-2 pb-3" aria-current="true" aria-label="Slide 0">
-					<img style="object-fit: cover; left: 0; height: 120px; width: 120px;" class="product-slider--image active" src={image} alt="">
-				</button>
 				<button data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" class="border-0 p-2 pb-3" aria-current="true" aria-label="Slide 1">
-					<img style="object-fit: cover; left: 0; height: 120px; width: 120px;" class="product-slider--image" src={imageSliderOne} alt="">
+					<Image class="product-slider--image" src={imageSliderOne} width={postImageSize[0]} height={postImageSize[1]} alt="" />
 				</button>
 				<button data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 2" class="border-0 p-2 pb-3">
-					<img style="object-fit: cover; left: 115px; height: 120px; width: 120px;" class="product-slider--image" src={imageSliderTwo} alt="">
+					<Image class="product-slider--image" src={imageSliderTwo} width={postImageSize[0]} height={postImageSize[1]} alt="" />
 				</button>
 				<button data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 3" class="border-0 p-2 pb-3">
-					<img style="object-fit: cover; left: 230px; height: 120px; width: 120px;" class="product-slider--image" src={imageSliderThree} alt="">
+					<Image class="product-slider--image" src={imageSliderThree} width={postImageSize[0]} height={postImageSize[1]} alt="" />
 				</button>
 				<button data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 4" class="border-0 p-2 pb-3">
-					<img style="object-fit: cover; left: 230px; height: 120px; width: 120px;" class="product-slider--image" src={imageSliderFour} alt="">
+					<Image class="product-slider--image" src={imageSliderFour} width={postImageSize[0]} height={postImageSize[1]} alt="" />
 				</button>
 				<button data-bs-target="#carouselExampleIndicators" data-bs-slide-to="5" aria-label="Slide 5" class="border-0 p-2 pb-3">
-					<img style="object-fit: cover; left: 230px; height: 120px; width: 120px;" class="product-slider--image" src={imageSliderFive} alt="">
+					<Image class="product-slider--image" src={imageSliderFive} width={postImageSize[0]} height={postImageSize[1]} alt="" />
 				</button>
 			</div>
 		</div>
@@ -65,23 +62,12 @@ console.log(title)
 			<div class="price-wrapper">
 				<a class="price-wrapper__back" href="/products/page">&#x2190;Continue Shopping</a>
 				<div class="price-wrapper--bar"></div>
-				<p class="price-wrapper--price py-3 m-0">{price}</p>
+				<p class="price-wrapper--price py-3 m-0">${price}</p>
 			</div>
 			<a class="text-decoration-none" href={'/products/' + slug + '/'}>
 				<h6 class="product-name m-0">{name}</h6>
 			</a>
 			<div class="product-info">
-				<div class="d-flex flex-column pt-3">
-					<div class="product-info__reviews">
-						<i class="product-info__reviews--stars fa fa-star"></i>
-						<i class="product-info__reviews--stars fa fa-star"></i>
-						<i class="product-info__reviews--stars fa fa-star"></i>
-						<i class="product-info__reviews--stars fa fa-star"></i>
-						<i class="product-info__reviews--stars fa fa-star"></i>
-						<a class="product-info__reviews--review" href=""><p class="my-2">Write a review</p></a>
-					</div>
-					<a class="product-info__reviews--review" href=""><p class="mb-0">Reviews</p></a>
-				</div>
 				<div class="pb-3">{tags && <TagList {tags} />}</div>
 				<div class="product-info__availability d-flex">
 					<i class="product-info__availability--icon fa fa-circle pe-2"></i>
@@ -91,7 +77,7 @@ console.log(title)
 			</div>
 			<ProductButton 
 				type="button"
-				class="AddCartBtn snipcart-add-item mt-5"
+				class="AddCartBtn snipcart-add-item mt-3"
 				data-item-id={id}
 				data-item-price={price}
 				data-item-url={slug}

@@ -1,5 +1,17 @@
+/*
+	TODOS
+	 - Map over repeated components
+	 - Fix css naming convention 
+	 - Fix css scope within global to components when not truly global styles
+	 - Add animation to homepage
+	 
+	 - Make the tag/size into a layout (repeated code)
+*/
+
 :root {
 	--main-font-color: #131212;
+	--h2-font-color: #171615;
+	--brand-green: #224229;
 }
 
 /* MainLayout */
@@ -30,16 +42,14 @@
 
 html {
 	box-sizing: border-box;
-	font-size: 67%;
-	height: 100vh;
-	width: 100vw;
 	overflow-x: hidden;
 	overflow-y: scroll;
 }
 
 body { 
 	overflow-x: hidden;
-	font-size: 1.2rem;
+	font-size: 16px;
+	letter-spacing: .12px;
 }
 
 img {
@@ -47,23 +57,44 @@ img {
 	width: 100%;
 }
 
+ol,ul {
+	padding: 0;
+}
+
 a { 
 	text-decoration: none; 
 }
 
-/* ShopSidebar */
-button:focus {
-	box-shadow: none!important;
+a:hover {
+	color: var(--main-font-color);
+	opacity: .85;
 }
 
-#toggleSidebar {
-	cursor: pointer;
-	color: var(--main-font-color);
-	font-size: 1.4rem;
+button:focus {
+	box-shadow: none !important;
+}
+
+/* Fonts */
+.h2-style {
+	font-weight: 400;
+	font-size: 40px;
+	text-align: center;
+	letter-spacing: -0.8px;
+}
+
+.fc--dark {
+	color: rgb(23, 22, 21);
+}
+.fc--light {
+	color: #f9f8f8;
+}
+.fc--green {
+	color: var(--brand-green);
 }
 
 .reset-filter-links {
 	color: var(--main-font-color);
+	font-size: 12px;
 	padding: 2px 5px;
 	border: 1px solid var(--main-font-color);;
 	text-decoration: none;
@@ -75,6 +106,11 @@ button:focus {
 .main-product-image { 
 	object-fit: cover;
 }
+@media only screen and (min-width: 1200px) {
+	.main-product-image {
+		height: 330px;
+	}
+}
 
 .shop-sidebar-area {
 	position: relative;
@@ -83,6 +119,12 @@ button:focus {
 	border-radius: 20px;
 	border-left: 3px solid #242424;
 	padding: 20px 10px 20px 0 !important;
+}
+@media only screen and (max-width: 768px) {
+	.shop-sidebar-area {
+		width: 95%;
+		margin: auto;
+	}
 }
 
 .sidebar--isHidden {
@@ -109,19 +151,19 @@ button:focus {
 }
 
 .border-top {
-	border-top: 2px solid #dee2e6 !important;
+	border-top: 2px solid #00000012 !important;
 }
 
 @media only screen and (min-width: 768px) {
 	.shop-sidebar-items-font {
-		font-size: 1.4rem;
+		font-size: 12px;
 	}
 	.shop-sidebar-headings-font {
-		font-size: 1.4rem;
+		font-size: 13px;
 		padding: 0;
-		margin-left: 10px;
 	}
-	li {
+	.shop-sidebar-headings-font,
+	.shop-sidebar-items-font li {
 		margin-left: 10px;
 	}
 }
@@ -137,18 +179,6 @@ button:focus {
 .chevron__arrows-btn:hover {
 	background-color: #f0f0f0;
 }
-	
-/* Paginator */
-.pagination-wrapper ul {
-	display: flex;
-	flex-wrap: nowrap;
-}
-.pagination-wrapper ul a{
-	color: black;
-}
-.pt-16 {
-	font-size: 18px;
-}
 
 .link-btn {
 	color: #242424;
@@ -157,12 +187,16 @@ button:focus {
 }
 
 .link-btn:hover {
-	color: #224229;
+	color: var(--brand-green);
 }
 
 /* ProductCard */
 .object-fit-cover {
 	object-fit: cover;
+}
+
+.carousel-item {
+	max-height: 700px;
 }
 
 .product-slider { 
@@ -176,7 +210,7 @@ button:focus {
 }
 	
 .product-slider::-webkit-scrollbar-thumb { 
-	background-color: #224229; 
+	background-color: var(--brand-green); 
 	outline: 5px solid #fff; 
 }
 
@@ -195,6 +229,7 @@ button:focus {
 .product-slider::-webkit-scrollbar-button:end:increment { background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/42863/arrow.png); }
 
 .product-slider--image {
+	display: block;
 	flex: 0 0 25%;
 	min-width: 25%;
 	height: 140px;
@@ -206,15 +241,15 @@ button:focus {
 
 .price-wrapper--bar {
 	width: 100%;
-	max-width: 80px;
-	background-color: #224229;
-	padding: 1.5px;
+	max-width: 160px;
+	background-color: var(--brand-green);
+	padding: 1px;
 }
 
 .price-wrapper--price {
-	font-size: 18pxd;
+	font-size: 16px;
 	font-weight: 400;
-	color: #224229;
+	color: var(--brand-green);
 	line-height: 1;
 	margin-bottom: 10px;
 }
@@ -226,37 +261,40 @@ button:focus {
 	font-size: 16px;
 }
 
-.product-info__reviews--stars {
-	font-size: 1rem;
-	color: #224229;
-}
-
 .product-info__availability--icon {
 	color: #20d34a;
-	font-size: 1.2rem;
 }
 
 .product-info--description {
 	line-height: 2.1;
 	color: #6b6b6b;
-	font-size: 1.6rem;
 }
 
 .AddCartBtn {
-	width: 100%;
-	max-width: 250px;
 	display: inline-block;
-	min-height: 55px;
+	width: 100%;
+	min-height: 45px;
 	color: #ffffff;
 	border: none;
 	border-radius: 0;
-	padding: 0 7px;
-	font-size: 1.8rem;
-	line-height: 56px;
-	background-color: #224229;
-	font-weight: 400;
+	background-color: var(--brand-green);
+}
+
+.AddCartBtn:hover {
+	opacity: .95;
 }
 
 .nav-icon-btns img {
 	max-width: 15px;
+}
+
+.btn-outline-success {
+	color: var(--brand-green);
+	border-color: var(--brand-green);
+}
+
+.btn-outline-success:hover {
+	background-color: var(--brand-green);
+	border-color: var(--brand-green);
+	color: #ffffff;
 }

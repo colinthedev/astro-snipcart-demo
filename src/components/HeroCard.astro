@@ -1,0 +1,48 @@
+---
+import { Debug } from 'astro/components';
+import { Image } from 'astro:assets'
+
+const { id, color, flex_row_reverse, bgImage, image, heading, description, cardLink } = Astro.props;
+const flexRowClass = flex_row_reverse === "true" ? 'flex-row-reverse' : '';
+
+
+const cardStyle = {
+  paddingTop: '100px',
+  backgroundColor: `linear-gradient(rgb(0 0 0 / 10%), rgb(0 0 0 / 60%)), url('${bgImage}')`, 
+  color: '#000',
+};
+---
+<!-- Created based on CTACard.astro -->
+
+<section class=`hero-card-bg--${color} row ${flexRowClass} py-5 px-2 px-lg-5` data-item-id={id} style={cardStyle}>
+	<div class="col-12 col-lg-6">
+		<video poster="https://res.cloudinary.com/easyplant/image/upload/f_auto/v1687353725/homepage2/desktop-homepage-video-poster.png" autoplay="" loop="" playsinline=""><source src="https://res.cloudinary.com/easyplant/video/upload/v1687423027/homepage2/desktop-homepage-video.mp4" type="video/mp4"></video>
+		{image ? 
+			<Image class="d-block" src={image} widths={[500, 768, 900, image.width]} sizes={`(max-width: 500px) 500px, (max-width: 768px) 768px, (max-width: 1400) 900px, ${image.width}px`} alt="" />
+		: ''}
+	</div>
+	<div class="hero-card-copy col-12 col-lg-6 d-flex flex-column justify-content-center">
+		<h2>{heading}</h2>
+		<p>{description}</p>
+		<p><a href={cardLink}>Shop Plants</a></p>
+	</div>
+</section>
+
+<style>
+	.hero-card-bg--green {
+		background-color: var(--brand-green);
+	}
+	.hero-card-bg--green > * {
+		color: #fff;
+	}
+	.hero-card-bg--beige {
+		background-color: beige;
+	}
+	.hero-card-copy {
+		max-width: 450px;
+	}
+	video {
+		width: 100%;
+		height: auto;
+	}
+</style>

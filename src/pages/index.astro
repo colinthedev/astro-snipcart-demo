@@ -1,6 +1,7 @@
 ---
 import MainLayout from '@layouts/MainLayout.astro';
 import CTACard from '@components/CTACard.astro';
+import HeroCard from '@components/HeroCard.astro';
 ---
 
 <style>
@@ -11,6 +12,7 @@ import CTACard from '@components/CTACard.astro';
 		background-size: cover;
 		grid-auto-columns: 100%;
 		height: auto;
+		min-height: 800px;
 		border-right: 10px solid #224127;
     border-bottom: 15px solid #224127;
     margin-top: 25px;
@@ -23,7 +25,7 @@ import CTACard from '@components/CTACard.astro';
 		position: relative;
 		font-size: 6rem;
     font-weight: 900;
-    color: #224229;
+    color: var(--brand-green);
 		z-index: 100;
 	}
 	.hero-title > span {
@@ -33,23 +35,22 @@ import CTACard from '@components/CTACard.astro';
 	.hero-title::before {
     content: " ";
     position: absolute;
-    top: -15px;
-    left: -43px;
-    width: 100px;
-    height: 100px;
+		top: 0px;
+    left: -40px;
+    width: 130px;
+    height: 130px;
     border-radius: 50%;
-    border: 5px solid #224229;
+    border: 5px solid var(--brand-green);
     background-color: #fff;
     z-index: -1;
 	}
 	.hero-description {
-		font-size: 1.5rem;
+		font-size: 16px;
 		font-weight: 500;
 		max-width: 700px;
-		margin-top: 1rem;
 	}
 	.border-bottom {
-		border-bottom: 12px solid #dee2e699 !important;
+		border-bottom: 7px solid #dee2e699 !important;
 	}
 	@media only screen and (min-width: 1000px) {
 		.hero-bg {
@@ -63,10 +64,10 @@ import CTACard from '@components/CTACard.astro';
 		.hero-bg-accent {
 			position: absolute;
 			right: -5%;
-			bottom: 75px;
 			height: 100%;
-			background-color: #224229;
+			background-color: var(--brand-green);
 			z-index: -1;
+			margin-top: 30px;
 		}
 	}
 	@media only screen and (min-width: 1200px) {
@@ -77,62 +78,78 @@ import CTACard from '@components/CTACard.astro';
 </style>
 
 <MainLayout>
-	<div class="hero-bg col-12 col-lg-7 col-xxl-8 flex-grow-1">
-		<div class="hero-bg-accent col-12 col-lg-7 col-xxl-8 flex-grow-1"></div>
-		<div class="hero-intro-wrapper">
-			<h1 class="hero-title"><span>G</span>reen Haven</h1>
-			<div class="border-bottom">
-				<p class="hero-description">Welcome to Green Haven, a plant store that brings the refreshing beauty of nature to your home or office. Our carefully curated selection of indoor and outdoor plants, along with our expert advice and support, makes it easy for you to create your own green oasis. With a brand color palette of dark and forest green, and black, our mission is to help you add life and vitality to any space. Come explore our store and discover the perfect plants to elevate your environment.</p>
+	<div class="container mb-5 pb-5">
+		<section class="row">
+			<div class="hero-bg col-12 col-lg-7 col-xxl-8 flex-grow-1">
+				<div class="hero-bg-accent col-12 col-lg-7 col-xxl-8 flex-grow-1"></div>
+				<div class="hero-intro-wrapper">
+					<h1 class="hero-title"><span>G</span>reen Haven</h1>
+					<div class="border-bottom">
+						<p class="hero-description mt-4">Welcome to Green Haven, a plant store that brings the refreshing beauty of nature to your home or office. Our carefully curated selection of indoor and outdoor plants, along with our expert advice and support, makes it easy for you to create your own green oasis. Our mission is to help you add life and vitality to any space. Come explore our store and discover the perfect plants to elevate your environment.</p>
+					</div>
+				</div>
+			</div>	
+		</section>
+	</div>
+	<div class="container-fluid position-relative py-5 mt-5 border-top">
+		<div class="row">
+			<div class="col-12">
+				<h2 class="h2-style fc--dark pt-4 pb-5">The Best Indoor Plant For You!</h2>
 			</div>
 		</div>
-	</div>	
-	<div style="padding-top: 150px;padding-bottom: 25px;" class="d-flex flex-column align-items-center justify-content-center">
-		<div>
-			<h2 class="py-5">What's New</h2>
-		</div>
-		<div class="d-flex flex-wrap">
+		<section style="max-width: 1200px; margin: auto;" class="row">
 			<CTACard 
 				id="1"
 				cardLink="/products/tag/palm"
-				bgImage = '/assets/images/product-img/product-two/prod-2.jpg'
-				title = 'Pet Friendly Plants'
-				description = 'Pet-friendly plants are a delightful addition to any home, offering natural beauty without posing a threat to your furry friends. These plants, such as spider plants, Boston ferns, and pet-safe succulents, are non-toxic and safe for cats and dogs to explore. Enhance your space while keeping your pets happy and healthy.'
+				bgImage = '/assets/images/homepage/plant-size-small.webp'
+				title = 'Small'
+				description = 'Tiny but mighty! These pet-friendly plants like spider plants and Boston ferns add charm without any danger to your furry pals. Perfect for cozy corners and happy pets!'
 			/>
 			<CTACard 
 				id="2"
 				cardLink="/products/tag/fig"
-				bgImage = '/assets/images/product-img/product-three/prod-3.jpg'
-				title = 'Fig'
-				description = 'Figs, with their lush, vibrant leaves and inviting aesthetic, are a wonderful choice for indoor plants. These versatile beauties, like the Ficus lyrata or Fiddle Leaf Fig, often fit well in various interior styles. While figs can be mildly toxic to pets when ingested, they typically deter pets due to their bitter taste, making them a generally pet-friendly foliage option for responsible pet owners.'
+				bgImage = '/assets/images/homepage/plant-size-medium.webp'
+				title = 'Medium'
+				description = 'Medium marvels! Figs like the Fiddle Leaf add lush vibes to your space. They’re stylish and tend to keep pets at bay with their bitter taste. Perfect for a chic, pet-safe home!'
 			/>
 			<CTACard 
 				id="3"
 				cardLink="/products/tag/cactus"
-				bgImage = '/assets/images/product-img/product-six/prod-6.jpg'
-				title = 'Succulents & Cacti'
-				description = "Succulents are the ideal choice for both novice and experienced plant enthusiasts. Their captivating and diverse shapes, along with their minimal maintenance requirements, make them perfect for any space. What's more, most succulents are pet-friendly, ensuring that your furry companions can coexist safely with these charming desert beauties."
+				bgImage = '/assets/images/homepage/plant-size-large.webp'
+				title = 'Large'
+				description = "Go big or go home! Large succulents bring bold, minimal-care beauty to any room. Most are pet-friendly, so your space stays stunning and safe for all members of the family!"
 			/>
-			<CTACard 
-				id="4"
-				cardLink="/products/tag/cactus"
-				bgImage = '/assets/images/product-img/product-six/prod-6.jpg'
-				title = 'Succulents & Cacti'
-				description = "Succulents are the ideal choice for both novice and experienced plant enthusiasts. Their captivating and diverse shapes, along with their minimal maintenance requirements, make them perfect for any space. What's more, most succulents are pet-friendly, ensuring that your furry companions can coexist safely with these charming desert beauties."
-			/>
-			<CTACard 
-				id="5"
-				cardLink="/products/tag/cactus"
-				bgImage = '/assets/images/product-img/product-six/prod-6.jpg'
-				title = 'Succulents & Cacti'
-				description = "Succulents are the ideal choice for both novice and experienced plant enthusiasts. Their captivating and diverse shapes, along with their minimal maintenance requirements, make them perfect for any space. What's more, most succulents are pet-friendly, ensuring that your furry companions can coexist safely with these charming desert beauties."
-			/>
-			<CTACard 
-				id="6"
-				cardLink="/products/tag/cactus"
-				bgImage = '/assets/images/product-img/product-six/prod-6.jpg'
-				title = 'Succulents & Cacti'
-				description = "Succulents are the ideal choice for both novice and experienced plant enthusiasts. Their captivating and diverse shapes, along with their minimal maintenance requirements, make them perfect for any space. What's more, most succulents are pet-friendly, ensuring that your furry companions can coexist safely with these charming desert beauties."
-			/>
-		</div>
+		</section>
+		<div class="home-accent"></div>
+		<div class="home-accent home-accent--dark"></div>
+	</div>
+	<div class="container-fluid">
+		<HeroCard 
+			color="green"
+			heading="Hand-Picked Premium Plant"
+			description="We carefully select only the healthiest, most vibrant plants to ship from our greenhouse to your doorstep."
+		/>
+		<HeroCard 
+			color="beige"
+			flex_row_reverse="true"
+			heading="A Gift That Lasts"
+			description="The perfect gift that brightens every home with the beauty of nature"
+		/>
 	</div>
 </MainLayout>
+
+<style>
+.home-accent {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	height: 300px;
+	width: 100%;
+	background-color: beige;
+	z-index: -1;
+}
+.home-accent--dark {
+	background-color: #0e1c15;
+	height: 30px;
+}
+</style>

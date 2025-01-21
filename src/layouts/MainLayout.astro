@@ -28,12 +28,10 @@ const {title} = Astro.props;
 	</head>
 
 	<body class="d-flex flex-column">
-		<div class="container">
-			<div class="row min-vh-100 my-5 px-2">
-				<Header />
-					<slot />
-			</div>
-		</div>
+		<!-- https://easyplant.com/ -->
+		<Header />
+		<slot />
+		<div class="mb-5"></div>
 		<Footer />
 	</body>
 

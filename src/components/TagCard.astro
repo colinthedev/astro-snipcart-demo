@@ -1,18 +1,24 @@
 ---
 import { Debug } from 'astro/components';
 
-import { Image } from 'astro:assets'
+import ProductImage from '@components/ProductImage.astro';
 import TagList from "@components/TagList.astro";
 import ProductCard from '@components/ProductCard.astro'; // Imported for styling
 
 const { data } = Astro.props;
-const { name, price, description, image, tagImageSize, color, category, care, slug: url } = data.frontmatter;
-const tags = [...color, ...category, ...care]
+const { name, price, description, image, tagImageSize, color, category, care, size, slug: url } = data.frontmatter;
+const tags = [...color, ...category, ...care, ...size]
 ---
 <!-- <Debug answer={data} /> -->
 
-<div class="col-5 d-flex flex-column align-items-center align-items-md-start position-relative mb-5 pb-2 border-bottom">
-	<Image class="d-block w-100 object-fit-cover" src={image} width={tagImageSize[0]} height={tagImageSize[1]} fit="fill" position="center" formats="webp" alt="" />
+<div class="col-6 col-md-3 d-flex flex-column align-items-center align-items-md-start position-relative mb-5 pb-2 border-bottom">
+	<ProductImage 
+		image={image}
+		image_width={tagImageSize[0]}
+		image_height={tagImageSize[1]}
+		image_size={tagImageSize[0]}
+		alt={'Potted ' + name}
+	/>
 	<div class="price-wrapper mt-3">
 		<div class="price-wrapper--bar"></div>
 		<h6 class="price-wrapper--price py-3 m-0">${price}</h6>

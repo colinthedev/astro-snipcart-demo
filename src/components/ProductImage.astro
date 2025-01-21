@@ -1,0 +1,23 @@
+---
+import { Picture } from 'astro:assets'
+
+const { image, image_width, image_height, image_size, alt } = Astro.props;
+---
+
+<Picture 
+	class="main-product-image mb-4" 
+	src={image} 
+	formats={['jpg', 'webp']}
+	loading="eager" 
+	width={image_width} 
+	height={image_height}
+	sizes={`(max-width: 360px) 240px, (max-width: 720px) 540px, (max-width: 1600px) 720px, ${image_size}px`}
+	alt={alt} 
+/>
+
+<style is:global>
+.main-product-image {
+	border-radius: 15px; /* Same as from CTACard */
+	box-shadow: 5px 5px 0px #0e1c15;
+}
+</style>
