@@ -1,7 +1,8 @@
 ---
 category: [fig]
 color: [black]
-care: [medium]
+care: [beginner]
+size: [small]
 name: Calathea
 slug: productfive
 id: 5

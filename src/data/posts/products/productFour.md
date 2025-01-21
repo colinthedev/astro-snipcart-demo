@@ -1,7 +1,8 @@
 ---
 category: [palm]
 color: [blue]
-care: [easy]
+care: [beginner]
+size: [large]
 name: Monstera Deliciosa
 slug: productfour
 id: 4

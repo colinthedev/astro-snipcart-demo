@@ -1,20 +1,22 @@
 ---
-category: [fig]
+category: [fig, cactus]
 color: [black]
-care: [expert]
-size: [small]
+care: [beginner]
+size: [large, medium]
 name: Snake Plant
-slug: productthree
-id: 3
-price: 40
-description: Also known as "Mother-in-law's Tongue," this hardy plant is great for beginners. With its tall, spiky leaves and low maintenance needs, it's perfect for adding a touch of green to any space.
+slug: producttwo
+id: 2
+class: mw-product-img col-12 col-md-4 d-flex flex-column align-items-center align-items-md-start flex-grow-1 mb-5 position-relative
+price: 20
+description: Known for its striking, upright leaves, the Snake Plant thrives on neglect and adds a modern touch to any room.
 nameOne: Gift note
 nameTwo: Frame color
 tagImageSize: [550, 300]
 postImageSize: [600, 600]
-shopImageSize: [250, 250]
-homeImageSize: [400, 200]
-image: /assets/images/product-img/product-three/prod-3.jpg
+shopImageSize: [275, 300]
+homeImageSize: [250, 250]
+image: /assets/images/product-img/product-one/prod-1.jpg
+imageAlt: A modern house in the city
 imageSliderOne: /assets/images/product-img/prod-2-slider.jpg
 imageSliderTwo: /assets/images/product-img/prod-3-slider.jpg
 imageSliderThree: /assets/images/product-img/prod-4-slider.jpg

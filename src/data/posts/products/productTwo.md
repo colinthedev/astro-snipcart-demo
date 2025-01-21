@@ -1,7 +1,8 @@
 ---
 category: [palm, fig]
 color: [black]
-care: [medium]
+care: [beginner]
+size: [small]
 name: Rubber Plant
 slug: producttwo
 id: 2
